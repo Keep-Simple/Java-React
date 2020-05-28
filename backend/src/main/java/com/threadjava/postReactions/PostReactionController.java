@@ -20,14 +20,23 @@ public class PostReactionController {
     @Autowired
     private SimpMessagingTemplate template;
 
-    @PutMapping
-    public Optional<ResponsePostReactionDto> setReaction(@RequestBody ReceivedPostReactionDto postReaction){
+    @PutMapping("like")
+    public Optional<ResponsePostReactionDto> setLikeReaction(@RequestBody ReceivedPostReactionDto postReaction){
         postReaction.setUserId(getUserId());
-        var reaction = postsService.setReaction(postReaction);
+        var reaction = postsService.setReaction(postReaction, true);
 
         if (reaction.isPresent() && reaction.get().getUserId() != getUserId()) {
-            // notify a user if someone (not himself) liked his post
             template.convertAndSend("/topic/like", "Your post was liked!");
+        }
+        return reaction;
+    }
+    @PutMapping("dislike")
+    public Optional<ResponsePostReactionDto> setDislikeReaction(@RequestBody ReceivedPostReactionDto postReaction){
+        postReaction.setUserId(getUserId());
+        var reaction = postsService.setReaction(postReaction, false);
+
+        if (reaction.isPresent() && reaction.get().getUserId() != getUserId()) {
+            template.convertAndSend("/topic/dislike", "Your post was disliked!");
         }
         return reaction;
     }

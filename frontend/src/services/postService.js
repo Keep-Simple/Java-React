@@ -28,11 +28,23 @@ export const getPost = async id => {
 
 export const likePost = async postId => {
   const response = await callWebApi({
-    endpoint: '/api/postreaction',
+    endpoint: '/api/postreaction/like',
     type: 'PUT',
     request: {
       postId,
       isLike: true
+    }
+  });
+  return response.json();
+};
+
+export const dislikePost = async postId => {
+  const response = await callWebApi({
+    endpoint: '/api/postreaction/dislike',
+    type: 'PUT',
+    request: {
+      postId,
+      isDislike: true
     }
   });
   return response.json();

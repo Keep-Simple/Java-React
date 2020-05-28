@@ -7,4 +7,5 @@ import java.util.UUID;
 public class PostReactionDto {
     private UUID id;
     private Boolean isLike;
+    private Boolean isDislike;
 }

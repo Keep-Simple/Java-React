@@ -8,4 +8,5 @@ public class ReceivedPostReactionDto {
     private UUID postId;
     private UUID userId;
     private Boolean isLike;
+    private Boolean isDislike;
 }
