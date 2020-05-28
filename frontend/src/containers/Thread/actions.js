@@ -75,25 +75,6 @@ export const likePost = postId => async (dispatch, getRootState) => {
   }
 };
 
-export const dislikePost = postId => async (dispatch, getRootState) => {
-  const result = await postService.dislikePost(postId); // here
-  const diff = result?.id ? 1 : -1;
-
-  const mapDislikes = post => ({
-    ...post,
-    dislikeCount: Number(post.dislikeCount) + diff // here
-  });
-
-  const { posts: { posts, expandedPost } } = getRootState();
-  const updated = posts.map(post => (post.id !== postId ? post : mapDislikes(post)));
-
-  dispatch(setPostsAction(updated));
-
-  if (expandedPost && expandedPost.id === postId) {
-    dispatch(setExpandedPostAction(mapDislikes(expandedPost)));
-  }
-};
-
 export const addComment = request => async (dispatch, getRootState) => {
   const { id } = await commentService.addComment(request);
   const comment = await commentService.getComment(id);

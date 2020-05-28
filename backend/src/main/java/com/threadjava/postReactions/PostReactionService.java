@@ -12,21 +12,17 @@ public class PostReactionService {
     @Autowired
     private PostReactionsRepository postReactionsRepository;
 
-    public Optional<ResponsePostReactionDto> setReaction(ReceivedPostReactionDto postReactionDto, boolean isLike) {
+    public Optional<ResponsePostReactionDto> setReaction(ReceivedPostReactionDto postReactionDto) {
 
         var reaction = postReactionsRepository.getPostReaction(postReactionDto.getUserId(), postReactionDto.getPostId());
 
         if (reaction.isPresent()) {
             var react = reaction.get();
-            if (isLike && react.getIsLike() == postReactionDto.getIsLike() || !isLike && react.getIsDislike() == postReactionDto.getIsDislike()) {
+            if (react.getIsLike() == postReactionDto.getIsLike()) {
                 postReactionsRepository.deleteById(react.getId());
                 return Optional.empty();
             } else {
-                if(isLike) {
-                    react.setIsLike(postReactionDto.getIsLike());
-                } else {
-                    react.setIsDislike(postReactionDto.getIsDislike());
-                }
+                react.setIsLike(postReactionDto.getIsLike());
                 var result = postReactionsRepository.save(react);
                 return Optional.of(PostReactionMapper.MAPPER.reactionToPostReactionDto(result));
             }

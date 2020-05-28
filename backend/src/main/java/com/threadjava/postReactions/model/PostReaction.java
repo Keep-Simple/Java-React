@@ -15,9 +15,6 @@ public class PostReaction extends BaseEntity {
     @Column(name = "isLike")
     private Boolean isLike;
 
-    @Column(name = "isDislike")
-    private Boolean isDislike;
-
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "user_id")
     private User user;
