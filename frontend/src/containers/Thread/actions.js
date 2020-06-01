@@ -56,7 +56,7 @@ export const toggleExpandedPost = postId => async dispatch => {
   dispatch(setExpandedPostAction(post));
 };
 
-export const likePost = postId => async (dispatch, getRootState) => {
+const likeHelper = async (isLike, postId, dispatch, getRootState) => {
   const result = await postService.likePost(postId);
   const diff = result?.id ? 1 : -1; // if ID exists then the post was liked, otherwise - like was removed
 
@@ -73,6 +73,14 @@ export const likePost = postId => async (dispatch, getRootState) => {
   if (expandedPost && expandedPost.id === postId) {
     dispatch(setExpandedPostAction(mapLikes(expandedPost)));
   }
+};
+
+export const likePost = postId => async (dispatch, getRootState) => {
+  await likeHelper(true, postId, dispatch, getRootState);
+};
+
+export const dislikePost = postId => async (dispatch, getRootState) => {
+  await likeHelper(true, postId, dispatch, getRootState);
 };
 
 export const addComment = request => async (dispatch, getRootState) => {

@@ -26,16 +26,24 @@ export const getPost = async id => {
   return response.json();
 };
 
-export const likePost = async postId => {
+const likeHelper = async (postId, isLike) => {
   const response = await callWebApi({
     endpoint: '/api/postreaction',
     type: 'PUT',
     request: {
       postId,
-      isLike: true
+      isLike
     }
   });
   return response.json();
+};
+
+export const likePost = async postId => {
+  await likeHelper(postId, true);
+};
+
+export const dislikePost = async postId => {
+  await likeHelper(postId, false);
 };
 
 // should be replaced by approppriate function
