@@ -20,36 +20,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment=".gitignore shoot">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/a2f2c97b-ab48-4514-a8df-4c6943956575.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/a2f2c97b-ab48-4514-a8df-4c6943956575/storage_v2/_src_/database/threaddb.CMDVVw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/a2f2c97b-ab48-4514-a8df-4c6943956575/storage_v2/_src_/database/threaddb.CMDVVw/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/a2f2c97b-ab48-4514-a8df-4c6943956575/storage_v2/_src_/database/threaddb.CMDVVw/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/a2f2c97b-ab48-4514-a8df-4c6943956575/storage_v2/_src_/database/threaddb.CMDVVw/schema/public.abK9xQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/mini-java.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/thread-java.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/thread-java.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/thread-java.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment="Implement dislike functionality">
       <change afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/PostReactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/PostReactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/PostReactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/PostReactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Notifications/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Notifications/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Post/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Post/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/ExpandedPost/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/ExpandedPost/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/postService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/postService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591031370751</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implement dislike functionality">
+      <created>1591091889329</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1591091889330</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +223,8 @@
     <MESSAGE value="buggy dislike realisation" />
     <MESSAGE value=".gitignore" />
     <MESSAGE value=".gitignore shoot" />
-    <option name="LAST_COMMIT_MESSAGE" value=".gitignore shoot" />
+    <MESSAGE value="Implement dislike functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement dislike functionality" />
   </component>
   <component name="WindowStateProjectService">
     <state x="828" y="512" key="#ESLint" timestamp="1590523246277">
@@ -274,46 +256,46 @@
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
     <state x="719" y="304" key="FileChooserDialogImpl/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590524281698" />
-    <state width="1921" height="329" key="GridCell.Tab.0.bottom" timestamp="1591091571018">
+    <state width="1921" height="329" key="GridCell.Tab.0.bottom" timestamp="1591091793702">
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
     <state width="1921" height="329" key="GridCell.Tab.0.bottom/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
-    <state width="1921" height="329" key="GridCell.Tab.0.bottom/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091571018" />
-    <state width="1921" height="329" key="GridCell.Tab.0.center" timestamp="1591091571018">
+    <state width="1921" height="329" key="GridCell.Tab.0.bottom/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793702" />
+    <state width="1921" height="329" key="GridCell.Tab.0.center" timestamp="1591091793702">
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
     <state width="1921" height="329" key="GridCell.Tab.0.center/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
-    <state width="1921" height="329" key="GridCell.Tab.0.center/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091571018" />
-    <state width="1921" height="329" key="GridCell.Tab.0.left" timestamp="1591091571018">
+    <state width="1921" height="329" key="GridCell.Tab.0.center/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793702" />
+    <state width="1921" height="329" key="GridCell.Tab.0.left" timestamp="1591091793701">
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
     <state width="1921" height="329" key="GridCell.Tab.0.left/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
-    <state width="1921" height="329" key="GridCell.Tab.0.left/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091571018" />
-    <state width="1921" height="329" key="GridCell.Tab.0.right" timestamp="1591091571018">
+    <state width="1921" height="329" key="GridCell.Tab.0.left/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793701" />
+    <state width="1921" height="329" key="GridCell.Tab.0.right" timestamp="1591091793702">
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
     <state width="1921" height="329" key="GridCell.Tab.0.right/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
-    <state width="1921" height="329" key="GridCell.Tab.0.right/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091571018" />
-    <state width="1921" height="329" key="GridCell.Tab.1.bottom" timestamp="1591091571019">
+    <state width="1921" height="329" key="GridCell.Tab.0.right/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793702" />
+    <state width="1921" height="329" key="GridCell.Tab.1.bottom" timestamp="1591091793703">
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
     <state width="1921" height="329" key="GridCell.Tab.1.bottom/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
-    <state width="1921" height="329" key="GridCell.Tab.1.bottom/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091571019" />
-    <state width="1921" height="329" key="GridCell.Tab.1.center" timestamp="1591091571018">
+    <state width="1921" height="329" key="GridCell.Tab.1.bottom/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793703" />
+    <state width="1921" height="329" key="GridCell.Tab.1.center" timestamp="1591091793703">
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
     <state width="1921" height="329" key="GridCell.Tab.1.center/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
-    <state width="1921" height="329" key="GridCell.Tab.1.center/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091571018" />
-    <state width="1921" height="329" key="GridCell.Tab.1.left" timestamp="1591091571018">
+    <state width="1921" height="329" key="GridCell.Tab.1.center/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793703" />
+    <state width="1921" height="329" key="GridCell.Tab.1.left" timestamp="1591091793702">
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
     <state width="1921" height="329" key="GridCell.Tab.1.left/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
-    <state width="1921" height="329" key="GridCell.Tab.1.left/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091571018" />
-    <state width="1921" height="329" key="GridCell.Tab.1.right" timestamp="1591091571019">
+    <state width="1921" height="329" key="GridCell.Tab.1.left/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793702" />
+    <state width="1921" height="329" key="GridCell.Tab.1.right" timestamp="1591091793703">
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
     <state width="1921" height="329" key="GridCell.Tab.1.right/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
-    <state width="1921" height="329" key="GridCell.Tab.1.right/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091571019" />
+    <state width="1921" height="329" key="GridCell.Tab.1.right/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793703" />
     <state x="732" y="340" key="RollbackChangesDialog" timestamp="1591030992054">
       <screen x="0" y="40" width="1920" height="1160" />
     </state>

@@ -36,4 +36,3 @@ node_modules/
 **/bin/
 frontend/.env
 frontend/package-lock.json
-**/application.properties/
