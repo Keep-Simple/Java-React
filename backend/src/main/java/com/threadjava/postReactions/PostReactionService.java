@@ -22,9 +22,8 @@ public class PostReactionService {
                 postReactionsRepository.deleteById(react.getId());
                 return Optional.empty();
             } else {
-                react.setIsLike(postReactionDto.getIsLike());
-                var result = postReactionsRepository.save(react);
-                return Optional.of(PostReactionMapper.MAPPER.reactionToPostReactionDto(result));
+                // == return unchanged in case of trying set both reactions ==
+                return Optional.of(PostReactionMapper.MAPPER.reactionToPostReactionDto(react));
             }
         } else {
             var postReaction = PostReactionMapper.MAPPER.dtoToPostReaction(postReactionDto);

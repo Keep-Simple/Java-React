@@ -38,13 +38,9 @@ const likeHelper = async (postId, isLike) => {
   return response.json();
 };
 
-export const likePost = async postId => {
-  await likeHelper(postId, true);
-};
+export const likePost = async postId => likeHelper(postId, true);
 
-export const dislikePost = async postId => {
-  await likeHelper(postId, false);
-};
+export const dislikePost = async postId => likeHelper(postId, false);
 
 // should be replaced by approppriate function
 export const getPostByHash = async hash => getPost(hash);

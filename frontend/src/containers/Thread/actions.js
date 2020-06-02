@@ -57,12 +57,28 @@ export const toggleExpandedPost = postId => async dispatch => {
 };
 
 const likeHelper = async (isLike, postId, dispatch, getRootState) => {
-  const result = await postService.likePost(postId);
-  const diff = result?.id ? 1 : -1; // if ID exists then the post was liked, otherwise - like was removed
+  let likeDiff;
+  let dislikeDiff;
+  const result = await (isLike ? postService.likePost(postId) : postService.dislikePost(postId));
+
+  if (result?.id) {
+    if (result.isLike === isLike) {
+      likeDiff = (+isLike);
+      dislikeDiff = (+!isLike);
+    } else {
+      likeDiff = 0;
+      dislikeDiff = 0;
+    }
+  } else {
+    // == like/dislike was deleted ==
+    likeDiff = -(+isLike);
+    dislikeDiff = -(+!isLike);
+  }
 
   const mapLikes = post => ({
     ...post,
-    likeCount: Number(post.likeCount) + diff // diff is taken from the current closure
+    likeCount: Number(post.likeCount) + likeDiff,
+    dislikeCount: Number(post.dislikeCount) + dislikeDiff
   });
 
   const { posts: { posts, expandedPost } } = getRootState();
@@ -75,13 +91,11 @@ const likeHelper = async (isLike, postId, dispatch, getRootState) => {
   }
 };
 
-export const likePost = postId => async (dispatch, getRootState) => {
-  await likeHelper(true, postId, dispatch, getRootState);
-};
+export
+const likePost = postId => async (dispatch, getRootState) => likeHelper(true, postId, dispatch, getRootState);
 
-export const dislikePost = postId => async (dispatch, getRootState) => {
-  await likeHelper(true, postId, dispatch, getRootState);
-};
+export
+const dislikePost = postId => async (dispatch, getRootState) => likeHelper(false, postId, dispatch, getRootState);
 
 export const addComment = request => async (dispatch, getRootState) => {
   const { id } = await commentService.addComment(request);
