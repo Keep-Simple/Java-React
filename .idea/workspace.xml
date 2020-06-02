@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:develop" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment="Implement dislike functionality">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/backend">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <branch-grouping />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
+  <component name="ProjectId" id="1cSXpaCDV5APMypsmRvYN0uI0fy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/src/main/resources" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\mini-java\backend\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ThreadJavaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="thread-java.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.threadjava.ThreadJavaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\user\AppData\Roaming\Subversion</configuration>
+    <option name="sshConnectionType" value="PRIVATE_KEY" />
+    <option name="sshPrivateKeyPath" value="C:\Users\user\gitkraken_rsa" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment="" />
+      <created>1590523151858</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590523151858</updated>
+      <workItem from="1590523157067" duration="564000" />
+      <workItem from="1590523747818" duration="716000" />
+      <workItem from="1590524476529" duration="121000" />
+      <workItem from="1590524611803" duration="97000" />
+      <workItem from="1590524731368" duration="137000" />
+      <workItem from="1590568584040" duration="4000" />
+      <workItem from="1590673414991" duration="12502000" />
+      <workItem from="1590747687352" duration="635000" />
+      <workItem from="1590784373056" duration="11000" />
+      <workItem from="1590784401744" duration="28000" />
+      <workItem from="1590784446425" duration="115000" />
+      <workItem from="1590827617940" duration="57000" />
+      <workItem from="1590924275286" duration="1000" />
+      <workItem from="1590997049116" duration="15481000" />
+      <workItem from="1591014068989" duration="6246000" />
+    </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1590523489295</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1590523489295</updated>
+    </task>
+    <task id="LOCAL-00002" summary="reformat">
+      <created>1590524021161</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1590524021162</updated>
+    </task>
+    <task id="LOCAL-00003" summary="buggy dislike realisation">
+      <created>1590686163902</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1590686163902</updated>
+    </task>
+    <task id="LOCAL-00004" summary=".gitignore">
+      <created>1591031290444</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591031290444</updated>
+    </task>
+    <task id="LOCAL-00005" summary=".gitignore shoot">
+      <created>1591031370751</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1591031370751</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Implement dislike functionality">
+      <created>1591091889329</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1591091889330</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="init" />
+    <MESSAGE value="reformat" />
+    <MESSAGE value="buggy dislike realisation" />
+    <MESSAGE value=".gitignore" />
+    <MESSAGE value=".gitignore shoot" />
+    <MESSAGE value="Implement dislike functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement dislike functionality" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="828" y="512" key="#ESLint" timestamp="1590523246277">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="828" y="512" key="#ESLint/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590523246277" />
+    <state x="350" y="461" key="#SQL_Dialects" timestamp="1590677661851">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="350" y="461" key="#SQL_Dialects/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590677661851" />
+    <state x="864" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591014374876">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="864" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590677852534" />
+    <state x="864" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591014374876" />
+    <state x="683" y="422" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591031198810">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="683" y="422" key="#com.intellij.fileTypes.FileTypeChooser/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591031198810" />
+    <state x="690" y="367" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591031353586">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="690" y="367" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591031353586" />
+    <state x="92" y="132" width="1736" height="976" key="DiffContextDialog" timestamp="1591005039427">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="92" y="132" width="1736" height="976" key="DiffContextDialog/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591005039427" />
+    <state x="719" y="304" key="FileChooserDialogImpl" timestamp="1590524281698">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="719" y="304" key="FileChooserDialogImpl/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590524281698" />
+    <state width="1921" height="329" key="GridCell.Tab.0.bottom" timestamp="1591091793702">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state width="1921" height="329" key="GridCell.Tab.0.bottom/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
+    <state width="1921" height="329" key="GridCell.Tab.0.bottom/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793702" />
+    <state width="1921" height="329" key="GridCell.Tab.0.center" timestamp="1591091793702">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state width="1921" height="329" key="GridCell.Tab.0.center/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
+    <state width="1921" height="329" key="GridCell.Tab.0.center/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793702" />
+    <state width="1921" height="329" key="GridCell.Tab.0.left" timestamp="1591091793701">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state width="1921" height="329" key="GridCell.Tab.0.left/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
+    <state width="1921" height="329" key="GridCell.Tab.0.left/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793701" />
+    <state width="1921" height="329" key="GridCell.Tab.0.right" timestamp="1591091793702">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state width="1921" height="329" key="GridCell.Tab.0.right/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
+    <state width="1921" height="329" key="GridCell.Tab.0.right/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793702" />
+    <state width="1921" height="329" key="GridCell.Tab.1.bottom" timestamp="1591091793703">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state width="1921" height="329" key="GridCell.Tab.1.bottom/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
+    <state width="1921" height="329" key="GridCell.Tab.1.bottom/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793703" />
+    <state width="1921" height="329" key="GridCell.Tab.1.center" timestamp="1591091793703">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state width="1921" height="329" key="GridCell.Tab.1.center/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
+    <state width="1921" height="329" key="GridCell.Tab.1.center/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793703" />
+    <state width="1921" height="329" key="GridCell.Tab.1.left" timestamp="1591091793702">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state width="1921" height="329" key="GridCell.Tab.1.left/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
+    <state width="1921" height="329" key="GridCell.Tab.1.left/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793702" />
+    <state width="1921" height="329" key="GridCell.Tab.1.right" timestamp="1591091793703">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state width="1921" height="329" key="GridCell.Tab.1.right/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
+    <state width="1921" height="329" key="GridCell.Tab.1.right/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591091793703" />
+    <state x="732" y="340" key="RollbackChangesDialog" timestamp="1591030992054">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="732" y="340" key="RollbackChangesDialog/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591030992054" />
+    <state x="420" y="236" key="SettingsEditor" timestamp="1591014271606">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="420" y="236" key="SettingsEditor/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590524714822" />
+    <state x="420" y="236" key="SettingsEditor/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591014271606" />
+    <state x="552" y="353" key="Vcs.Push.Dialog.v2" timestamp="1591031292371">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="552" y="353" key="Vcs.Push.Dialog.v2/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686166514" />
+    <state x="552" y="353" key="Vcs.Push.Dialog.v2/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591031292371" />
+    <state x="760" y="521" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1590524511556">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="760" y="521" key="git4idea.remote.GitConfigureRemotesDialog/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590524511556" />
+    <state x="826" y="486" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup" timestamp="1590998959488">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="826" y="486" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1590998959488" />
+    <state x="616" y="290" key="run.anything.popup" timestamp="1591004315979">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="616" y="290" key="run.anything.popup/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591004315979" />
+    <state x="623" y="295" width="672" height="678" key="search.everywhere.popup" timestamp="1591009623092">
+      <screen x="0" y="40" width="1920" height="1160" />
+    </state>
+    <state x="623" y="295" width="672" height="678" key="search.everywhere.popup/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591009623092" />
+  </component>
+</project>
