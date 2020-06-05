@@ -12,10 +12,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class PostsService {
-    @Autowired
-    private PostsRepository postsCrudRepository;
-    @Autowired
-    private CommentRepository commentRepository;
+    private final PostsRepository postsCrudRepository;
+    private final CommentRepository commentRepository;
+
+    public PostsService(PostsRepository postsCrudRepository, CommentRepository commentRepository) {
+        this.postsCrudRepository = postsCrudRepository;
+        this.commentRepository = commentRepository;
+    }
 
     public List<PostListDto> getAllPosts(Integer from, Integer count, UUID userId) {
         var pageable = PageRequest.of(from / count, count);

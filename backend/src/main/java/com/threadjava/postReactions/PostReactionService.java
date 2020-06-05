@@ -9,8 +9,11 @@ import java.util.Optional;
 
 @Service
 public class PostReactionService {
-    @Autowired
-    private PostReactionsRepository postReactionsRepository;
+    private final PostReactionsRepository postReactionsRepository;
+
+    public PostReactionService(PostReactionsRepository postReactionsRepository) {
+        this.postReactionsRepository = postReactionsRepository;
+    }
 
     public Optional<ResponsePostReactionDto> setReaction(ReceivedPostReactionDto postReactionDto) {
 

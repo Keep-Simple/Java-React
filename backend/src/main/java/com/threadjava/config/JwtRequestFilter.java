@@ -19,8 +19,11 @@ import static com.threadjava.config.SecurityConstants.TOKEN_PREFIX;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
-    @Autowired
-    private TokenService tokenService;
+    private final TokenService tokenService;
+
+    public JwtRequestFilter(TokenService tokenService) {
+        this.tokenService = tokenService;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)

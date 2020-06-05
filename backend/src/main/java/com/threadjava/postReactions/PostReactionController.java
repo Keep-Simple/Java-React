@@ -15,10 +15,14 @@ import static com.threadjava.auth.TokenService.getUserId;
 @RestController
 @RequestMapping("/api/postreaction")
 public class PostReactionController {
-    @Autowired
-    private PostReactionService postsService;
-    @Autowired
-    private SimpMessagingTemplate template;
+
+    private final PostReactionService postsService;
+    private final SimpMessagingTemplate template;
+
+    public PostReactionController(PostReactionService postsService, SimpMessagingTemplate template) {
+        this.postsService = postsService;
+        this.template = template;
+    }
 
     @PutMapping
     public Optional<ResponsePostReactionDto> setReaction(@RequestBody ReceivedPostReactionDto postReaction){

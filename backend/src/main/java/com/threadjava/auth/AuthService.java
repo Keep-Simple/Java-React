@@ -16,14 +16,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService {
-    @Autowired
-    private PasswordEncoder bCryptPasswordEncoder;
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private TokenService tokenService;
-    @Autowired
-    private UsersService userDetailsService;
+    private final PasswordEncoder bCryptPasswordEncoder;
+    private final AuthenticationManager authenticationManager;
+    private final TokenService tokenService;
+    private final UsersService userDetailsService;
+
+    public AuthService(PasswordEncoder bCryptPasswordEncoder, AuthenticationManager authenticationManager, TokenService tokenService, UsersService userDetailsService) {
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.authenticationManager = authenticationManager;
+        this.tokenService = tokenService;
+        this.userDetailsService = userDetailsService;
+    }
 
     public AuthUserDTO register(UserRegisterDto userDto) throws Exception {
         User user = AuthUserMapper.MAPPER.userRegisterDtoToUser(userDto);

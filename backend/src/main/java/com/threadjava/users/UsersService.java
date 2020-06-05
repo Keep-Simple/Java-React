@@ -12,8 +12,11 @@ import java.util.UUID;
 
 @Service
 public class UsersService implements UserDetailsService {
-    @Autowired
-    private UsersRepository usersRepository;
+    private final UsersRepository usersRepository;
+
+    public UsersService(UsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
+    }
 
     @Override
     public AuthUser loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -26,7 +29,7 @@ public class UsersService implements UserDetailsService {
     public UserDetailsDto getUserById(UUID id) {
         return usersRepository
                 .findById(id)
-                .map(user -> UserMapper.MAPPER.userToUserDetailsDto(user))
+                .map(UserMapper.MAPPER::userToUserDetailsDto)
                 .orElseThrow(() -> new UsernameNotFoundException("No user found with username"));
     }
 

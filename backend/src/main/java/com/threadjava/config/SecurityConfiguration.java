@@ -19,10 +19,13 @@ import static com.threadjava.config.SecurityConstants.ROUTES_WHITE_LIST;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private UsersService myUserDetailsService;
-    @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+    private final UsersService myUserDetailsService;
+    private final JwtRequestFilter jwtRequestFilter;
+
+    public SecurityConfiguration(UsersService myUserDetailsService, JwtRequestFilter jwtRequestFilter) {
+        this.myUserDetailsService = myUserDetailsService;
+        this.jwtRequestFilter = jwtRequestFilter;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

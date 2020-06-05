@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
-  <component name="ExternalSystem" externalSystem="GRADLE" externalSystemModuleGroup="com.thread-java" externalSystemModuleType="sourceSet" externalSystemModuleVersion="0.0.1-SNAPSHOT" linkedProjectId="thread-java:main" linkedProjectPath="$MODULE_DIR$/../../backend" rootProjectPath="$MODULE_DIR$/../../backend" />
   <component name="FacetManager">
     <facet type="jpa" name="JPA">
       <configuration>
@@ -19,7 +18,6 @@
       <configuration>
         <webroots />
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/../../backend/src/main/resources" />
           <root url="file://$MODULE_DIR$/../../backend/src/main/java" />
         </sourceRoots>
       </configuration>

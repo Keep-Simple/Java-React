@@ -10,12 +10,15 @@ import java.util.UUID;
 
 @Service
 public class CommentService {
-    @Autowired
-    private CommentRepository commentRepository;
-    @Autowired
-    private UsersRepository usersRepository;
-    @Autowired
-    private PostsRepository postsRepository;
+    private final CommentRepository commentRepository;
+    private final UsersRepository usersRepository;
+    private final PostsRepository postsRepository;
+
+    public CommentService(CommentRepository commentRepository, UsersRepository usersRepository, PostsRepository postsRepository) {
+        this.commentRepository = commentRepository;
+        this.usersRepository = usersRepository;
+        this.postsRepository = postsRepository;
+    }
 
     public CommentDetailsDto getCommentById(UUID id) {
         return commentRepository.findById(id)

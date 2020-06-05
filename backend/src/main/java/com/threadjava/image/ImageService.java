@@ -19,8 +19,11 @@ import java.io.IOException;
 public class ImageService {
     @Value(value = "${imgur.id}")
     private String IMGUR_ID;
-    @Autowired
-    ImageRepository imageRepository;
+    final ImageRepository imageRepository;
+
+    public ImageService(ImageRepository imageRepository) {
+        this.imageRepository = imageRepository;
+    }
 
     public ImageDto upload(MultipartFile file) throws IOException {
         var result = this.uploadFile(file.getBytes());

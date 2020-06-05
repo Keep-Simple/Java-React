@@ -10,8 +10,11 @@ import static com.threadjava.auth.TokenService.getUserId;
 @RestController
 @RequestMapping("/api/comments")
 public class CommentController {
-    @Autowired
-    private CommentService commentService;
+    private final CommentService commentService;
+
+    public CommentController(CommentService commentService) {
+        this.commentService = commentService;
+    }
 
     @GetMapping("/{id}")
     public CommentDetailsDto get(@PathVariable UUID id) {

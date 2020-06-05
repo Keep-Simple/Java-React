@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-    @Autowired
-    private AuthService authService;
-    @Autowired
-    private UsersService userDetailsService;
+    private final AuthService authService;
+    private final UsersService userDetailsService;
+
+    public AuthController(AuthService authService, UsersService userDetailsService) {
+        this.authService = authService;
+        this.userDetailsService = userDetailsService;
+    }
 
     @PostMapping("/register")
     public AuthUserDTO signUp(@RequestBody UserRegisterDto user) throws Exception {

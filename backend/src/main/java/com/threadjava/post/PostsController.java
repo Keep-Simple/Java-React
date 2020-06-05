@@ -14,10 +14,13 @@ import static com.threadjava.auth.TokenService.getUserId;
 @RestController
 @RequestMapping("/api/posts")
 public class PostsController {
-    @Autowired
-    private PostsService postsService;
-    @Autowired
-    private SimpMessagingTemplate template;
+    private final PostsService postsService;
+    private final SimpMessagingTemplate template;
+
+    public PostsController(PostsService postsService, SimpMessagingTemplate template) {
+        this.postsService = postsService;
+        this.template = template;
+    }
 
     @GetMapping
     public List<PostListDto> get(@RequestParam(defaultValue="0") Integer from,
