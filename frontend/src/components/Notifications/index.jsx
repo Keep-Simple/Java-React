@@ -19,12 +19,16 @@ const Notifications = ({ user, applyPost }) => {
 
       const { id } = user;
 
-      stompClient.subscribe('/topic/like', () => {
-        NotificationManager.info('Your post was liked!');
+      stompClient.subscribe('/topic/like', userPostId => {
+        if (userPostId.body.slice(1, -1) === user.id) {
+          NotificationManager.info('Your post was liked 😃');
+        }
       });
 
-      stompClient.subscribe('/topic/dislike', () => {
-        NotificationManager.info('Your post was disliked :(');
+      stompClient.subscribe('/topic/dislike', userPostId => {
+        if (userPostId.body.slice(1, -1) === user.id) {
+          NotificationManager.info('Your post was disliked 😞');
+        }
       });
 
       stompClient.subscribe('/topic/new_post', message => {

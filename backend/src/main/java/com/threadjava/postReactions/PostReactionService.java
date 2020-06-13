@@ -5,7 +5,10 @@ import com.threadjava.postReactions.dto.ResponsePostReactionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
+
+import static com.threadjava.auth.TokenService.getUserId;
 
 @Service
 public class PostReactionService {
@@ -17,7 +20,7 @@ public class PostReactionService {
 
     public Optional<ResponsePostReactionDto> setReaction(ReceivedPostReactionDto postReactionDto) {
 
-        var reaction = postReactionsRepository.getPostReaction(postReactionDto.getUserId(), postReactionDto.getPostId());
+        var reaction = postReactionsRepository.getPostReaction(getUserId(), postReactionDto.getPostId());
 
         if (reaction.isPresent()) {
             var react = reaction.get();

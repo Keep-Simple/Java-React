@@ -27,7 +27,10 @@
     "node-sass": "4.14.1",
     "prop-types": "15.7.2",
     "query-string": "6.12.1",
+    "ra-data-json-server": "^3.6.0",
+    "ra-input-rich-text": "^3.5.5",
     "react": "16.13.1",
+    "react-admin": "^3.6.0",
     "react-app-rewired": "^2.1.6",
     "react-dom": "16.13.1",
     "react-infinite-scroller": "1.2.4",
@@ -36,7 +39,9 @@
     "react-router-dom": "5.2.0",
     "react-router-redux": "5.0.0-alpha.9",
     "react-scripts": "3.4.1",
+    "react-textarea-autosize": "^8.0.1",
     "redux": "4.0.5",
+    "redux-form": "^8.3.6",
     "redux-thunk": "2.3.0",
     "semantic-ui-css": "2.4.1",
     "semantic-ui-react": "0.88.2",
@@ -48,6 +53,7 @@
     "eslint-plugin-import": "2.20.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.20.0",
-    "redux-devtools-extension": "2.13.8"
+    "redux-devtools-extension": "2.13.8",
+    "redux-form-website-template": "^1.0.13"
   }
 }

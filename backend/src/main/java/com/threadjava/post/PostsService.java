@@ -48,4 +48,8 @@ public class PostsService {
         Post postCreated = postsCrudRepository.save(post);
         return PostMapper.MAPPER.postToPostCreationResponseDto(postCreated);
     }
+
+    public void update(PostUpdateDto post) {
+        postsCrudRepository.setPostBodyById(post.getBody(), post.getId());
+    }
 }

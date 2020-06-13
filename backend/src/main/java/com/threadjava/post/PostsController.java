@@ -2,11 +2,10 @@ package com.threadjava.post;
 
 
 import com.threadjava.post.dto.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.threadjava.post.model.Post;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import static com.threadjava.auth.TokenService.getUserId;
@@ -40,5 +39,12 @@ public class PostsController {
         var item = postsService.create(postDto);
         template.convertAndSend("/topic/new_post", item);
         return item;
+    }
+
+    @PutMapping("/update")
+    public void update(@RequestBody PostUpdateDto postDto) {
+        System.out.println(postDto);
+        if(getUserId().equals(postDto.getUserId()))
+        postsService.update(postDto);
     }
 }

@@ -26,14 +26,16 @@ public class PostReactionController {
 
     @PutMapping
     public Optional<ResponsePostReactionDto> setReaction(@RequestBody ReceivedPostReactionDto postReaction){
+        var userPostId = postReaction.getUserId();
         postReaction.setUserId(getUserId());
+
         var reaction = postsService.setReaction(postReaction);
 
-        if (reaction.isPresent() && reaction.get().getUserId() != getUserId() && reaction.get().getIsLike() == postReaction.getIsLike()) {
+        if (reaction.isPresent() && !userPostId.equals(getUserId()) && reaction.get().getIsLike() == postReaction.getIsLike()) {
             if(reaction.get().getIsLike()) {
-                template.convertAndSend("/topic/like", "Your post was liked!");
+                template.convertAndSend("/topic/like", userPostId);
             } else {
-                template.convertAndSend("/topic/dislike", "Your post was disliked :(");
+                template.convertAndSend("/topic/dislike", userPostId);
             }
         }
         return reaction;

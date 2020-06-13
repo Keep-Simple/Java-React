@@ -5,8 +5,11 @@ import com.threadjava.post.model.Post;
 import com.threadjava.post.dto.PostListQueryResult;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -33,4 +36,9 @@ public interface PostsRepository extends JpaRepository<Post, UUID> {
             "LEFT JOIN p.image i " +
             "WHERE p.id = :id")
     Optional<PostDetailsQueryResult> findPostById(@Param("id") UUID id);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Post p SET p.body = :body WHERE p.id = :id")
+    void setPostBodyById(@Param("body") String body, @Param("id") UUID id);
 }
