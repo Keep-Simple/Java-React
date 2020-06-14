@@ -53,8 +53,16 @@ const Post = ({
           <Icon name="comments outline" />
           {commentCount}
         </Label>
-        <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => sharePost(id)}>
+        <Label
+          basic
+          style={{ opacity: 0.55 }}
+          size="small"
+          as="a"
+          className={styles.toolbarBtn}
+          onClick={() => sharePost(id)}
+        >
           <Icon name="share alternate" />
+          Share
         </Label>
         {
           currentUserId === user.id

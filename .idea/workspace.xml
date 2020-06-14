@@ -20,28 +20,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment="Add an ability to soft delete the post">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/dto/CommentDeleteDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/dto/CommentUpdateDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/EditWindow/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/containers/EditComment/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a2f2c97b-ab48-4514-a8df-4c6943956575.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a2f2c97b-ab48-4514-a8df-4c6943956575.xml" afterDir="false" />
+    <list default="true" id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment="Add an ability to update and soft delete the comment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/model/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Comment/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Comment/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Post/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Post/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/EditPost/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/EditPost/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/ExpandedPost/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/ExpandedPost/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/commentService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/commentService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +196,7 @@
       <workItem from="1591510511048" duration="4222000" />
       <workItem from="1591680790143" duration="1850000" />
       <workItem from="1591890446501" duration="32276000" />
-      <workItem from="1592027364594" duration="59012000" />
+      <workItem from="1592027364594" duration="60118000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1590523489295</created>
@@ -287,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592120546690</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add an ability to update and soft delete the comment">
+      <created>1592157619370</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1592157619370</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +322,8 @@
     <MESSAGE value="cleanups and refactoring" />
     <MESSAGE value="Add ability to update a post" />
     <MESSAGE value="Add an ability to soft delete the post" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add an ability to soft delete the post" />
+    <MESSAGE value="Add an ability to update and soft delete the comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add an ability to update and soft delete the comment" />
   </component>
   <component name="WindowStateProjectService">
     <state x="828" y="512" key="#ESLint" timestamp="1590523246277">
@@ -454,11 +443,11 @@
     <state x="420" y="236" key="SettingsEditor/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590524714822" />
     <state x="420" y="228" key="SettingsEditor/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592039380685" />
     <state x="420" y="236" key="SettingsEditor/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591108490516" />
-    <state x="552" y="346" key="Vcs.Push.Dialog.v2" timestamp="1592063582488">
+    <state x="552" y="346" key="Vcs.Push.Dialog.v2" timestamp="1592157621104">
       <screen x="0" y="30" width="1920" height="1170" />
     </state>
     <state x="552" y="353" key="Vcs.Push.Dialog.v2/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686166514" />
-    <state x="552" y="346" key="Vcs.Push.Dialog.v2/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592063582488" />
+    <state x="552" y="346" key="Vcs.Push.Dialog.v2/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592157621104" />
     <state x="552" y="353" key="Vcs.Push.Dialog.v2/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591352991746" />
     <state x="856" y="507" width="316" height="242" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1592047251291">
       <screen x="0" y="30" width="1920" height="1170" />
