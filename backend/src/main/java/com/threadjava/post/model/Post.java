@@ -6,18 +6,25 @@ import com.threadjava.db.BaseEntity;
 import com.threadjava.postReactions.model.PostReaction;
 import com.threadjava.users.model.User;
 import lombok.*;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
 @EqualsAndHashCode(callSuper=true)
 @Table(name = "posts")
+@Where(clause="deleted_at is null")
 public class Post extends BaseEntity {
 
     @Column(name = "body", columnDefinition="TEXT")
     private String body;
+
+    @Column(name = "deleted_at")
+    private Date deletedAt;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "image_id")

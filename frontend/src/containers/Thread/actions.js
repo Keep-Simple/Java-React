@@ -6,7 +6,7 @@ import {
   SET_ALL_POSTS,
   SET_EXPANDED_POST,
   EDIT_POST,
-  SET_EDIT_POST
+  SET_EDIT_POST, DELETE_POST
 } from './actionTypes';
 
 const setPostsAction = posts => ({
@@ -32,6 +32,11 @@ const setEditPostAction = post => ({
 const editPostAction = post => ({
   type: EDIT_POST,
   post
+});
+
+const deletePostAction = id => ({
+  type: DELETE_POST,
+  id
 });
 
 const setExpandedPostAction = post => ({
@@ -61,6 +66,11 @@ export const addPost = post => async dispatch => {
   const { id } = await postService.addPost(post);
   const newPost = await postService.getPost(id);
   dispatch(addPostAction(newPost));
+};
+
+export const deletePost = id => async dispatch => {
+  await postService.softDeletePost(id);
+  dispatch(deletePostAction(id));
 };
 
 export const togglePushEditedPost = post => async dispatch => {

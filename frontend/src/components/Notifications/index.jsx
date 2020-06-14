@@ -35,6 +35,7 @@ const Notifications = ({ user, applyPost }) => {
         const post = JSON.parse(message.body);
         if (post.userId !== id) {
           applyPost(post.id);
+          NotificationManager.info('New Post');
         }
       });
     });

@@ -795,7 +795,7 @@ true posixrules
     <database id="3" parent="1" name="threaddb">
       <ObjectId>16393</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>723</IntrospectionStateNumber>
+      <IntrospectionStateNumber>973</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <role id="4" parent="1" name="pg_execute_server_program">
@@ -847,7 +847,7 @@ true posixrules
       <Comment>standard public schema</Comment>
       <StateNumber>276</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>724</IntrospectionStateNumber>
+      <IntrospectionStateNumber>974</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="16" parent="3" name="heap">
@@ -935,7 +935,7 @@ true posixrules
     <table id="31" parent="15" name="posts">
       <ObjectId>16563</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>710</StateNumber>
+      <StateNumber>971</StateNumber>
     </table>
     <table id="32" parent="15" name="users">
       <ObjectId>16571</ObjectId>
@@ -1168,21 +1168,27 @@ true posixrules
       <StateNumber>706</StateNumber>
       <TypeId>2950</TypeId>
     </column>
-    <index id="66" parent="31" name="posts_pkey">
+    <column id="66" parent="31" name="deleted_at">
+      <Position>7</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>971</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <index id="67" parent="31" name="posts_pkey">
       <ObjectId>16569</ObjectId>
       <StateNumber>706</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="67" parent="31" name="posts_pkey">
+    <key id="68" parent="31" name="posts_pkey">
       <ObjectId>16570</ObjectId>
       <StateNumber>706</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>posts_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="68" parent="31" name="fkdt44ngxibfjiwb1w59qd23xmw">
+    <foreign-key id="69" parent="31" name="fkdt44ngxibfjiwb1w59qd23xmw">
       <ObjectId>16601</ObjectId>
       <StateNumber>714</StateNumber>
       <ColNames>image_id</ColNames>
@@ -1192,7 +1198,7 @@ true posixrules
       <RefKeyName>images_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="69" parent="31" name="fk5lidm6cqbc7u4xhqpxm898qme">
+    <foreign-key id="70" parent="31" name="fk5lidm6cqbc7u4xhqpxm898qme">
       <ObjectId>16606</ObjectId>
       <StateNumber>715</StateNumber>
       <ColNames>user_id</ColNames>
@@ -1202,76 +1208,76 @@ true posixrules
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="70" parent="32" name="id">
+    <column id="71" parent="32" name="id">
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>707</StateNumber>
       <TypeId>2950</TypeId>
     </column>
-    <column id="71" parent="32" name="timestamp">
+    <column id="72" parent="32" name="timestamp">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
       <StateNumber>707</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="72" parent="32" name="updated_on">
+    <column id="73" parent="32" name="updated_on">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
       <StateNumber>707</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="73" parent="32" name="email">
+    <column id="74" parent="32" name="email">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>707</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="74" parent="32" name="password">
+    <column id="75" parent="32" name="password">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>707</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="75" parent="32" name="username">
+    <column id="76" parent="32" name="username">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>707</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="76" parent="32" name="avatar_id">
+    <column id="77" parent="32" name="avatar_id">
       <Position>7</Position>
       <DataType>uuid|0s</DataType>
       <StateNumber>707</StateNumber>
       <TypeId>2950</TypeId>
     </column>
-    <index id="77" parent="32" name="users_pkey">
+    <index id="78" parent="32" name="users_pkey">
       <ObjectId>16577</ObjectId>
       <StateNumber>707</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="78" parent="32" name="uk_6dotkott2kjsp8vw4d0m25fb7">
+    <index id="79" parent="32" name="uk_6dotkott2kjsp8vw4d0m25fb7">
       <ObjectId>16579</ObjectId>
       <StateNumber>709</StateNumber>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="79" parent="32" name="users_pkey">
+    <key id="80" parent="32" name="users_pkey">
       <ObjectId>16578</ObjectId>
       <StateNumber>707</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
-    <key id="80" parent="32" name="uk_6dotkott2kjsp8vw4d0m25fb7">
+    <key id="81" parent="32" name="uk_6dotkott2kjsp8vw4d0m25fb7">
       <ObjectId>16580</ObjectId>
       <StateNumber>709</StateNumber>
       <ColNames>email</ColNames>
       <UnderlyingIndexName>uk_6dotkott2kjsp8vw4d0m25fb7</UnderlyingIndexName>
     </key>
-    <foreign-key id="81" parent="32" name="fk2lttmx8vn9eecykig5sch3v0h">
+    <foreign-key id="82" parent="32" name="fk2lttmx8vn9eecykig5sch3v0h">
       <ObjectId>16611</ObjectId>
       <StateNumber>716</StateNumber>
       <ColNames>avatar_id</ColNames>

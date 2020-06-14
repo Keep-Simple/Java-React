@@ -34,6 +34,13 @@ export const editPost = async ({ body, id, user: { id: userId } }) => {
   });
 };
 
+export const softDeletePost = async id => {
+  await callWebApi({
+    endpoint: `api/posts/softDelete/${id}`,
+    type: 'PUT'
+  });
+};
+
 const likeHelper = async (postId, userId, isLike) => {
   const response = await callWebApi({
     endpoint: '/api/postreaction',

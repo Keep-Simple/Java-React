@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -41,4 +42,9 @@ public interface PostsRepository extends JpaRepository<Post, UUID> {
     @Transactional
     @Query("UPDATE Post p SET p.body = :body WHERE p.id = :id")
     void setPostBodyById(@Param("body") String body, @Param("id") UUID id);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Post p SET p.deletedAt = :date WHERE p.id = :id")
+    void softDeletePostById(@Param("id") UUID id, @Param("date") Date date);
 }

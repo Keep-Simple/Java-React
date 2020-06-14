@@ -3,9 +3,10 @@ package com.threadjava.post;
 import com.threadjava.comment.CommentRepository;
 import com.threadjava.post.dto.*;
 import com.threadjava.post.model.Post;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -49,7 +50,11 @@ public class PostsService {
         return PostMapper.MAPPER.postToPostCreationResponseDto(postCreated);
     }
 
-    public void update(PostUpdateDto post) {
+    public void updateBody(PostUpdateDto post) {
         postsCrudRepository.setPostBodyById(post.getBody(), post.getId());
+    }
+
+    public void softDelete(UUID id, Date date) {
+        postsCrudRepository.softDeletePostById(id, date);
     }
 }

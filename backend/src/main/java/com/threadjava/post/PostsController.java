@@ -5,6 +5,8 @@ import com.threadjava.post.dto.*;
 import com.threadjava.post.model.Post;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -45,6 +47,11 @@ public class PostsController {
     public void update(@RequestBody PostUpdateDto postDto) {
         System.out.println(postDto);
         if(getUserId().equals(postDto.getUserId()))
-        postsService.update(postDto);
+        postsService.updateBody(postDto);
+    }
+
+    @PutMapping("/softDelete/{id}")
+    public void delete(@PathVariable UUID id) {
+        postsService.softDelete(id, new Date());
     }
 }

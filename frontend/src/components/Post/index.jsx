@@ -5,7 +5,9 @@ import moment from 'moment';
 
 import styles from './styles.module.scss';
 
-const Post = ({ post, likePost, dislikePost, toggleEditPost, toggleExpandedPost, sharePost, currentUserId }) => {
+const Post = ({
+  post, likePost, dislikePost, deletePost, toggleEditPost, toggleExpandedPost, sharePost, currentUserId
+}) => {
   const {
     id,
     image,
@@ -57,15 +59,26 @@ const Post = ({ post, likePost, dislikePost, toggleEditPost, toggleExpandedPost,
         {
           currentUserId === user.id
             ? (
-              <Label
-                basic
-                size="small"
-                as="a"
-                className={styles.toolbarBtn}
-                onClick={() => toggleEditPost(post)}
-              >
-                <Icon name="edit" />
-              </Label>
+              <span>
+                <Label
+                  basic
+                  size="small"
+                  as="a"
+                  className={styles.toolbarBtn}
+                  onClick={() => toggleEditPost(post)}
+                >
+                  <Icon name="edit" />
+                </Label>
+                <Label
+                  basic
+                  size="small"
+                  as="a"
+                  className={styles.toolbarBtn}
+                  onClick={() => deletePost(id)}
+                >
+                  <Icon name="remove circle" />
+                </Label>
+              </span>
             )
             : null
         }
@@ -79,6 +92,7 @@ Post.propTypes = {
   currentUserId: PropTypes.string.isRequired,
   likePost: PropTypes.func.isRequired,
   dislikePost: PropTypes.func.isRequired,
+  deletePost: PropTypes.func.isRequired,
   toggleEditPost: PropTypes.func.isRequired,
   toggleExpandedPost: PropTypes.func.isRequired,
   sharePost: PropTypes.func.isRequired

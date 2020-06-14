@@ -4,15 +4,9 @@ import {
   ADD_POST,
   SET_EXPANDED_POST,
   EDIT_POST,
-  SET_EDIT_POST
+  SET_EDIT_POST,
+  DELETE_POST
 } from './actionTypes';
-
-const replaceEditedPost = (array, post) => [...array].map(p => {
-  if (p.id === post?.id) {
-    return post;
-  }
-  return p;
-});
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -36,7 +30,12 @@ export default (state = {}, action) => {
     case EDIT_POST:
       return {
         ...state,
-        posts: replaceEditedPost(state.posts, action.post)
+        posts: state.posts.map(p => (p.id === action.post?.id ? action.post : p))
+      };
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(p => p.id !== action.id)
       };
     case SET_EDIT_POST:
       return {
