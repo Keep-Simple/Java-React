@@ -919,6 +919,7 @@ true posixrules
     <language id="27" parent="3" name="sql"/>
     <table id="28" parent="15" name="comments">
       <ObjectId>16542</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>710</StateNumber>
     </table>

@@ -17,12 +17,13 @@ import {
   dislikePost,
   toggleExpandedPost,
   addPost,
-  toggleEditPost, deletePost
+  toggleEditPost,
+  deletePost
 } from './actions';
 
 import styles from './styles.module.scss';
 import EditPost from '../EditPost';
-import { getCurrentUser } from '../../services/authService';
+import EditComment from '../EditComment';
 
 const postsFilter = {
   userId: undefined,
@@ -36,7 +37,7 @@ const Thread = ({
   loadMorePosts: loadMore,
   posts = [],
   expandedPost,
-  editPost,
+  editWindow,
   hasMorePosts,
   addPost: createPost,
   likePost: like,
@@ -102,7 +103,7 @@ const Thread = ({
         ))}
       </InfiniteScroll>
       {expandedPost && <ExpandedPost sharePost={sharePost} userId={userId} />}
-      {editPost && <EditPost />}
+      {(editWindow?.commentCount && <EditPost />) || (editWindow && <EditComment />)}
       {sharedPostId && <SharedPostLink postId={sharedPostId} close={() => setSharedPostId(undefined)} />}
     </div>
   );
@@ -119,7 +120,7 @@ Thread.propTypes = {
   deletePost: PropTypes.func.isRequired,
   dislikePost: PropTypes.func.isRequired,
   toggleEditPost: PropTypes.func.isRequired,
-  editPost: PropTypes.objectOf(PropTypes.any),
+  editWindow: PropTypes.objectOf(PropTypes.any),
   toggleExpandedPost: PropTypes.func.isRequired,
   addPost: PropTypes.func.isRequired
 };
@@ -128,7 +129,7 @@ Thread.defaultProps = {
   posts: [],
   hasMorePosts: true,
   expandedPost: undefined,
-  editPost: undefined,
+  editWindow: undefined,
   userId: undefined
 };
 
@@ -136,7 +137,7 @@ const mapStateToProps = rootState => ({
   posts: rootState.posts.posts,
   hasMorePosts: rootState.posts.hasMorePosts,
   expandedPost: rootState.posts.expandedPost,
-  editPost: rootState.posts.editPost,
+  editWindow: rootState.posts.editWindow,
   userId: rootState.profile.user.id
 });
 

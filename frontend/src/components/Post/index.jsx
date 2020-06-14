@@ -42,15 +42,15 @@ const Post = ({
       </Card.Content>
       <Card.Content extra>
         <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => likePost(post, setReaction)}>
-          {isLike ? <Icon color="blue" name="thumbs up" /> : <Icon name="thumbs up" />}
+          {isLike ? <Icon color="red" name="thumbs up outline" /> : <Icon name="thumbs up outline" />}
           {likeCount}
         </Label>
         <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => dislikePost(post, setReaction)}>
-          {isLike === false ? <Icon color="red" name="thumbs down" /> : <Icon name="thumbs down" />}
+          {isLike === false ? <Icon color="blue" name="thumbs down outline" /> : <Icon name="thumbs down outline" />}
           {dislikeCount}
         </Label>
         <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => toggleExpandedPost(id)}>
-          <Icon name="comment" />
+          <Icon name="comments outline" />
           {commentCount}
         </Label>
         <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => sharePost(id)}>
@@ -61,22 +61,26 @@ const Post = ({
             ? (
               <span>
                 <Label
+                  style={{ opacity: 0.55 }}
                   basic
                   size="small"
                   as="a"
                   className={styles.toolbarBtn}
                   onClick={() => toggleEditPost(post)}
                 >
-                  <Icon name="edit" />
+                  <Icon name="pencil alternate" />
+                  Edit
                 </Label>
                 <Label
+                  style={{ opacity: 0.45, color: 'red' }}
                   basic
                   size="small"
                   as="a"
                   className={styles.toolbarBtn}
                   onClick={() => deletePost(id)}
                 >
-                  <Icon name="remove circle" />
+                  <Icon name="archive" />
+                  Delete
                 </Label>
               </span>
             )

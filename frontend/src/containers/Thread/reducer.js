@@ -4,8 +4,9 @@ import {
   ADD_POST,
   SET_EXPANDED_POST,
   EDIT_POST,
-  SET_EDIT_POST,
-  DELETE_POST
+  SET_EDIT_WINDOW,
+  DELETE_POST,
+  EDIT_COMMENT
 } from './actionTypes';
 
 export default (state = {}, action) => {
@@ -32,15 +33,23 @@ export default (state = {}, action) => {
         ...state,
         posts: state.posts.map(p => (p.id === action.post?.id ? action.post : p))
       };
+    case EDIT_COMMENT:
+      return {
+        ...state,
+        expandedPost: {
+          ...state.expandedPost,
+          comments: [...state.expandedPost.comments].map(c => (c.id === action.comment.id ? action.comment : c))
+        }
+      };
     case DELETE_POST:
       return {
         ...state,
         posts: state.posts.filter(p => p.id !== action.id)
       };
-    case SET_EDIT_POST:
+    case SET_EDIT_WINDOW:
       return {
         ...state,
-        editPost: action.post
+        editWindow: action.modal
       };
     case SET_EXPANDED_POST:
       return {

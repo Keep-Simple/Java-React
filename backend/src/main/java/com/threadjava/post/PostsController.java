@@ -45,7 +45,6 @@ public class PostsController {
 
     @PutMapping("/update")
     public void update(@RequestBody PostUpdateDto postDto) {
-        System.out.println(postDto);
         if(getUserId().equals(postDto.getUserId()))
         postsService.updateBody(postDto);
     }

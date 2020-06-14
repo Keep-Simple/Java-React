@@ -5,12 +5,13 @@ import { connect } from 'react-redux';
 import { Modal, Comment as CommentUI, Header } from 'semantic-ui-react';
 import moment from 'moment';
 import {
-  likePost, dislikePost, toggleExpandedPost, addComment, toggleEditPost, deletePost
+  likePost, dislikePost, toggleExpandedPost, addComment, toggleEditPost, deletePost, toggleEditComment
 } from 'src/containers/Thread/actions';
 import Post from 'src/components/Post';
 import Comment from 'src/components/Comment';
 import AddComment from 'src/components/AddComment';
 import Spinner from 'src/components/Spinner';
+import { deleteComment } from '../Thread/actions';
 
 const ExpandedPost = ({
   userId,
@@ -21,6 +22,8 @@ const ExpandedPost = ({
   dislikePost: dislike,
   toggleExpandedPost: toggle,
   toggleEditPost: toggleEdit,
+  toggleEditComment: toggleEditCom,
+  deleteComment: delComment,
   addComment: add
 }) => (
   <Modal dimmer="blurring" centered={false} open onClose={() => toggle()}>
@@ -43,7 +46,15 @@ const ExpandedPost = ({
             </Header>
             {post.comments && post.comments
               .sort((c1, c2) => moment(c1.createdAt).diff(c2.createdAt))
-              .map(comment => <Comment key={comment.id} comment={comment} />)}
+              .map(comment => (
+                <Comment
+                  key={comment.id}
+                  comment={comment}
+                  currentUserId={userId}
+                  toggleEdit={toggleEditCom}
+                  softDeleteComment={delComment}
+                />
+              ))}
             <AddComment postId={post.id} addComment={add} />
           </CommentUI.Group>
         </Modal.Content>
@@ -56,8 +67,10 @@ ExpandedPost.propTypes = {
   post: PropTypes.objectOf(PropTypes.any).isRequired,
   toggleExpandedPost: PropTypes.func.isRequired,
   toggleEditPost: PropTypes.func.isRequired,
+  toggleEditComment: PropTypes.func.isRequired,
   likePost: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
+  deleteComment: PropTypes.func.isRequired,
   userId: PropTypes.string.isRequired,
   dislikePost: PropTypes.func.isRequired,
   addComment: PropTypes.func.isRequired,
@@ -66,7 +79,16 @@ ExpandedPost.propTypes = {
 
 const mapStateToProps = rootState => ({ post: rootState.posts.expandedPost });
 
-const actions = { likePost, dislikePost, toggleExpandedPost, addComment, toggleEditPost, deletePost };
+const actions = {
+  likePost,
+  dislikePost,
+  toggleExpandedPost,
+  addComment,
+  toggleEditPost,
+  deletePost,
+  toggleEditComment,
+  deleteComment
+};
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
