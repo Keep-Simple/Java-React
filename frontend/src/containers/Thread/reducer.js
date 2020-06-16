@@ -2,7 +2,10 @@ import {
   SET_ALL_POSTS,
   LOAD_MORE_POSTS,
   ADD_POST,
-  SET_EXPANDED_POST
+  SET_EXPANDED_POST,
+  EDIT_POST,
+  SET_EDIT_WINDOW,
+  DELETE_POST
 } from './actionTypes';
 
 export default (state = {}, action) => {
@@ -23,6 +26,21 @@ export default (state = {}, action) => {
       return {
         ...state,
         posts: [action.post, ...state.posts]
+      };
+    case EDIT_POST:
+      return {
+        ...state,
+        posts: state.posts.map(p => (p.id === action.post?.id ? action.post : p))
+      };
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(p => p.id !== action.id)
+      };
+    case SET_EDIT_WINDOW:
+      return {
+        ...state,
+        editWindow: action.modal
       };
     case SET_EXPANDED_POST:
       return {

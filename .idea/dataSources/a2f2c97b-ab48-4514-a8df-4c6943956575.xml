@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.18">
     <root id="1">
       <ServerVersion>12.3</ServerVersion>
-      <DateStyle>mdy</DateStyle>
+      <DateStyle>dmy</DateStyle>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -785,7 +785,7 @@ false Z
 false Zulu
 true posixrules
 </TimeZones>
-      <StartupTime>1590927670</StartupTime>
+      <StartupTime>1592027319</StartupTime>
     </root>
     <database id="2" parent="1" name="postgres">
       <ObjectId>13318</ObjectId>
@@ -795,7 +795,7 @@ true posixrules
     <database id="3" parent="1" name="threaddb">
       <ObjectId>16393</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1116</IntrospectionStateNumber>
+      <IntrospectionStateNumber>973</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <role id="4" parent="1" name="pg_execute_server_program">
@@ -847,7 +847,7 @@ true posixrules
       <Comment>standard public schema</Comment>
       <StateNumber>276</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1117</IntrospectionStateNumber>
+      <IntrospectionStateNumber>974</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="16" parent="3" name="heap">
@@ -918,96 +918,97 @@ true posixrules
     <language id="26" parent="3" name="plpgsql"/>
     <language id="27" parent="3" name="sql"/>
     <table id="28" parent="15" name="comments">
-      <ObjectId>16394</ObjectId>
+      <ObjectId>16542</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
-      <StateNumber>496</StateNumber>
+      <StateNumber>710</StateNumber>
     </table>
     <table id="29" parent="15" name="images">
-      <ObjectId>16402</ObjectId>
+      <ObjectId>16550</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>500</StateNumber>
+      <StateNumber>714</StateNumber>
     </table>
     <table id="30" parent="15" name="post_reactions">
-      <ObjectId>16410</ObjectId>
+      <ObjectId>16558</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>653</StateNumber>
+      <StateNumber>712</StateNumber>
     </table>
     <table id="31" parent="15" name="posts">
-      <ObjectId>16415</ObjectId>
+      <ObjectId>16563</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>496</StateNumber>
+      <StateNumber>971</StateNumber>
     </table>
     <table id="32" parent="15" name="users">
-      <ObjectId>16423</ObjectId>
+      <ObjectId>16571</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>497</StateNumber>
+      <StateNumber>711</StateNumber>
     </table>
     <column id="33" parent="28" name="id">
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>489</StateNumber>
+      <StateNumber>703</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <column id="34" parent="28" name="timestamp">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>489</StateNumber>
+      <StateNumber>703</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="35" parent="28" name="updated_on">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>489</StateNumber>
+      <StateNumber>703</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="36" parent="28" name="body">
       <Position>4</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>489</StateNumber>
+      <StateNumber>703</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="37" parent="28" name="post_id">
       <Position>5</Position>
       <DataType>uuid|0s</DataType>
-      <StateNumber>489</StateNumber>
+      <StateNumber>703</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <column id="38" parent="28" name="user_id">
       <Position>6</Position>
       <DataType>uuid|0s</DataType>
-      <StateNumber>489</StateNumber>
+      <StateNumber>703</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <index id="39" parent="28" name="comments_pkey">
-      <ObjectId>16400</ObjectId>
-      <StateNumber>489</StateNumber>
+      <ObjectId>16548</ObjectId>
+      <StateNumber>703</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
     <key id="40" parent="28" name="comments_pkey">
-      <ObjectId>16401</ObjectId>
-      <StateNumber>489</StateNumber>
+      <ObjectId>16549</ObjectId>
+      <StateNumber>703</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>comments_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="41" parent="28" name="fkh4c7lvsc298whoyd4w9ta25cr">
-      <ObjectId>16433</ObjectId>
-      <StateNumber>496</StateNumber>
+      <ObjectId>16581</ObjectId>
+      <StateNumber>710</StateNumber>
       <ColNames>post_id</ColNames>
-      <RefTableId>16415</RefTableId>
+      <RefTableId>16563</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>posts</RefTableName>
       <RefKeyName>posts_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="42" parent="28" name="fk8omq0tc18jd43bu5tjh6jvraq">
-      <ObjectId>16438</ObjectId>
-      <StateNumber>497</StateNumber>
+      <ObjectId>16586</ObjectId>
+      <StateNumber>711</StateNumber>
       <ColNames>user_id</ColNames>
-      <RefTableId>16423</RefTableId>
+      <RefTableId>16571</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
@@ -1017,45 +1018,45 @@ true posixrules
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>490</StateNumber>
+      <StateNumber>704</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <column id="44" parent="29" name="timestamp">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>490</StateNumber>
+      <StateNumber>704</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="45" parent="29" name="updated_on">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>490</StateNumber>
+      <StateNumber>704</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="46" parent="29" name="delete_hash">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>490</StateNumber>
+      <StateNumber>704</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="47" parent="29" name="link">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>490</StateNumber>
+      <StateNumber>704</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="48" parent="29" name="images_pkey">
-      <ObjectId>16408</ObjectId>
-      <StateNumber>490</StateNumber>
+      <ObjectId>16556</ObjectId>
+      <StateNumber>704</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
     <key id="49" parent="29" name="images_pkey">
-      <ObjectId>16409</ObjectId>
-      <StateNumber>490</StateNumber>
+      <ObjectId>16557</ObjectId>
+      <StateNumber>704</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>images_pkey</UnderlyingIndexName>
@@ -1064,145 +1065,145 @@ true posixrules
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>491</StateNumber>
+      <StateNumber>705</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <column id="51" parent="30" name="timestamp">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>491</StateNumber>
+      <StateNumber>705</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="52" parent="30" name="updated_on">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>491</StateNumber>
+      <StateNumber>705</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="53" parent="30" name="is_like">
       <Position>4</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>491</StateNumber>
+      <StateNumber>705</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="54" parent="30" name="post_id">
       <Position>5</Position>
       <DataType>uuid|0s</DataType>
-      <StateNumber>491</StateNumber>
+      <StateNumber>705</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <column id="55" parent="30" name="user_id">
       <Position>6</Position>
       <DataType>uuid|0s</DataType>
-      <StateNumber>491</StateNumber>
+      <StateNumber>705</StateNumber>
       <TypeId>2950</TypeId>
     </column>
-    <column id="56" parent="30" name="is_dislike">
-      <Position>7</Position>
-      <DataType>boolean|0s</DataType>
-      <StateNumber>653</StateNumber>
-      <TypeId>16</TypeId>
-    </column>
-    <index id="57" parent="30" name="post_reactions_pkey">
-      <ObjectId>16413</ObjectId>
-      <StateNumber>491</StateNumber>
+    <index id="56" parent="30" name="post_reactions_pkey">
+      <ObjectId>16561</ObjectId>
+      <StateNumber>705</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="58" parent="30" name="post_reactions_pkey">
-      <ObjectId>16414</ObjectId>
-      <StateNumber>491</StateNumber>
+    <key id="57" parent="30" name="post_reactions_pkey">
+      <ObjectId>16562</ObjectId>
+      <StateNumber>705</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>post_reactions_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="59" parent="30" name="fkq9ivjiqt8flog43og7gtmoyqw">
-      <ObjectId>16443</ObjectId>
-      <StateNumber>498</StateNumber>
+    <foreign-key id="58" parent="30" name="fkq9ivjiqt8flog43og7gtmoyqw">
+      <ObjectId>16591</ObjectId>
+      <StateNumber>712</StateNumber>
       <ColNames>post_id</ColNames>
-      <RefTableId>16415</RefTableId>
+      <RefTableId>16563</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>posts</RefTableName>
       <RefKeyName>posts_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="60" parent="30" name="fkptar8f3u0qt7ssjksu2hxme03">
-      <ObjectId>16448</ObjectId>
-      <StateNumber>499</StateNumber>
+    <foreign-key id="59" parent="30" name="fkptar8f3u0qt7ssjksu2hxme03">
+      <ObjectId>16596</ObjectId>
+      <StateNumber>713</StateNumber>
       <ColNames>user_id</ColNames>
-      <RefTableId>16423</RefTableId>
+      <RefTableId>16571</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="61" parent="31" name="id">
+    <column id="60" parent="31" name="id">
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>492</StateNumber>
+      <StateNumber>706</StateNumber>
       <TypeId>2950</TypeId>
     </column>
-    <column id="62" parent="31" name="timestamp">
+    <column id="61" parent="31" name="timestamp">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>492</StateNumber>
+      <StateNumber>706</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="63" parent="31" name="updated_on">
+    <column id="62" parent="31" name="updated_on">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>492</StateNumber>
+      <StateNumber>706</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="64" parent="31" name="body">
+    <column id="63" parent="31" name="body">
       <Position>4</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>492</StateNumber>
+      <StateNumber>706</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="65" parent="31" name="image_id">
+    <column id="64" parent="31" name="image_id">
       <Position>5</Position>
       <DataType>uuid|0s</DataType>
-      <StateNumber>492</StateNumber>
+      <StateNumber>706</StateNumber>
       <TypeId>2950</TypeId>
     </column>
-    <column id="66" parent="31" name="user_id">
+    <column id="65" parent="31" name="user_id">
       <Position>6</Position>
       <DataType>uuid|0s</DataType>
-      <StateNumber>492</StateNumber>
+      <StateNumber>706</StateNumber>
       <TypeId>2950</TypeId>
     </column>
+    <column id="66" parent="31" name="deleted_at">
+      <Position>7</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>971</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
     <index id="67" parent="31" name="posts_pkey">
-      <ObjectId>16421</ObjectId>
-      <StateNumber>492</StateNumber>
+      <ObjectId>16569</ObjectId>
+      <StateNumber>706</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
     <key id="68" parent="31" name="posts_pkey">
-      <ObjectId>16422</ObjectId>
-      <StateNumber>492</StateNumber>
+      <ObjectId>16570</ObjectId>
+      <StateNumber>706</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>posts_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="69" parent="31" name="fkdt44ngxibfjiwb1w59qd23xmw">
-      <ObjectId>16453</ObjectId>
-      <StateNumber>500</StateNumber>
+      <ObjectId>16601</ObjectId>
+      <StateNumber>714</StateNumber>
       <ColNames>image_id</ColNames>
-      <RefTableId>16402</RefTableId>
+      <RefTableId>16550</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>images</RefTableName>
       <RefKeyName>images_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="70" parent="31" name="fk5lidm6cqbc7u4xhqpxm898qme">
-      <ObjectId>16458</ObjectId>
-      <StateNumber>501</StateNumber>
+      <ObjectId>16606</ObjectId>
+      <StateNumber>715</StateNumber>
       <ColNames>user_id</ColNames>
-      <RefTableId>16423</RefTableId>
+      <RefTableId>16571</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
@@ -1212,76 +1213,76 @@ true posixrules
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>493</StateNumber>
+      <StateNumber>707</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <column id="72" parent="32" name="timestamp">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>493</StateNumber>
+      <StateNumber>707</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="73" parent="32" name="updated_on">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>493</StateNumber>
+      <StateNumber>707</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="74" parent="32" name="email">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>493</StateNumber>
+      <StateNumber>707</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="75" parent="32" name="password">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>493</StateNumber>
+      <StateNumber>707</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="76" parent="32" name="username">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>493</StateNumber>
+      <StateNumber>707</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="77" parent="32" name="avatar_id">
       <Position>7</Position>
       <DataType>uuid|0s</DataType>
-      <StateNumber>493</StateNumber>
+      <StateNumber>707</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <index id="78" parent="32" name="users_pkey">
-      <ObjectId>16429</ObjectId>
-      <StateNumber>493</StateNumber>
+      <ObjectId>16577</ObjectId>
+      <StateNumber>707</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
     <index id="79" parent="32" name="uk_6dotkott2kjsp8vw4d0m25fb7">
-      <ObjectId>16431</ObjectId>
-      <StateNumber>495</StateNumber>
+      <ObjectId>16579</ObjectId>
+      <StateNumber>709</StateNumber>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="80" parent="32" name="users_pkey">
-      <ObjectId>16430</ObjectId>
-      <StateNumber>493</StateNumber>
+      <ObjectId>16578</ObjectId>
+      <StateNumber>707</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
     <key id="81" parent="32" name="uk_6dotkott2kjsp8vw4d0m25fb7">
-      <ObjectId>16432</ObjectId>
-      <StateNumber>495</StateNumber>
+      <ObjectId>16580</ObjectId>
+      <StateNumber>709</StateNumber>
       <ColNames>email</ColNames>
       <UnderlyingIndexName>uk_6dotkott2kjsp8vw4d0m25fb7</UnderlyingIndexName>
     </key>
     <foreign-key id="82" parent="32" name="fk2lttmx8vn9eecykig5sch3v0h">
-      <ObjectId>16463</ObjectId>
-      <StateNumber>502</StateNumber>
+      <ObjectId>16611</ObjectId>
+      <StateNumber>716</StateNumber>
       <ColNames>avatar_id</ColNames>
-      <RefTableId>16402</RefTableId>
+      <RefTableId>16550</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>images</RefTableName>
       <RefKeyName>images_pkey</RefKeyName>

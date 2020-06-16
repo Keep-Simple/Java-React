@@ -26,21 +26,37 @@ export const getPost = async id => {
   return response.json();
 };
 
-const likeHelper = async (postId, isLike) => {
+export const editPost = async ({ body, id, user: { id: userId } }) => {
+  await callWebApi({
+    endpoint: '/api/posts/update',
+    type: 'PUT',
+    request: { body, id, userId }
+  });
+};
+
+export const softDeletePost = async id => {
+  await callWebApi({
+    endpoint: `api/posts/softDelete/${id}`,
+    type: 'PUT'
+  });
+};
+
+const likeHelper = async (postId, userId, isLike) => {
   const response = await callWebApi({
     endpoint: '/api/postreaction',
     type: 'PUT',
     request: {
       postId,
+      userId,
       isLike
     }
   });
   return response.json();
 };
 
-export const likePost = async postId => likeHelper(postId, true);
+export const likePost = async ({ id, user: { id: userId } }) => likeHelper(id, userId, true);
 
-export const dislikePost = async postId => likeHelper(postId, false);
+export const dislikePost = async ({ id, user: { id: userId } }) => likeHelper(id, userId, false);
 
 // should be replaced by approppriate function
 export const getPostByHash = async hash => getPost(hash);

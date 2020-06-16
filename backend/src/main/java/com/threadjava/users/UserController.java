@@ -11,8 +11,11 @@ import static com.threadjava.auth.TokenService.getUserId;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-    @Autowired
-    private UsersService userDetailsService;
+    private final UsersService userDetailsService;
+
+    public UserController(UsersService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @GetMapping
     public UserDetailsDto getUser() {

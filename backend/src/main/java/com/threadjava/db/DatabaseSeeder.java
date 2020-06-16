@@ -28,20 +28,23 @@ import java.util.stream.StreamSupport;
 
 @Component
 public class DatabaseSeeder {
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-    @Autowired
-    private ImageRepository imageRepository;
-    @Autowired
-    private UsersRepository usersRepository;
-    @Autowired
-    private CommentRepository commentRepository;
-    @Autowired
-    private PostsRepository postsRepository;
-    @Autowired
-    private PostReactionsRepository postReactionsRepository;
-    @Autowired
-    private PasswordEncoder bCryptPasswordEncoder;
+    private final JdbcTemplate jdbcTemplate;
+    private final ImageRepository imageRepository;
+    private final UsersRepository usersRepository;
+    private final CommentRepository commentRepository;
+    private final PostsRepository postsRepository;
+    private final PostReactionsRepository postReactionsRepository;
+    private final PasswordEncoder bCryptPasswordEncoder;
+
+    public DatabaseSeeder(JdbcTemplate jdbcTemplate, ImageRepository imageRepository, UsersRepository usersRepository, CommentRepository commentRepository, PostsRepository postsRepository, PostReactionsRepository postReactionsRepository, PasswordEncoder bCryptPasswordEncoder) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.imageRepository = imageRepository;
+        this.usersRepository = usersRepository;
+        this.commentRepository = commentRepository;
+        this.postsRepository = postsRepository;
+        this.postReactionsRepository = postReactionsRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @EventListener
     public void seed(ContextRefreshedEvent event) {

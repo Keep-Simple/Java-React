@@ -2,11 +2,12 @@ package com.threadjava.post;
 
 
 import com.threadjava.post.dto.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.threadjava.post.model.Post;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import static com.threadjava.auth.TokenService.getUserId;
@@ -14,10 +15,13 @@ import static com.threadjava.auth.TokenService.getUserId;
 @RestController
 @RequestMapping("/api/posts")
 public class PostsController {
-    @Autowired
-    private PostsService postsService;
-    @Autowired
-    private SimpMessagingTemplate template;
+    private final PostsService postsService;
+    private final SimpMessagingTemplate template;
+
+    public PostsController(PostsService postsService, SimpMessagingTemplate template) {
+        this.postsService = postsService;
+        this.template = template;
+    }
 
     @GetMapping
     public List<PostListDto> get(@RequestParam(defaultValue="0") Integer from,
@@ -37,5 +41,16 @@ public class PostsController {
         var item = postsService.create(postDto);
         template.convertAndSend("/topic/new_post", item);
         return item;
+    }
+
+    @PutMapping("/update")
+    public void update(@RequestBody PostUpdateDto postDto) {
+        if(getUserId().equals(postDto.getUserId()))
+        postsService.updateBody(postDto);
+    }
+
+    @PutMapping("/softDelete/{id}")
+    public void delete(@PathVariable UUID id) {
+        postsService.softDelete(id, new Date());
     }
 }

@@ -1,21 +1,28 @@
 package com.threadjava.comment;
 
+import com.threadjava.comment.dto.CommentDeleteDto;
 import com.threadjava.comment.dto.CommentDetailsDto;
 import com.threadjava.comment.dto.CommentSaveDto;
+import com.threadjava.comment.dto.CommentUpdateDto;
 import com.threadjava.post.PostsRepository;
 import com.threadjava.users.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 import java.util.UUID;
 
 @Service
 public class CommentService {
-    @Autowired
-    private CommentRepository commentRepository;
-    @Autowired
-    private UsersRepository usersRepository;
-    @Autowired
-    private PostsRepository postsRepository;
+    private final CommentRepository commentRepository;
+    private final UsersRepository usersRepository;
+    private final PostsRepository postsRepository;
+
+    public CommentService(CommentRepository commentRepository, UsersRepository usersRepository, PostsRepository postsRepository) {
+        this.commentRepository = commentRepository;
+        this.usersRepository = usersRepository;
+        this.postsRepository = postsRepository;
+    }
 
     public CommentDetailsDto getCommentById(UUID id) {
         return commentRepository.findById(id)
@@ -28,4 +35,14 @@ public class CommentService {
         var postCreated = commentRepository.save(comment);
         return CommentMapper.MAPPER.commentToCommentDetailsDto(postCreated);
     }
+
+    public void update(CommentUpdateDto commentDto) {
+        commentRepository.updateComment(commentDto.getId(), commentDto.getBody());
+    }
+
+    public void softDelete(UUID id, Date date) {
+        commentRepository.softDeleteCommentById(id, date);
+    }
+
+
 }
