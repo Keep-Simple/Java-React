@@ -21,7 +21,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment="Action Creator fixes">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Comment/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Comment/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Notifications/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Notifications/index.jsx" afterDir="false" />
@@ -111,7 +110,8 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -131,7 +131,7 @@
       <recent name="C:\Projects\mini-java\backend\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ThreadJavaApplication">
+  <component name="RunManager" selected="npm.start">
     <configuration name="ThreadJavaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="thread-java.main" />
       <extension name="net.ashald.envfile">
@@ -208,6 +208,7 @@
       <workItem from="1591890446501" duration="32276000" />
       <workItem from="1592027364594" duration="77404000" />
       <workItem from="1592304306220" duration="12355000" />
+      <workItem from="1592332226045" duration="19000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1590523489295</created>
@@ -300,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592292852435</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fix Intellij">
+      <created>1592330115483</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1592330115483</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +358,8 @@
     <MESSAGE value="Add an ability to update and soft delete the comment" />
     <MESSAGE value="Few design improvements" />
     <MESSAGE value="Action Creator fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Action Creator fixes" />
+    <MESSAGE value="fix Intellij" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix Intellij" />
   </component>
   <component name="WindowStateProjectService">
     <state x="828" y="512" key="#ESLint" timestamp="1590523246277">
@@ -468,11 +477,11 @@
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
     <state x="732" y="340" key="RollbackChangesDialog/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591352935439" />
-    <state x="420" y="228" key="SettingsEditor" timestamp="1592039380685">
+    <state x="420" y="228" key="SettingsEditor" timestamp="1592330559700">
       <screen x="0" y="30" width="1920" height="1170" />
     </state>
     <state x="420" y="236" key="SettingsEditor/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590524714822" />
-    <state x="420" y="228" key="SettingsEditor/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592039380685" />
+    <state x="420" y="228" key="SettingsEditor/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592330559700" />
     <state x="420" y="236" key="SettingsEditor/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591108490516" />
     <state x="552" y="346" key="Vcs.Push.Dialog.v2" timestamp="1592292854504">
       <screen x="0" y="30" width="1920" height="1170" />
