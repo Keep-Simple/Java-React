@@ -31,3 +31,20 @@ export const softDeleteComment = async id => {
     type: 'PUT'
   });
 };
+
+const likeHelper = async (commentId, userId, isLike) => {
+  const response = await callWebApi({
+    endpoint: '/api/commentreaction',
+    type: 'PUT',
+    request: {
+      commentId,
+      userId,
+      isLike
+    }
+  });
+  return response.json();
+};
+
+export const likeComment = async ({ id, user: { id: userId } }) => likeHelper(id, userId, true);
+
+export const dislikeComment = async ({ id, user: { id: userId } }) => likeHelper(id, userId, false);

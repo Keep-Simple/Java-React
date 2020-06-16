@@ -6,6 +6,7 @@ import com.threadjava.post.model.Post;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -37,8 +38,9 @@ public class PostsService {
 
         var comments = commentRepository.findAllByPostId(id)
                 .stream()
-                .map(PostMapper.MAPPER::commentToCommentDto)
+                .map(PostMapper.MAPPER::fetchedCommentToPostCommentDto)
                 .collect(Collectors.toList());
+
         post.setComments(comments);
 
         return post;

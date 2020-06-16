@@ -1,5 +1,6 @@
 package com.threadjava.post;
 
+import com.threadjava.comment.dto.FetchCommentDto;
 import com.threadjava.comment.model.Comment;
 import com.threadjava.image.ImageMapper;
 import com.threadjava.post.dto.*;
@@ -16,6 +17,8 @@ public abstract class PostMapper {
     @Mapping(target = "comments", ignore = true)
     public abstract PostDetailsDto postToPostDetailsDto(PostDetailsQueryResult post);
 
+    public abstract PostCommentDto fetchedCommentToPostCommentDto(FetchCommentDto post);
+
     @Mapping(source = "user.id", target = "userId")
     public abstract PostCreationResponseDto postToPostCreationResponseDto(Post post);
 
@@ -26,6 +29,7 @@ public abstract class PostMapper {
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "comments", ignore = true)
     @Mapping(target = "reactions", ignore = true)
+    @Mapping(target = "deletedAt", ignore = true)
     public abstract Post postDetailsDtoToPost(PostCreationDto postDetailsDto);
 
     @AfterMapping
@@ -41,5 +45,5 @@ public abstract class PostMapper {
     @Mapping(source = "avatar", target = "image")
     public abstract PostUserDto postUserToPostUserDto(User model);
 
-    public abstract PostCommentDto commentToCommentDto(Comment comment);
+//    public abstract PostCommentDto commentToCommentDto(Comment comment);
 }

@@ -17,15 +17,27 @@ const Notifications = ({ user, applyPost }) => {
     stompClient.connect({}, () => {
       const { id } = user;
 
-      stompClient.subscribe('/topic/like', userPostId => {
+      stompClient.subscribe('/topic/like/post', userPostId => {
         if (userPostId.body.slice(1, -1) === user.id) {
           NotificationManager.info('Your post was liked 😃');
         }
       });
 
-      stompClient.subscribe('/topic/dislike', userPostId => {
+      stompClient.subscribe('/topic/dislike/post', userPostId => {
         if (userPostId.body.slice(1, -1) === user.id) {
           NotificationManager.info('Your post was disliked 😞');
+        }
+      });
+
+      stompClient.subscribe('/topic/like/comment', userCommentId => {
+        if (userCommentId.body.slice(1, -1) === user.id) {
+          NotificationManager.info('Your comment was liked 😃');
+        }
+      });
+
+      stompClient.subscribe('/topic/dislike/comment', userCommentId => {
+        if (userCommentId.body.slice(1, -1) === user.id) {
+          NotificationManager.info('Your comment was disliked 😞');
         }
       });
 
