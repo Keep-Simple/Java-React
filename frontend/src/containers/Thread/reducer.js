@@ -5,8 +5,7 @@ import {
   SET_EXPANDED_POST,
   EDIT_POST,
   SET_EDIT_WINDOW,
-  DELETE_POST,
-  EDIT_COMMENT
+  DELETE_POST
 } from './actionTypes';
 
 export default (state = {}, action) => {
@@ -32,14 +31,6 @@ export default (state = {}, action) => {
       return {
         ...state,
         posts: state.posts.map(p => (p.id === action.post?.id ? action.post : p))
-      };
-    case EDIT_COMMENT:
-      return {
-        ...state,
-        expandedPost: {
-          ...state.expandedPost,
-          comments: [...state.expandedPost.comments].map(c => (c.id === action.comment.id ? action.comment : c))
-        }
       };
     case DELETE_POST:
       return {

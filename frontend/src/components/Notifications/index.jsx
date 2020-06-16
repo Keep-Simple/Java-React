@@ -15,8 +15,6 @@ const Notifications = ({ user, applyPost }) => {
 
     stompClient.debug = () => { };
     stompClient.connect({}, () => {
-      console.log('connected');
-
       const { id } = user;
 
       stompClient.subscribe('/topic/like', userPostId => {

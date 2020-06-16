@@ -7,8 +7,7 @@ import {
   SET_EXPANDED_POST,
   EDIT_POST,
   SET_EDIT_WINDOW,
-  DELETE_POST,
-  EDIT_COMMENT
+  DELETE_POST
 } from './actionTypes';
 
 const setPostsAction = posts => ({
@@ -36,11 +35,6 @@ const editPostAction = post => ({
   post
 });
 
-const editCommentAction = comment => ({
-  type: EDIT_COMMENT,
-  comment
-});
-
 const deletePostAction = id => ({
   type: DELETE_POST,
   id
@@ -55,6 +49,8 @@ export const loadPosts = filter => async dispatch => {
   const posts = await postService.getAllPosts(filter);
   dispatch(setPostsAction(posts));
 };
+
+// == Posts == //
 
 export const loadMorePosts = filter => async (dispatch, getRootState) => {
   const { posts: { posts } } = getRootState();
@@ -92,20 +88,12 @@ export const toggleEditPost = post => async dispatch => {
   dispatch(setExpandedPostAction(undefined));
 };
 
-export const togglePushEditedComment = comment => async dispatch => {
-  dispatch(editCommentAction(comment));
-  dispatch(setEditWindowAction(undefined));
-  await commentService.editComment(comment);
-};
-
-export const toggleEditComment = comment => async dispatch => {
-  dispatch(setEditWindowAction(comment));
-};
-
 export const toggleExpandedPost = postId => async dispatch => {
   const post = postId ? await postService.getPost(postId) : undefined;
   dispatch(setExpandedPostAction(post));
 };
+
+// == Reactions == //
 
 const likeHelper = async (isLike, post, setReaction, dispatch, getRootState) => {
   let likeDiff;
@@ -122,7 +110,7 @@ const likeHelper = async (isLike, post, setReaction, dispatch, getRootState) => 
       dislikeDiff = 0;
     }
   } else {
-    // == like/dislike was deleted == //
+    // reaction was deleted
     likeDiff = -(+isLike);
     dislikeDiff = -(+!isLike);
     setReaction(undefined);
@@ -150,6 +138,8 @@ export const likePost = (post, setReaction) => (
 export const dislikePost = (post, setReaction) => (
   async (dispatch, getRootState) => likeHelper(false, post, setReaction, dispatch, getRootState));
 
+// == Comments == //
+
 export const deleteComment = id => async (dispatch, getRootState) => {
   await commentService.softDeleteComment(id);
 
@@ -160,10 +150,24 @@ export const deleteComment = id => async (dispatch, getRootState) => {
   });
 
   const { posts: { posts, expandedPost } } = getRootState();
-  const updated = posts.map(post => (post.id !== expandedPost.id
-    ? post
-    : mapComments(post)));
+  const updated = posts.map(post => (post.id !== expandedPost.id ? post : mapComments(post)));
 
+  dispatch(setExpandedPostAction(mapComments(expandedPost)));
+  dispatch(setPostsAction(updated));
+};
+
+export const togglePushEditedComment = comment => async (dispatch, getRootState) => {
+  await commentService.editComment(comment);
+
+  const mapComments = post => ({
+    ...post,
+    comments: [...post.comments].map(c => (c.id === comment.id ? comment : c))
+  });
+
+  const { posts: { posts, expandedPost } } = getRootState();
+  const updated = posts.map(post => (post.id !== comment.postId ? post : mapComments(post)));
+
+  dispatch(setEditWindowAction(undefined));
   dispatch(setExpandedPostAction(mapComments(expandedPost)));
   dispatch(setPostsAction(updated));
 };
@@ -175,14 +179,16 @@ export const addComment = request => async (dispatch, getRootState) => {
   const mapComments = post => ({
     ...post,
     commentCount: Number(post.commentCount) + 1,
-    comments: [...(post.comments || []), comment] // comment is taken from the current closure
+    comments: [...(post.comments || []), comment]
   });
 
   const { posts: { posts, expandedPost } } = getRootState();
-  const updated = posts.map(post => (post.id !== comment.postId
-    ? post
-    : mapComments(post)));
+  const updated = posts.map(post => (post.id !== comment.postId ? post : mapComments(post)));
 
   dispatch(setExpandedPostAction(mapComments(expandedPost)));
   dispatch(setPostsAction(updated));
+};
+
+export const toggleEditComment = comment => async dispatch => {
+  dispatch(setEditWindowAction(comment));
 };
