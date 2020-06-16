@@ -21,11 +21,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment="Few design improvements">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Comment/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Comment/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Notifications/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Notifications/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/containers/ExpandedPost/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/ExpandedPost/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/commentService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/commentService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
