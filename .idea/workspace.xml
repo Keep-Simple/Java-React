@@ -20,12 +20,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment="Add an ability to like/dislike comment with live-notifications">
+    <list default="true" id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment="Add an ability to hide own posts in the common thread">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/actions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +59,7 @@
     <branch-grouping />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="6727e102df1a5c2f1bf49ef40741e99c98991b89" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -470,6 +468,10 @@
     <state width="1859" height="342" key="GridCell.Tab.1.right/0.0.1858.1200/-1858.0.1858.1200@0.0.1858.1200" timestamp="1591424449484" />
     <state width="1921" height="242" key="GridCell.Tab.1.right/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592327137879" />
     <state width="1921" height="329" key="GridCell.Tab.1.right/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591372060695" />
+    <state x="184" y="129" key="MergeDialog" timestamp="1592328343361">
+      <screen x="0" y="30" width="1920" height="1170" />
+    </state>
+    <state x="184" y="129" key="MergeDialog/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592328343361" />
     <state x="732" y="340" key="RollbackChangesDialog" timestamp="1591352935439">
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
@@ -498,6 +500,10 @@
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
     <state x="769" y="534" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591354259204" />
+    <state x="739" y="328" key="git4idea.branch.GitSmartOperationDialog" timestamp="1592328312825">
+      <screen x="0" y="30" width="1920" height="1170" />
+    </state>
+    <state x="739" y="328" key="git4idea.branch.GitSmartOperationDialog/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592328312825" />
     <state x="760" y="521" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1590524511556">
       <screen x="0" y="40" width="1920" height="1160" />
     </state>
