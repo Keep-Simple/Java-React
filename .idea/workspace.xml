@@ -20,83 +20,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment="Action Creator fixes">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/dto/FetchCommentDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/commentReactions/CommentReactionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/commentReactions/CommentReactionMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/commentReactions/CommentReactionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/commentReactions/CommentReactionsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/commentReactions/dto/CommentReactionDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/commentReactions/dto/ReceivedCommentReactionDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/commentReactions/dto/ResponseCommentReactionDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/commentReactions/model/CommentReaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a2f2c97b-ab48-4514-a8df-4c6943956575.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a2f2c97b-ab48-4514-a8df-4c6943956575.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a2f2c97b-ab48-4514-a8df-4c6943956575/storage_v2/_src_/database/threaddb.CMDVVw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a2f2c97b-ab48-4514-a8df-4c6943956575/storage_v2/_src_/database/threaddb.CMDVVw/schema/public.abK9xQ.meta" afterDir="false" />
+    <list default="true" id="c7803f99-69da-4126-b76b-99412d63624c" name="Default Changelist" comment="Add an ability to like/dislike comment with live-notifications">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/ThreadJavaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/ThreadJavaApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/AuthUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/AuthUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/TokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/dto/AuthUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/dto/AuthUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/dto/UserLoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/dto/UserLoginDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/dto/UserRegisterDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/dto/UserRegisterDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/model/AuthUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/auth/model/AuthUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/dto/CommentDeleteDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/dto/CommentDeleteDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/dto/CommentDetailsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/dto/CommentDetailsDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/dto/CommentSaveDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/dto/CommentSaveDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/dto/CommentUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/dto/CommentUpdateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/comment/model/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/config/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/config/JwtRequestFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/config/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/config/SecurityConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/db/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/db/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/db/DatabaseSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/db/DatabaseSeeder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/events/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/events/WebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/ImageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/ImageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/ImageMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/ImageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/dto/ImageDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/dto/ImageDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/dto/ImgurResponce.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/dto/ImgurResponce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/image/model/Image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/PostsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostCommentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostCommentDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostCreationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostCreationDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostCreationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostCreationResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostDetailsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostDetailsDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostDetailsQueryResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostDetailsQueryResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostListDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostListDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostListQueryResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostListQueryResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/dto/PostUserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/model/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/post/model/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/PostReactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/PostReactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/PostReactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/PostReactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/PostReactionsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/PostReactionsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/dto/PostReactionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/dto/PostReactionDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/dto/ReceivedPostReactionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/dto/ReceivedPostReactionDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/dto/ResponsePostReactionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/dto/ResponsePostReactionDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/model/PostReaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/postReactions/model/PostReaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/UsersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/UsersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/UsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/UsersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/dto/UserDetailsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/dto/UserDetailsDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/dto/UserShortDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/dto/UserShortDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/threadjava/users/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/threadjava/threadjava/ThreadJavaApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/threadjava/threadjava/ThreadJavaApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Comment/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Comment/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Notifications/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Notifications/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/ExpandedPost/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/ExpandedPost/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/commentService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/commentService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Thread/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Thread/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +204,8 @@
       <workItem from="1591680790143" duration="1850000" />
       <workItem from="1591890446501" duration="32276000" />
       <workItem from="1592027364594" duration="77404000" />
-      <workItem from="1592304306220" duration="12355000" />
+      <workItem from="1592304306220" duration="13551000" />
+      <workItem from="1592323389946" duration="3896000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1590523489295</created>
@@ -368,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592292852435</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Add an ability to like/dislike comment with live-notifications">
+      <created>1592316724680</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1592316724681</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,7 +355,8 @@
     <MESSAGE value="Add an ability to update and soft delete the comment" />
     <MESSAGE value="Few design improvements" />
     <MESSAGE value="Action Creator fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Action Creator fixes" />
+    <MESSAGE value="Add an ability to like/dislike comment with live-notifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add an ability to like/dislike comment with live-notifications" />
   </component>
   <component name="WindowStateProjectService">
     <state x="828" y="512" key="#ESLint" timestamp="1590523246277">
@@ -460,77 +398,77 @@
     <state x="719" y="304" key="FileChooserDialogImpl/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590524281698" />
     <state x="696" y="273" key="FileChooserDialogImpl/0.0.1858.1200/-1858.0.1858.1200@0.0.1858.1200" timestamp="1591611780894" />
     <state x="575" y="220" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1591943985934" />
-    <state width="1921" height="242" key="GridCell.Tab.0.bottom" timestamp="1592316279633">
+    <state width="1921" height="242" key="GridCell.Tab.0.bottom" timestamp="1592327137878">
       <screen x="0" y="30" width="1920" height="1170" />
     </state>
     <state width="1859" height="342" key="GridCell.Tab.0.bottom/-1920.0.1858.1200/0.0.1858.1200@0.0.1858.1200" timestamp="1591890892697" />
     <state width="1921" height="332" key="GridCell.Tab.0.bottom/-1920.30.1920.1170/0.30.1920.1170@0.30.1920.1170" timestamp="1591981517590" />
     <state width="1921" height="329" key="GridCell.Tab.0.bottom/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
     <state width="1859" height="342" key="GridCell.Tab.0.bottom/0.0.1858.1200/-1858.0.1858.1200@0.0.1858.1200" timestamp="1591424449483" />
-    <state width="1921" height="242" key="GridCell.Tab.0.bottom/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592316279633" />
+    <state width="1921" height="242" key="GridCell.Tab.0.bottom/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592327137878" />
     <state width="1921" height="329" key="GridCell.Tab.0.bottom/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591372060694" />
-    <state width="1921" height="242" key="GridCell.Tab.0.center" timestamp="1592316279632">
+    <state width="1921" height="242" key="GridCell.Tab.0.center" timestamp="1592327137878">
       <screen x="0" y="30" width="1920" height="1170" />
     </state>
     <state width="1859" height="342" key="GridCell.Tab.0.center/-1920.0.1858.1200/0.0.1858.1200@0.0.1858.1200" timestamp="1591890892697" />
     <state width="1921" height="332" key="GridCell.Tab.0.center/-1920.30.1920.1170/0.30.1920.1170@0.30.1920.1170" timestamp="1591981517590" />
     <state width="1921" height="329" key="GridCell.Tab.0.center/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
     <state width="1859" height="342" key="GridCell.Tab.0.center/0.0.1858.1200/-1858.0.1858.1200@0.0.1858.1200" timestamp="1591424449483" />
-    <state width="1921" height="242" key="GridCell.Tab.0.center/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592316279632" />
+    <state width="1921" height="242" key="GridCell.Tab.0.center/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592327137878" />
     <state width="1921" height="329" key="GridCell.Tab.0.center/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591372060694" />
-    <state width="1921" height="242" key="GridCell.Tab.0.left" timestamp="1592316279632">
+    <state width="1921" height="242" key="GridCell.Tab.0.left" timestamp="1592327137878">
       <screen x="0" y="30" width="1920" height="1170" />
     </state>
     <state width="1859" height="342" key="GridCell.Tab.0.left/-1920.0.1858.1200/0.0.1858.1200@0.0.1858.1200" timestamp="1591890892696" />
     <state width="1921" height="332" key="GridCell.Tab.0.left/-1920.30.1920.1170/0.30.1920.1170@0.30.1920.1170" timestamp="1591981517590" />
     <state width="1921" height="329" key="GridCell.Tab.0.left/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
     <state width="1859" height="342" key="GridCell.Tab.0.left/0.0.1858.1200/-1858.0.1858.1200@0.0.1858.1200" timestamp="1591424449483" />
-    <state width="1921" height="242" key="GridCell.Tab.0.left/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592316279632" />
+    <state width="1921" height="242" key="GridCell.Tab.0.left/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592327137878" />
     <state width="1921" height="329" key="GridCell.Tab.0.left/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591372060694" />
-    <state width="1921" height="242" key="GridCell.Tab.0.right" timestamp="1592316279632">
+    <state width="1921" height="242" key="GridCell.Tab.0.right" timestamp="1592327137878">
       <screen x="0" y="30" width="1920" height="1170" />
     </state>
     <state width="1859" height="342" key="GridCell.Tab.0.right/-1920.0.1858.1200/0.0.1858.1200@0.0.1858.1200" timestamp="1591890892697" />
     <state width="1921" height="332" key="GridCell.Tab.0.right/-1920.30.1920.1170/0.30.1920.1170@0.30.1920.1170" timestamp="1591981517590" />
     <state width="1921" height="329" key="GridCell.Tab.0.right/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
     <state width="1859" height="342" key="GridCell.Tab.0.right/0.0.1858.1200/-1858.0.1858.1200@0.0.1858.1200" timestamp="1591424449483" />
-    <state width="1921" height="242" key="GridCell.Tab.0.right/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592316279632" />
+    <state width="1921" height="242" key="GridCell.Tab.0.right/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592327137878" />
     <state width="1921" height="329" key="GridCell.Tab.0.right/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591372060694" />
-    <state width="1921" height="242" key="GridCell.Tab.1.bottom" timestamp="1592316279633">
+    <state width="1921" height="242" key="GridCell.Tab.1.bottom" timestamp="1592327137879">
       <screen x="0" y="30" width="1920" height="1170" />
     </state>
     <state width="1859" height="342" key="GridCell.Tab.1.bottom/-1920.0.1858.1200/0.0.1858.1200@0.0.1858.1200" timestamp="1591890892697" />
     <state width="1921" height="332" key="GridCell.Tab.1.bottom/-1920.30.1920.1170/0.30.1920.1170@0.30.1920.1170" timestamp="1591962335706" />
     <state width="1921" height="329" key="GridCell.Tab.1.bottom/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
     <state width="1859" height="342" key="GridCell.Tab.1.bottom/0.0.1858.1200/-1858.0.1858.1200@0.0.1858.1200" timestamp="1591424449484" />
-    <state width="1921" height="242" key="GridCell.Tab.1.bottom/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592316279633" />
+    <state width="1921" height="242" key="GridCell.Tab.1.bottom/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592327137879" />
     <state width="1921" height="329" key="GridCell.Tab.1.bottom/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591372060695" />
-    <state width="1921" height="242" key="GridCell.Tab.1.center" timestamp="1592316279633">
+    <state width="1921" height="242" key="GridCell.Tab.1.center" timestamp="1592327137878">
       <screen x="0" y="30" width="1920" height="1170" />
     </state>
     <state width="1859" height="342" key="GridCell.Tab.1.center/-1920.0.1858.1200/0.0.1858.1200@0.0.1858.1200" timestamp="1591890892697" />
     <state width="1921" height="332" key="GridCell.Tab.1.center/-1920.30.1920.1170/0.30.1920.1170@0.30.1920.1170" timestamp="1591962335706" />
     <state width="1921" height="329" key="GridCell.Tab.1.center/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
     <state width="1859" height="342" key="GridCell.Tab.1.center/0.0.1858.1200/-1858.0.1858.1200@0.0.1858.1200" timestamp="1591424449484" />
-    <state width="1921" height="242" key="GridCell.Tab.1.center/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592316279633" />
+    <state width="1921" height="242" key="GridCell.Tab.1.center/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592327137878" />
     <state width="1921" height="329" key="GridCell.Tab.1.center/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591372060695" />
-    <state width="1921" height="242" key="GridCell.Tab.1.left" timestamp="1592316279633">
+    <state width="1921" height="242" key="GridCell.Tab.1.left" timestamp="1592327137878">
       <screen x="0" y="30" width="1920" height="1170" />
     </state>
     <state width="1859" height="342" key="GridCell.Tab.1.left/-1920.0.1858.1200/0.0.1858.1200@0.0.1858.1200" timestamp="1591890892697" />
     <state width="1921" height="332" key="GridCell.Tab.1.left/-1920.30.1920.1170/0.30.1920.1170@0.30.1920.1170" timestamp="1591962335706" />
     <state width="1921" height="329" key="GridCell.Tab.1.left/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
     <state width="1859" height="342" key="GridCell.Tab.1.left/0.0.1858.1200/-1858.0.1858.1200@0.0.1858.1200" timestamp="1591424449483" />
-    <state width="1921" height="242" key="GridCell.Tab.1.left/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592316279633" />
+    <state width="1921" height="242" key="GridCell.Tab.1.left/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592327137878" />
     <state width="1921" height="329" key="GridCell.Tab.1.left/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591372060694" />
-    <state width="1921" height="242" key="GridCell.Tab.1.right" timestamp="1592316279633">
+    <state width="1921" height="242" key="GridCell.Tab.1.right" timestamp="1592327137879">
       <screen x="0" y="30" width="1920" height="1170" />
     </state>
     <state width="1859" height="342" key="GridCell.Tab.1.right/-1920.0.1858.1200/0.0.1858.1200@0.0.1858.1200" timestamp="1591890892697" />
     <state width="1921" height="332" key="GridCell.Tab.1.right/-1920.30.1920.1170/0.30.1920.1170@0.30.1920.1170" timestamp="1591962335706" />
     <state width="1921" height="329" key="GridCell.Tab.1.right/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686194950" />
     <state width="1859" height="342" key="GridCell.Tab.1.right/0.0.1858.1200/-1858.0.1858.1200@0.0.1858.1200" timestamp="1591424449484" />
-    <state width="1921" height="242" key="GridCell.Tab.1.right/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592316279633" />
+    <state width="1921" height="242" key="GridCell.Tab.1.right/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592327137879" />
     <state width="1921" height="329" key="GridCell.Tab.1.right/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591372060695" />
     <state x="732" y="340" key="RollbackChangesDialog" timestamp="1591352935439">
       <screen x="0" y="40" width="1920" height="1160" />
@@ -542,11 +480,11 @@
     <state x="420" y="236" key="SettingsEditor/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590524714822" />
     <state x="420" y="228" key="SettingsEditor/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592039380685" />
     <state x="420" y="236" key="SettingsEditor/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591108490516" />
-    <state x="552" y="346" key="Vcs.Push.Dialog.v2" timestamp="1592292854504">
+    <state x="552" y="346" key="Vcs.Push.Dialog.v2" timestamp="1592316764563">
       <screen x="0" y="30" width="1920" height="1170" />
     </state>
     <state x="552" y="353" key="Vcs.Push.Dialog.v2/-1920.40.1920.1160/0.40.1920.1160@0.40.1920.1160" timestamp="1590686166514" />
-    <state x="552" y="346" key="Vcs.Push.Dialog.v2/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592292854504" />
+    <state x="552" y="346" key="Vcs.Push.Dialog.v2/0.30.1920.1170/-1920.30.1920.1170@0.30.1920.1170" timestamp="1592316764563" />
     <state x="552" y="353" key="Vcs.Push.Dialog.v2/0.40.1920.1160/-1920.40.1920.1160@0.40.1920.1160" timestamp="1591352991746" />
     <state x="856" y="507" width="316" height="242" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1592308966626">
       <screen x="0" y="30" width="1920" height="1170" />

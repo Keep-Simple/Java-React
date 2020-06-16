@@ -28,7 +28,8 @@ import EditComment from '../EditComment';
 const postsFilter = {
   userId: undefined,
   from: 0,
-  count: 10
+  count: 10,
+  inverted: false //  fetch every post with != userId if TRUE
 };
 
 const Thread = ({
@@ -48,12 +49,25 @@ const Thread = ({
 }) => {
   const [sharedPostId, setSharedPostId] = useState(undefined);
   const [showOwnPosts, setShowOwnPosts] = useState(false);
+  const [hideOwnPosts, setHideOwnPosts] = useState(false);
 
   const toggleShowOwnPosts = () => {
+    if (hideOwnPosts) return;
     setShowOwnPosts(!showOwnPosts);
     postsFilter.userId = showOwnPosts ? undefined : userId;
     postsFilter.from = 0;
     load(postsFilter);
+    postsFilter.from = postsFilter.count; // for the next scroll
+  };
+
+  const toggleHideOwnPosts = () => {
+    if (showOwnPosts) return;
+    setHideOwnPosts(!hideOwnPosts);
+    postsFilter.userId = hideOwnPosts ? undefined : userId;
+    postsFilter.from = 0;
+    postsFilter.inverted = true;
+    load(postsFilter);
+    postsFilter.inverted = false;
     postsFilter.from = postsFilter.count; // for the next scroll
   };
 
@@ -74,12 +88,20 @@ const Thread = ({
       <div className={styles.addPostForm}>
         <AddPost addPost={createPost} uploadImage={uploadImage} />
       </div>
-      <div className={styles.toolbar}>
+      <div className={styles.toolbar} style={{ float: 'left', width: '50%', textAlign: 'center' }}>
         <Checkbox
           toggle
           label="Show only my posts"
           checked={showOwnPosts}
           onChange={toggleShowOwnPosts}
+        />
+      </div>
+      <div className={styles.toolbar} style={{ float: 'left', width: '50%', textAlign: 'center' }}>
+        <Checkbox
+          toggle
+          label="Hide my posts"
+          checked={hideOwnPosts}
+          onChange={toggleHideOwnPosts}
         />
       </div>
       <InfiniteScroll
@@ -103,7 +125,7 @@ const Thread = ({
         ))}
       </InfiniteScroll>
       {expandedPost && <ExpandedPost sharePost={sharePost} userId={userId} />}
-      {(editWindow?.commentCount && <EditPost />) || (editWindow && <EditComment />)}
+      {(editWindow?.commentCount >= 0 && <EditPost />) || (editWindow && <EditComment />)}
       {sharedPostId && <SharedPostLink postId={sharedPostId} close={() => setSharedPostId(undefined)} />}
     </div>
   );

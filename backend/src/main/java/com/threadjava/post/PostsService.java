@@ -22,13 +22,21 @@ public class PostsService {
         this.commentRepository = commentRepository;
     }
 
-    public List<PostListDto> getAllPosts(Integer from, Integer count, UUID userId) {
+    public List<PostListDto> getAllPosts(Integer from, Integer count, UUID userId, boolean inverted) {
         var pageable = PageRequest.of(from / count, count);
-        return postsCrudRepository
+        if (!inverted)
+            return postsCrudRepository
                 .findAllPosts(userId, pageable)
                 .stream()
                 .map(PostMapper.MAPPER::postListToPostListDto)
                 .collect(Collectors.toList());
+        else
+            return postsCrudRepository
+                    .findAllExceptOne(userId, pageable)
+                    .stream()
+                    .map(PostMapper.MAPPER::postListToPostListDto)
+                    .collect(Collectors.toList());
+
     }
 
     public PostDetailsDto getPostById(UUID id) {
