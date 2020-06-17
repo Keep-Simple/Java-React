@@ -22,7 +22,7 @@ public class PostsService {
         this.commentRepository = commentRepository;
     }
 
-    public List<PostListDto> getAllPosts(Integer from, Integer count, UUID userId, boolean inverted, boolean isLikeFilter) {
+    public List<PostListDto> getPosts(Integer from, Integer count, UUID userId, boolean inverted, boolean isLikeFilter) {
         var pageable = PageRequest.of(from / count, count);
         if (inverted) {
             return postsCrudRepository

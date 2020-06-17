@@ -100,7 +100,7 @@ const likeHelper = async (isLike, post, setReaction, dispatch, getRootState) => 
   let dislikeDiff;
   const result = await (isLike ? postService.likePost(post) : postService.dislikePost(post));
 
-  if (result?.id) {
+  if (result?.isLike !== undefined) {
     if (result.isLike === isLike) {
       likeDiff = (+isLike);
       dislikeDiff = (+!isLike);

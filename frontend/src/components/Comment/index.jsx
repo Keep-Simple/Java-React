@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Comment as CommentUI, Icon } from 'semantic-ui-react';
+import { Comment as CommentUI, Icon, Popup, PopupContent } from 'semantic-ui-react';
 import moment from 'moment';
 import { getUserImgLink } from 'src/helpers/imageHelper';
 
@@ -22,10 +22,15 @@ const Comment = ({ comment, currentUserId, toggleEdit, softDeleteComment, like, 
       </CommentUI.Text>
       <CommentUI.Actions>
         <CommentUI.Action>
-          <span onClick={() => like(comment)}>
-            <Icon name="thumbs up outline" />
-            {comment.likeCount}
-          </span>
+          <Popup trigger={(
+            <span onClick={() => like(comment)}>
+              <Icon name="thumbs up outline" />
+              {comment.likeCount}
+            </span>
+          )}
+          >
+            <PopupContent>{comment.user.username}</PopupContent>
+          </Popup>
         </CommentUI.Action>
         <CommentUI.Action>
           <span onClick={() => dislike(comment)}>

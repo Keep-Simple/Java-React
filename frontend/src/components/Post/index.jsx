@@ -4,6 +4,7 @@ import { Card, Image, Label, Icon } from 'semantic-ui-react';
 import moment from 'moment';
 
 import styles from './styles.module.scss';
+import PopupReactionInfo from '../PopupReactionInfo';
 
 const Post = ({
   post, likePost, dislikePost, deletePost, toggleEditPost, toggleExpandedPost, sharePost, currentUserId
@@ -21,7 +22,9 @@ const Post = ({
   const date = moment(createdAt)
     .fromNow();
 
-  const [isLike, setReaction] = useState(undefined);
+  const [isLike, setReaction] = useState(null);
+  const [likeInfo, setLikeInfo] = useState([]);
+  const [dislikeInfo, setDislikeInfo] = useState([]);
 
   return (
     <Card style={{ width: '100%' }}>
@@ -41,14 +44,26 @@ const Post = ({
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => likePost(post, setReaction)}>
-          {isLike ? <Icon color="red" name="thumbs up outline" /> : <Icon name="thumbs up outline" />}
-          {likeCount}
-        </Label>
-        <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => dislikePost(post, setReaction)}>
-          {isLike === false ? <Icon color="blue" name="thumbs down outline" /> : <Icon name="thumbs down outline" />}
-          {dislikeCount}
-        </Label>
+        <PopupReactionInfo
+          forLikes
+          setReactionState={setLikeInfo}
+          reactionState={likeInfo}
+          post={post}
+          reactionsCount={likeCount}
+          changeReactionColor={setReaction}
+          applyReaction={likePost}
+          isLike={isLike}
+        />
+        <PopupReactionInfo
+          forLikes={false}
+          setReactionState={setDislikeInfo}
+          reactionState={dislikeInfo}
+          post={post}
+          reactionsCount={dislikeCount}
+          changeReactionColor={setReaction}
+          applyReaction={dislikePost}
+          isLike={isLike}
+        />
         <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => toggleExpandedPost(id)}>
           <Icon name="comments outline" />
           {commentCount}

@@ -41,6 +41,22 @@ export const softDeletePost = async id => {
   });
 };
 
+export const getLikeInfo = async postId => {
+  const response = await callWebApi({
+    endpoint: `/api/postreaction/${postId}/true`,
+    type: 'GET'
+  });
+  return response.json();
+};
+
+export const getDislikeInfo = async postId => {
+  const response = await callWebApi({
+    endpoint: `/api/postreaction/${postId}/false`,
+    type: 'GET'
+  });
+  return response.json();
+};
+
 const likeHelper = async (postId, userId, isLike) => {
   const response = await callWebApi({
     endpoint: '/api/postreaction',
@@ -58,5 +74,5 @@ export const likePost = async ({ id, user: { id: userId } }) => likeHelper(id, u
 
 export const dislikePost = async ({ id, user: { id: userId } }) => likeHelper(id, userId, false);
 
-// should be replaced by approppriate function
+// should be replaced by appropriate function
 export const getPostByHash = async hash => getPost(hash);

@@ -28,7 +28,7 @@ public class PostsController {
                                  @RequestParam(required = false) UUID userId,
                                  @RequestParam(required = false) boolean inverted,
                                  @RequestParam(required = false) boolean isLikeFilter) {
-        return postsService.getAllPosts(from, count, userId, inverted, isLikeFilter);
+        return postsService.getPosts(from, count, userId, inverted, isLikeFilter);
     }
 
     @GetMapping("/{id}")
