@@ -2,7 +2,6 @@ package com.threadjava.post;
 
 
 import com.threadjava.post.dto.*;
-import com.threadjava.post.model.Post;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +25,9 @@ public class PostsController {
     @GetMapping
     public List<PostListDto> get(@RequestParam(defaultValue="0") Integer from,
                                  @RequestParam(defaultValue="10") Integer count,
-                                 @RequestParam(required = false) UUID userId) {
-        return postsService.getAllPosts(from, count, userId);
+                                 @RequestParam(required = false) UUID userId,
+                                 @RequestParam(required = false) boolean inverted) {
+        return postsService.getAllPosts(from, count, userId, inverted);
     }
 
     @GetMapping("/{id}")

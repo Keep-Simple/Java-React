@@ -146,7 +146,7 @@ export const deleteComment = id => async (dispatch, getRootState) => {
   const mapComments = post => ({
     ...post,
     commentCount: Number(post.commentCount) - 1,
-    comments: [...post.comments].filter(c => c.id !== id)
+    comments: [...(post.comments || [])].filter(c => c.id !== id)
   });
 
   const { posts: { posts, expandedPost } } = getRootState();
@@ -161,7 +161,7 @@ export const togglePushEditedComment = comment => async (dispatch, getRootState)
 
   const mapComments = post => ({
     ...post,
-    comments: [...post.comments].map(c => (c.id === comment.id ? comment : c))
+    comments: [...(post.comments || [])].map(c => (c.id === comment.id ? comment : c))
   });
 
   const { posts: { posts, expandedPost } } = getRootState();
@@ -192,3 +192,49 @@ export const addComment = request => async (dispatch, getRootState) => {
 export const toggleEditComment = comment => async dispatch => {
   dispatch(setEditWindowAction(comment));
 };
+
+const commentLikeHelper = async (isLike, comment, dispatch, getRootState) => {
+  let likeDiff;
+  let dislikeDiff;
+  const result = await (isLike ? commentService.likeComment(comment) : commentService.dislikeComment(comment));
+
+  if (result?.id) {
+    if (result.isLike === isLike) {
+      likeDiff = (+isLike);
+      dislikeDiff = (+!isLike);
+    } else {
+      likeDiff = 0;
+      dislikeDiff = 0;
+    }
+  } else {
+    // reaction was deleted
+    likeDiff = -(+isLike);
+    dislikeDiff = -(+!isLike);
+  }
+
+  const apply = C => ({
+    ...C,
+    likeCount: Number(C.likeCount) + likeDiff,
+    dislikeCount: Number(C.dislikeCount) + dislikeDiff
+  });
+
+  const { posts: { expandedPost } } = getRootState();
+
+  expandedPost.comments.map(c => (
+    c.id === comment.id ? apply(c) : c
+  ));
+
+  dispatch(setExpandedPostAction({
+    ...expandedPost,
+    comments: expandedPost.comments.map(c => (
+      c.id === comment.id ? apply(c) : c
+    ))
+  }));
+};
+
+export const likeComment = comment => (
+  async (dispatch, getRootState) => commentLikeHelper(true, comment, dispatch, getRootState));
+
+export const dislikeComment = comment => (
+  async (dispatch, getRootState) => commentLikeHelper(false, comment, dispatch, getRootState));
+

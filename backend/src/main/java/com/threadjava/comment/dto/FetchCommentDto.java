@@ -1,0 +1,20 @@
+package com.threadjava.comment.dto;
+import com.threadjava.users.model.User;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Date;
+import java.util.UUID;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class FetchCommentDto {
+        private UUID id;
+        private String body;
+        private long likeCount;
+        private long dislikeCount;
+        private User user;
+        private Date createdAt;
+}

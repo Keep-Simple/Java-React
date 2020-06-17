@@ -5,13 +5,14 @@ import { connect } from 'react-redux';
 import { Modal, Comment as CommentUI, Header } from 'semantic-ui-react';
 import moment from 'moment';
 import {
-  likePost, dislikePost, toggleExpandedPost, addComment, toggleEditPost, deletePost, toggleEditComment
+  likePost, dislikePost, toggleExpandedPost,
+  addComment, toggleEditPost, deletePost, toggleEditComment,
+  deleteComment, dislikeComment, likeComment
 } from 'src/containers/Thread/actions';
 import Post from 'src/components/Post';
 import Comment from 'src/components/Comment';
 import AddComment from 'src/components/AddComment';
 import Spinner from 'src/components/Spinner';
-import { deleteComment } from '../Thread/actions';
 
 const ExpandedPost = ({
   userId,
@@ -24,7 +25,9 @@ const ExpandedPost = ({
   toggleEditPost: toggleEdit,
   toggleEditComment: toggleEditCom,
   deleteComment: delComment,
-  addComment: add
+  addComment: add,
+  likeComment: likeCom,
+  dislikeComment: dislikeCom
 }) => (
   <Modal dimmer="blurring" centered={false} open onClose={() => toggle()}>
     {post
@@ -53,6 +56,8 @@ const ExpandedPost = ({
                   currentUserId={userId}
                   toggleEdit={toggleEditCom}
                   softDeleteComment={delComment}
+                  like={likeCom}
+                  dislike={dislikeCom}
                 />
               ))}
             <AddComment postId={post.id} addComment={add} />
@@ -73,6 +78,8 @@ ExpandedPost.propTypes = {
   deleteComment: PropTypes.func.isRequired,
   userId: PropTypes.string.isRequired,
   dislikePost: PropTypes.func.isRequired,
+  likeComment: PropTypes.func.isRequired,
+  dislikeComment: PropTypes.func.isRequired,
   addComment: PropTypes.func.isRequired,
   sharePost: PropTypes.func.isRequired
 };
@@ -87,7 +94,9 @@ const actions = {
   toggleEditPost,
   deletePost,
   toggleEditComment,
-  deleteComment
+  deleteComment,
+  likeComment,
+  dislikeComment
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

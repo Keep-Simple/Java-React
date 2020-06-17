@@ -33,9 +33,9 @@ public class PostReactionController {
 
         if (reaction.isPresent() && !userPostId.equals(getUserId()) && reaction.get().getIsLike() == postReaction.getIsLike()) {
             if(reaction.get().getIsLike()) {
-                template.convertAndSend("/topic/like", userPostId);
+                template.convertAndSend("/topic/like/post", userPostId);
             } else {
-                template.convertAndSend("/topic/dislike", userPostId);
+                template.convertAndSend("/topic/dislike/post", userPostId);
             }
         }
         return reaction;

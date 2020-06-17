@@ -9,6 +9,8 @@ import java.util.UUID;
 public class CommentDetailsDto {
     private UUID id;
     private String body;
+    private long likeCount;
+    private long dislikeCount;
     private UserShortDto user;
     private UUID postId;
 }
