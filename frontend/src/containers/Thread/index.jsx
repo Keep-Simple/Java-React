@@ -29,7 +29,8 @@ const postsFilter = {
   userId: undefined,
   from: 0,
   count: 10,
-  inverted: false //  fetch every post with != userId if TRUE
+  inverted: false, //  fetch every post with != userId if TRUE
+  isLikeFilter: false // toggle filtering by likes on posts
 };
 
 const Thread = ({
@@ -50,25 +51,35 @@ const Thread = ({
   const [sharedPostId, setSharedPostId] = useState(undefined);
   const [showOwnPosts, setShowOwnPosts] = useState(false);
   const [hideOwnPosts, setHideOwnPosts] = useState(false);
+  const [showLikedByMe, setShowLikedByMe] = useState(false);
 
   const toggleShowOwnPosts = () => {
-    if (hideOwnPosts) return;
-    setShowOwnPosts(!showOwnPosts);
+    if (hideOwnPosts || showLikedByMe) return;
     postsFilter.userId = showOwnPosts ? undefined : userId;
+    setShowOwnPosts(!showOwnPosts);
     postsFilter.from = 0;
     load(postsFilter);
-    postsFilter.from = postsFilter.count; // for the next scroll
+    postsFilter.from = postsFilter.count;
   };
 
   const toggleHideOwnPosts = () => {
-    if (showOwnPosts) return;
-    setHideOwnPosts(!hideOwnPosts);
+    if (showOwnPosts || showLikedByMe) return;
     postsFilter.userId = hideOwnPosts ? undefined : userId;
+    postsFilter.inverted = !hideOwnPosts;
+    setHideOwnPosts(!hideOwnPosts);
     postsFilter.from = 0;
-    postsFilter.inverted = true;
     load(postsFilter);
-    postsFilter.inverted = false;
-    postsFilter.from = postsFilter.count; // for the next scroll
+    postsFilter.from = postsFilter.count;
+  };
+
+  const toggleShowLiked = () => {
+    if (showOwnPosts || hideOwnPosts) return;
+    postsFilter.userId = showLikedByMe ? undefined : userId;
+    postsFilter.isLikeFilter = !showLikedByMe;
+    setShowLikedByMe(!showLikedByMe);
+    postsFilter.from = 0;
+    load(postsFilter);
+    postsFilter.from = postsFilter.count;
   };
 
   const getMorePosts = () => {
@@ -88,20 +99,28 @@ const Thread = ({
       <div className={styles.addPostForm}>
         <AddPost addPost={createPost} uploadImage={uploadImage} />
       </div>
-      <div className={styles.toolbar} style={{ float: 'left', width: '50%', textAlign: 'center' }}>
+      <div className={styles.toolbar} style={{ float: 'left', width: '33%', textAlign: 'center' }}>
         <Checkbox
-          toggle
+          slider
           label="Show only my posts"
           checked={showOwnPosts}
           onChange={toggleShowOwnPosts}
         />
       </div>
-      <div className={styles.toolbar} style={{ float: 'left', width: '50%', textAlign: 'center' }}>
+      <div className={styles.toolbar} style={{ float: 'left', width: '33%', textAlign: 'center' }}>
         <Checkbox
-          toggle
+          slider
           label="Hide my posts"
           checked={hideOwnPosts}
           onChange={toggleHideOwnPosts}
+        />
+      </div>
+      <div className={styles.toolbar} style={{ float: 'left', width: '33%', textAlign: 'center' }}>
+        <Checkbox
+          slider
+          label="Liked by me"
+          checked={showLikedByMe}
+          onChange={toggleShowLiked}
         />
       </div>
       <InfiniteScroll

@@ -26,8 +26,9 @@ public class PostsController {
     public List<PostListDto> get(@RequestParam(defaultValue="0") Integer from,
                                  @RequestParam(defaultValue="10") Integer count,
                                  @RequestParam(required = false) UUID userId,
-                                 @RequestParam(required = false) boolean inverted) {
-        return postsService.getAllPosts(from, count, userId, inverted);
+                                 @RequestParam(required = false) boolean inverted,
+                                 @RequestParam(required = false) boolean isLikeFilter) {
+        return postsService.getAllPosts(from, count, userId, inverted, isLikeFilter);
     }
 
     @GetMapping("/{id}")
