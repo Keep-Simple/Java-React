@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image, Label, Icon } from 'semantic-ui-react';
+import { Card, Image, Label, Icon, CardMeta } from 'semantic-ui-react';
 import moment from 'moment';
 
 import styles from './styles.module.scss';
 import PopupReactionInfo from '../PopupReactionInfo';
+import { getUserImgLink } from '../../helpers/imageHelper';
 
 const Post = ({
   post, likePost, dislikePost, deletePost, toggleEditPost, toggleExpandedPost, sharePost, currentUserId
@@ -23,18 +24,21 @@ const Post = ({
     .fromNow();
 
   return (
-    <Card style={{ width: '100%' }}>
+    <Card color="grey" style={{ width: '100%', borderRadius: '12px' }}>
       {image && <Image src={image.link} wrapped ui={false} />}
       <Card.Content>
-        <Card.Meta>
-          <span className="date">
-            posted by
-            {' '}
+        <CardMeta>
+          <Label as="a" image style={{ borderRadius: '17px' }}>
+            <Image style={{ borderRadius: '17px' }} centered src={getUserImgLink(user.image)} />
+            <span />
             {user.username}
+          </Label>
+          <span className="date">
+            added post
             {' - '}
             {date}
           </span>
-        </Card.Meta>
+        </CardMeta>
         <Card.Description>
           {body}
         </Card.Description>

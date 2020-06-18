@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -35,5 +37,13 @@ public class UsersService implements UserDetailsService {
 
     public void save(User user) {
         usersRepository.save(user);
+    }
+
+    public UserShortDto setUserNameById(UUID id, String name) {
+        if (usersRepository.findByUsername(name.trim()).isPresent()) {
+            return usersRepository.findByIdDto(id);
+        }
+            usersRepository.setUserNameById(id, name);
+            return usersRepository.findByIdDto(id);
     }
 }

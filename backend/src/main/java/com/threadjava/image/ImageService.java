@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.threadjava.image.dto.ImageDto;
 import com.threadjava.image.dto.ImgurResponce;
 import com.threadjava.image.model.Image;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;

@@ -36,7 +36,7 @@ const PopupReactionInfo = ({
         setLoaded(true);
       }}
       flowing
-      style={{ padding: '7px' }}
+      style={{ padding: '8px', borderRadius: '20px', borderStyle: 'solid', borderWidth: '2px' }}
       trigger={(isPostReaction
         ? (
           <Label

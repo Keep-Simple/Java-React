@@ -29,3 +29,12 @@ export const getCurrentUser = async () => {
     return null;
   }
 };
+
+export const setUserNameById = async (id, name) => {
+  const response = await callWebApi({
+    endpoint: '/api/user',
+    type: 'POST',
+    request: { id, name }
+  });
+  return response.json();
+};
