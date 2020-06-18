@@ -39,7 +39,7 @@ export const loadCurrentUser = () => async (dispatch, getRootState) => {
 export const setUserName = (id, name) => async dispatch => {
   const response = await setUserNameById(id, name);
   // eslint-disable-next-line no-unused-expressions
-  response.name === name && dispatch({ type: SET_USERNAME, name });
+  response.username === name && dispatch({ type: SET_USERNAME, name });
 
-  return response.name;
+  return response.username;
 };

@@ -30,11 +30,11 @@ export const getCurrentUser = async () => {
   }
 };
 
-export const setUserNameById = async (id, name) => {
+export const setUserNameById = async (id, username) => {
   const response = await callWebApi({
     endpoint: '/api/user',
     type: 'POST',
-    request: { id, name }
+    request: { id, username }
   });
   return response.json();
 };
