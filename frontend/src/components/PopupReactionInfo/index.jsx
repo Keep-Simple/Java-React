@@ -1,43 +1,67 @@
 import React, { useState } from 'react';
-import { Icon, Image, Label, List, ListContent, ListItem, Loader, Popup, PopupContent } from 'semantic-ui-react';
+import {
+  CommentAction,
+  Icon,
+  Image,
+  Label,
+  List,
+  ListContent,
+  ListItem,
+  Loader,
+  Popup,
+  PopupContent
+} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { getDislikeInfo, getLikeInfo } from '../../services/postService';
+import { getCommentDislikeInfo, getCommentLikeInfo, getDislikeInfo, getLikeInfo } from '../../services/postService';
 import styles from '../Post/styles.module.scss';
 import { getUserImg } from '../../helpers/imageHelper';
 
 const PopupReactionInfo = ({
+  isPostReaction,
   forLikes,
-  setReactionState,
-  reactionState,
-  post,
+  postOrComment,
   reactionsCount,
-  changeReactionColor,
-  applyReaction,
-  // eslint-disable-next-line react/prop-types
-  isLike
+  applyReaction
 }) => {
   const [loaded, setLoaded] = useState(false);
+  const [reactionState, setReactionState] = useState([]);
   return (
     <Popup
       position="right center"
       onOpen={async () => {
-        setReactionState(forLikes ? await getLikeInfo(post.id) : await getDislikeInfo(post.id));
+        // eslint-disable-next-line no-nested-ternary
+        setReactionState(isPostReaction
+          ? forLikes ? await getLikeInfo(postOrComment.id) : await getDislikeInfo(postOrComment.id)
+          : forLikes ? await getCommentLikeInfo(postOrComment.id) : await getCommentDislikeInfo(postOrComment.id));
         setLoaded(true);
       }}
       flowing
-      trigger={(
-        <Label
-          basic
-          size="small"
-          as="a"
-          className={styles.toolbarBtn}
-          onClick={() => applyReaction(post, changeReactionColor)}
-        >
-          {forLikes
-            ? <Icon color={isLike ? 'red' : null} name="thumbs up outline" />
-            : <Icon color={isLike === false ? 'blue' : null} name="thumbs down outline" />}
-          {reactionsCount}
-        </Label>
+      style={{ padding: '7px' }}
+      trigger={(isPostReaction
+        ? (
+          <Label
+            basic
+            size="small"
+            as="a"
+            className={styles.toolbarBtn}
+            onClick={() => applyReaction(postOrComment)}
+          >
+            {forLikes
+              ? <Icon name="thumbs up outline" />
+              : <Icon name="thumbs down outline" />}
+            {reactionsCount}
+          </Label>
+        )
+        : (
+          <CommentAction>
+            <span onClick={() => applyReaction(postOrComment)}>
+              {forLikes
+                ? <Icon name="thumbs up outline" />
+                : <Icon name="thumbs down outline" />}
+              {reactionsCount}
+            </span>
+          </CommentAction>
+        )
       )}
     >
       {/* eslint-disable-next-line no-nested-ternary */}
@@ -63,12 +87,10 @@ const PopupReactionInfo = ({
 };
 
 PopupReactionInfo.propTypes = {
-  post: PropTypes.objectOf(PropTypes.any).isRequired,
-  reactionState: PropTypes.arrayOf(PropTypes.object).isRequired,
+  postOrComment: PropTypes.objectOf(PropTypes.any).isRequired,
   forLikes: PropTypes.bool.isRequired,
+  isPostReaction: PropTypes.bool.isRequired,
   reactionsCount: PropTypes.number.isRequired,
-  setReactionState: PropTypes.func.isRequired,
-  changeReactionColor: PropTypes.func.isRequired,
   applyReaction: PropTypes.func.isRequired
 };
 

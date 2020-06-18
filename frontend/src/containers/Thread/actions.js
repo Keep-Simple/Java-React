@@ -95,7 +95,7 @@ export const toggleExpandedPost = postId => async dispatch => {
 
 // == Reactions == //
 
-const likeHelper = async (isLike, post, setReaction, dispatch, getRootState) => {
+const likeHelper = async (isLike, post, dispatch, getRootState) => {
   let likeDiff;
   let dislikeDiff;
   const result = await (isLike ? postService.likePost(post) : postService.dislikePost(post));
@@ -104,7 +104,6 @@ const likeHelper = async (isLike, post, setReaction, dispatch, getRootState) => 
     if (result.isLike === isLike) {
       likeDiff = (+isLike);
       dislikeDiff = (+!isLike);
-      setReaction(isLike);
     } else {
       likeDiff = 0;
       dislikeDiff = 0;
@@ -113,7 +112,6 @@ const likeHelper = async (isLike, post, setReaction, dispatch, getRootState) => 
     // reaction was deleted
     likeDiff = -(+isLike);
     dislikeDiff = -(+!isLike);
-    setReaction(undefined);
   }
 
   const mapLikes = p => ({
@@ -132,11 +130,11 @@ const likeHelper = async (isLike, post, setReaction, dispatch, getRootState) => 
   }
 };
 
-export const likePost = (post, setReaction) => (
-  async (dispatch, getRootState) => likeHelper(true, post, setReaction, dispatch, getRootState));
+export const likePost = post => (
+  async (dispatch, getRootState) => likeHelper(true, post, dispatch, getRootState));
 
-export const dislikePost = (post, setReaction) => (
-  async (dispatch, getRootState) => likeHelper(false, post, setReaction, dispatch, getRootState));
+export const dislikePost = post => (
+  async (dispatch, getRootState) => likeHelper(false, post, dispatch, getRootState));
 
 // == Comments == //
 

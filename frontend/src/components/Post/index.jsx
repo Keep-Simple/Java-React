@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Image, Label, Icon } from 'semantic-ui-react';
 import moment from 'moment';
@@ -22,10 +22,6 @@ const Post = ({
   const date = moment(createdAt)
     .fromNow();
 
-  const [isLike, setReaction] = useState(null);
-  const [likeInfo, setLikeInfo] = useState([]);
-  const [dislikeInfo, setDislikeInfo] = useState([]);
-
   return (
     <Card style={{ width: '100%' }}>
       {image && <Image src={image.link} wrapped ui={false} />}
@@ -45,24 +41,18 @@ const Post = ({
       </Card.Content>
       <Card.Content extra>
         <PopupReactionInfo
+          isPostReaction
           forLikes
-          setReactionState={setLikeInfo}
-          reactionState={likeInfo}
-          post={post}
+          postOrComment={post}
           reactionsCount={likeCount}
-          changeReactionColor={setReaction}
           applyReaction={likePost}
-          isLike={isLike}
         />
         <PopupReactionInfo
+          isPostReaction
           forLikes={false}
-          setReactionState={setDislikeInfo}
-          reactionState={dislikeInfo}
-          post={post}
+          postOrComment={post}
           reactionsCount={dislikeCount}
-          changeReactionColor={setReaction}
           applyReaction={dislikePost}
-          isLike={isLike}
         />
         <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => toggleExpandedPost(id)}>
           <Icon name="comments outline" />

@@ -1,10 +1,14 @@
 package com.threadjava.commentReactions;
 
+import com.threadjava.commentReactions.dto.ExtendedResponseCommentReactionDto;
 import com.threadjava.commentReactions.dto.ReceivedCommentReactionDto;
 import com.threadjava.commentReactions.dto.ResponseCommentReactionDto;
+import com.threadjava.postReactions.dto.ExtendedResponsePostReactionDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static com.threadjava.auth.TokenService.getUserId;
 
@@ -34,5 +38,11 @@ public class CommentReactionService {
             var result = commentReactionsRepository.save(postReaction);
             return Optional.of(CommentReactionMapper.MAPPER.reactionToCommentReactionDto(result));
         }
+    }
+
+    public List<ExtendedResponseCommentReactionDto> getCommentLikes(UUID commentId, boolean isLikes) {
+        if (isLikes)
+            return commentReactionsRepository.getCommentLikes(commentId);
+        return commentReactionsRepository.getCommentDislikes(commentId);
     }
 }

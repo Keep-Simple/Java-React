@@ -12,7 +12,8 @@ import java.util.UUID;
 
 public interface PostReactionsRepository extends CrudRepository<PostReaction, UUID> {
 
-    String BASE_GET_POST_REACTIONS_QUERY = "SELECT new com.threadjava.postReactions.dto.ExtendedResponsePostReactionDto(" +
+    String BASE_GET_POST_REACTIONS_QUERY = "SELECT" +
+            " new com.threadjava.postReactions.dto.ExtendedResponsePostReactionDto(" +
             "r.user.username," +
             "a.link, r.createdAt, r.id) " +
             "FROM PostReaction r " +

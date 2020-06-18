@@ -45,7 +45,6 @@ public class PostReactionController {
 
     @GetMapping("/{postId}/{isLikes}")
     public List<ExtendedResponsePostReactionDto> getLikeInfoForPost(@PathVariable UUID postId, @PathVariable boolean isLikes) {
-        System.out.println(postsService.getPostLikes(postId, isLikes));
         return postsService.getPostLikes(postId, isLikes);
     }
 }

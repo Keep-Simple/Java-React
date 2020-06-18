@@ -1,16 +1,17 @@
 package com.threadjava.commentReactions;
 
+import com.threadjava.commentReactions.dto.ExtendedResponseCommentReactionDto;
 import com.threadjava.commentReactions.dto.ReceivedCommentReactionDto;
 import com.threadjava.commentReactions.dto.ResponseCommentReactionDto;
+import com.threadjava.postReactions.dto.ExtendedResponsePostReactionDto;
 import com.threadjava.postReactions.dto.ReceivedPostReactionDto;
 import com.threadjava.postReactions.dto.ResponsePostReactionDto;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static com.threadjava.auth.TokenService.getUserId;
 
@@ -41,5 +42,10 @@ public class CommentReactionController {
             }
         }
         return reaction;
+    }
+
+    @GetMapping("/{commentId}/{isLikes}")
+    public List<ExtendedResponseCommentReactionDto> getLikeInfoForPost(@PathVariable UUID commentId, @PathVariable boolean isLikes) {
+        return commentReactionService.getCommentLikes(commentId, isLikes);
     }
 }
