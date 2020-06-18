@@ -1,12 +1,15 @@
 package com.threadjava.postReactions;
 
+import com.threadjava.postReactions.dto.ExtendedResponsePostReactionDto;
 import com.threadjava.postReactions.dto.ReceivedPostReactionDto;
 import com.threadjava.postReactions.dto.ResponsePostReactionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static com.threadjava.auth.TokenService.getUserId;
 
@@ -36,5 +39,11 @@ public class PostReactionService {
             var result = postReactionsRepository.save(postReaction);
             return Optional.of(PostReactionMapper.MAPPER.reactionToPostReactionDto(result));
         }
+    }
+
+    public List<ExtendedResponsePostReactionDto> getPostLikes(UUID postId, boolean isLikes) {
+        if (isLikes)
+            return postReactionsRepository.getPostLikes(postId);
+        return postReactionsRepository.getPostDislikes(postId);
     }
 }

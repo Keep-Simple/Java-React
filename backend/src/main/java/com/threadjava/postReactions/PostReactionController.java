@@ -1,14 +1,16 @@
 package com.threadjava.postReactions;
 
+import com.threadjava.postReactions.dto.ExtendedResponsePostReactionDto;
 import com.threadjava.postReactions.dto.ReceivedPostReactionDto;
 import com.threadjava.postReactions.dto.ResponsePostReactionDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static com.threadjava.auth.TokenService.getUserId;
 
@@ -39,5 +41,10 @@ public class PostReactionController {
             }
         }
         return reaction;
+    }
+
+    @GetMapping("/{postId}/{isLikes}")
+    public List<ExtendedResponsePostReactionDto> getLikeInfoForPost(@PathVariable UUID postId, @PathVariable boolean isLikes) {
+        return postsService.getPostLikes(postId, isLikes);
     }
 }

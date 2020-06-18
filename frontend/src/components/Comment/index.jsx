@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Comment as CommentUI, Icon } from 'semantic-ui-react';
+import { Comment as CommentUI } from 'semantic-ui-react';
 import moment from 'moment';
 import { getUserImgLink } from 'src/helpers/imageHelper';
 
 import styles from './styles.module.scss';
+import PopupReactionInfo from '../PopupReactionInfo';
 
 const Comment = ({ comment, currentUserId, toggleEdit, softDeleteComment, like, dislike }) => (
   <CommentUI className={styles.comment}>
@@ -21,18 +22,20 @@ const Comment = ({ comment, currentUserId, toggleEdit, softDeleteComment, like, 
         {comment.body}
       </CommentUI.Text>
       <CommentUI.Actions>
-        <CommentUI.Action>
-          <span onClick={() => like(comment)}>
-            <Icon name="thumbs up outline" />
-            {comment.likeCount}
-          </span>
-        </CommentUI.Action>
-        <CommentUI.Action>
-          <span onClick={() => dislike(comment)}>
-            <Icon name="thumbs down outline" />
-            {comment.dislikeCount}
-          </span>
-        </CommentUI.Action>
+        <PopupReactionInfo
+          isPostReaction={false}
+          reactionsCount={comment.likeCount}
+          forLikes
+          applyReaction={like}
+          postOrComment={comment}
+        />
+        <PopupReactionInfo
+          isPostReaction={false}
+          reactionsCount={comment.dislikeCount}
+          forLikes={false}
+          applyReaction={dislike}
+          postOrComment={comment}
+        />
         {
           currentUserId === comment.user.id ? (
             <span>

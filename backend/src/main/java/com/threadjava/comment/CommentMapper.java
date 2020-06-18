@@ -12,6 +12,8 @@ public interface CommentMapper {
     CommentMapper MAPPER = Mappers.getMapper(CommentMapper.class);
 
     @Mapping(source = "post.id", target = "postId")
+    @Mapping(target = "likeCount", ignore = true)
+    @Mapping(target = "dislikeCount", ignore = true)
     CommentDetailsDto commentToCommentDetailsDto(Comment comment);
 
     @Mapping(source = "postId", target = "post.id")

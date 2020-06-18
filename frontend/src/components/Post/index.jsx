@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Image, Label, Icon } from 'semantic-ui-react';
 import moment from 'moment';
 
 import styles from './styles.module.scss';
+import PopupReactionInfo from '../PopupReactionInfo';
 
 const Post = ({
   post, likePost, dislikePost, deletePost, toggleEditPost, toggleExpandedPost, sharePost, currentUserId
@@ -20,8 +21,6 @@ const Post = ({
   } = post;
   const date = moment(createdAt)
     .fromNow();
-
-  const [isLike, setReaction] = useState(undefined);
 
   return (
     <Card style={{ width: '100%' }}>
@@ -41,14 +40,20 @@ const Post = ({
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => likePost(post, setReaction)}>
-          {isLike ? <Icon color="red" name="thumbs up outline" /> : <Icon name="thumbs up outline" />}
-          {likeCount}
-        </Label>
-        <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => dislikePost(post, setReaction)}>
-          {isLike === false ? <Icon color="blue" name="thumbs down outline" /> : <Icon name="thumbs down outline" />}
-          {dislikeCount}
-        </Label>
+        <PopupReactionInfo
+          isPostReaction
+          forLikes
+          postOrComment={post}
+          reactionsCount={likeCount}
+          applyReaction={likePost}
+        />
+        <PopupReactionInfo
+          isPostReaction
+          forLikes={false}
+          postOrComment={post}
+          reactionsCount={dislikeCount}
+          applyReaction={dislikePost}
+        />
         <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => toggleExpandedPost(id)}>
           <Icon name="comments outline" />
           {commentCount}

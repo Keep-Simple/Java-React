@@ -29,7 +29,7 @@ const ExpandedPost = ({
   likeComment: likeCom,
   dislikeComment: dislikeCom
 }) => (
-  <Modal dimmer="blurring" centered={false} open onClose={() => toggle()}>
+  <Modal centered={false} open onClose={() => toggle()}>
     {post
       ? (
         <Modal.Content>
