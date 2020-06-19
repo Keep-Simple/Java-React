@@ -28,7 +28,12 @@ const ExpandedPost = ({
   likeComment: likeCom,
   dislikeComment: dislikeCom
 }) => (
-  <Modal centered={false} open onClose={() => toggle()}>
+  <Modal
+    style={{ padding: '8px', borderRadius: '15px', fontSize: 'medium' }}
+    centered={false}
+    open
+    onClose={() => toggle()}
+  >
     <Modal.Content>
       <Post
         post={post}

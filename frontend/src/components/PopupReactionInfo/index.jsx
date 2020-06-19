@@ -27,7 +27,7 @@ const PopupReactionInfo = ({
   const [reactionState, setReactionState] = useState([]);
   return (
     <Popup
-      position="right center"
+      position="bottom left"
       onOpen={async () => {
         // eslint-disable-next-line no-nested-ternary
         setReactionState(isPostReaction
@@ -36,12 +36,12 @@ const PopupReactionInfo = ({
         setLoaded(true);
       }}
       flowing
-      style={{ padding: '8px', borderRadius: '20px', borderStyle: 'solid', borderWidth: '2px' }}
+      inverted
+      style={{ padding: '8px', borderRadius: '20px' }}
       trigger={(isPostReaction
         ? (
           <Label
             basic
-            size="small"
             as="a"
             className={styles.toolbarBtn}
             onClick={() => applyReaction(postOrComment)}
@@ -68,13 +68,11 @@ const PopupReactionInfo = ({
       {loaded ? reactionState.length
         ? (
           <PopupContent>
-            <List horizontal size="small">
+            <List horizontal>
               {reactionState.map(i => (
                 <ListItem key={i.id}>
                   <Image avatar src={getUserImg(i.imgLink)} />
-                  <ListContent>
-                    { i.username }
-                  </ListContent>
+                  <ListContent content={i.username} />
                 </ListItem>
               ))}
             </List>

@@ -24,8 +24,7 @@ const Post = ({
     .fromNow();
 
   return (
-    <Card color="grey" style={{ width: '100%', borderRadius: '12px' }}>
-      {image && <Image src={image.link} wrapped ui={false} />}
+    <Card color="grey" style={{ width: '100%', borderRadius: '15px' }}>
       <Card.Content>
         <CardMeta>
           <Label as="a" image style={{ borderRadius: '17px' }}>
@@ -43,6 +42,9 @@ const Post = ({
           {body}
         </Card.Description>
       </Card.Content>
+      <div>
+        {image && <Image src={image.link} />}
+      </div>
       <Card.Content extra>
         <PopupReactionInfo
           isPostReaction
@@ -58,51 +60,50 @@ const Post = ({
           reactionsCount={dislikeCount}
           applyReaction={dislikePost}
         />
-        <Label basic size="small" as="a" className={styles.toolbarBtn} onClick={() => toggleExpandedPost(id)}>
+        <Label basic as="a" className={styles.toolbarBtn} onClick={() => toggleExpandedPost(id)}>
           <Icon name="comments outline" />
           {commentCount}
         </Label>
-        <Label
-          basic
-          style={{ opacity: 0.55 }}
-          size="small"
-          as="a"
-          className={styles.toolbarBtn}
-          onClick={() => sharePost(id)}
-        >
-          <Icon name="share alternate" />
-          Share
-        </Label>
-        {
-          currentUserId === user.id
-            ? (
-              <span>
-                <Label
-                  style={{ opacity: 0.55 }}
-                  basic
-                  size="small"
-                  as="a"
-                  className={styles.toolbarBtn}
-                  onClick={() => toggleEditPost(post)}
-                >
-                  <Icon name="pencil alternate" />
-                  Edit
-                </Label>
-                <Label
-                  style={{ opacity: 0.45, color: 'red' }}
-                  basic
-                  size="small"
-                  as="a"
-                  className={styles.toolbarBtn}
-                  onClick={() => deletePost(id)}
-                >
-                  <Icon name="archive" />
-                  Delete
-                </Label>
-              </span>
-            )
-            : null
-        }
+        <span style={{ float: 'right' }}>
+          <Label
+            basic
+            style={{ opacity: 0.55 }}
+            as="a"
+            className={styles.toolbarBtn}
+            onClick={() => sharePost(id)}
+          >
+            <Icon name="share alternate" />
+            Share
+          </Label>
+          {
+            currentUserId === user.id
+              ? (
+                <span>
+                  <Label
+                    style={{ opacity: 0.55 }}
+                    basic
+                    as="a"
+                    className={styles.toolbarBtn}
+                    onClick={() => toggleEditPost(post)}
+                  >
+                    <Icon name="pencil alternate" />
+                    Edit
+                  </Label>
+                  <Label
+                    style={{ opacity: 0.45, color: 'red' }}
+                    basic
+                    as="a"
+                    className={styles.toolbarBtn}
+                    onClick={() => deletePost(id)}
+                  >
+                    <Icon name="archive" />
+                    Delete
+                  </Label>
+                </span>
+              )
+              : null
+          }
+        </span>
       </Card.Content>
     </Card>
   );
