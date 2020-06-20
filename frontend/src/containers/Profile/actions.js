@@ -1,6 +1,4 @@
 import * as authService from 'src/services/authService';
-import { setUserNameById } from 'src/services/authService';
-// eslint-disable-next-line no-unused-vars
 import { SET_USER, SET_USER_IMG, SET_USERNAME } from './actionTypes';
 
 const setToken = token => localStorage.setItem('token', token);
@@ -31,15 +29,15 @@ export const loadCurrentUser = () => async (dispatch, getRootState) => {
   setUser(user)(dispatch, getRootState);
 };
 
-// export const setUserImg = (id, imageLink) => async dispatch => {
-//   const response = await setUserImgById(id, imageLink);
-//   dispatch({ type: SET_USER_IMG, image: response.link });
-// };
-
 export const setUserName = (id, name) => async dispatch => {
-  const response = await setUserNameById(id, name);
+  const response = await authService.setUserNameById(id, name);
   // eslint-disable-next-line no-unused-expressions
   response.username === name && dispatch({ type: SET_USERNAME, name });
 
   return response.username;
+};
+
+export const setUserImg = (id, image) => async dispatch => {
+  await authService.setUserImgById(id, image.id);
+  dispatch({ type: SET_USER_IMG, image });
 };

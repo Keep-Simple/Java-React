@@ -2,6 +2,7 @@ package com.threadjava.users;
 
 import com.threadjava.auth.model.AuthUser;
 import com.threadjava.users.dto.UserDetailsDto;
+import com.threadjava.users.dto.UserImageUpdateDto;
 import com.threadjava.users.dto.UserShortDto;
 import com.threadjava.users.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,9 @@ public class UsersService implements UserDetailsService {
         }
             usersRepository.setUserNameById(id, name);
             return usersRepository.findByIdDto(id);
+    }
+
+    public void setUserAvatar(UserImageUpdateDto dto) {
+        usersRepository.setUserAvatar(dto.getUserId(), dto.getImageId());
     }
 }

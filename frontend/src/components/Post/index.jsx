@@ -43,7 +43,12 @@ const Post = ({
         </Card.Description>
       </Card.Content>
       <div>
-        {image && <Image src={image.link} />}
+        {image && (
+          <Image
+            style={{ height: '100%', width: '100%', objectFit: 'contain' }}
+            src={image.link}
+          />
+        )}
       </div>
       <Card.Content extra>
         <PopupReactionInfo

@@ -32,9 +32,17 @@ export const getCurrentUser = async () => {
 
 export const setUserNameById = async (id, username) => {
   const response = await callWebApi({
-    endpoint: '/api/user',
+    endpoint: '/api/user/setName',
     type: 'POST',
     request: { id, username }
   });
   return response.json();
+};
+
+export const setUserImgById = async (userId, imageId) => {
+  await callWebApi({
+    endpoint: '/api/user/setAvatar',
+    type: 'POST',
+    request: { userId, imageId }
+  });
 };
