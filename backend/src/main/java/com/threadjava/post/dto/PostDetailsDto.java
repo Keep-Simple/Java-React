@@ -1,6 +1,7 @@
 package com.threadjava.post.dto;
 
 import com.threadjava.image.dto.ImageDto;
+import com.threadjava.users.dto.UserDto;
 import com.threadjava.users.dto.UserShortDto;
 import lombok.Data;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class PostDetailsDto {
     private UUID id;
     private String body;
     private ImageDto image;
-    private UserShortDto user;
+    private UserDto user;
     private Date createdAt;
     private Date updatedAt;
     public long likeCount;

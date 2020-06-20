@@ -7,7 +7,6 @@ const CropPhoto = ({ src, crop, setCrop }) => (
   <ReactCrop
     src={src}
     crop={crop}
-    minWidth="40"
     maxWidth="200"
     onChange={(newCrop, percent) => setCrop(percent)}
   />

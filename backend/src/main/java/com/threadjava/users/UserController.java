@@ -3,6 +3,7 @@ package com.threadjava.users;
 import com.threadjava.users.dto.UserDetailsDto;
 import com.threadjava.users.dto.UserImageUpdateDto;
 import com.threadjava.users.dto.UserShortDto;
+import com.threadjava.users.dto.UserStatusUpdateDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,5 +33,10 @@ public class UserController {
     @PostMapping("/setAvatar")
     public void setUserAvatar(@RequestBody UserImageUpdateDto dto) {
          userDetailsService.setUserAvatar(dto);
+    }
+
+    @PostMapping("/setStatus")
+    public void setUserStatus(@RequestBody UserStatusUpdateDto dto) {
+         userDetailsService.setUserStatus(dto);
     }
 }

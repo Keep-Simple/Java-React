@@ -33,7 +33,6 @@ public class PostsController {
 
     @GetMapping("/{id}")
     public PostDetailsDto get(@PathVariable UUID id) {
-        System.out.println(postsService.getPostById(id));
         return postsService.getPostById(id);
     }
 

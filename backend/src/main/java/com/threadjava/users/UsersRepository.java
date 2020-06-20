@@ -26,6 +26,11 @@ public interface UsersRepository extends JpaRepository<User, UUID> {
     @Query("UPDATE User u SET u.avatar.id = :imageId WHERE u.id = :id")
     void setUserAvatar(@Param("id") UUID id, @Param("imageId") UUID imageId);
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE User u SET u.status = :status WHERE u.id = :id")
+    void setUserStatus(@Param("id") UUID id, @Param("status") String status);
+
     @Query("select new com.threadjava.users.dto.UserShortDto(u.id, u.username) " +
             "from User u WHERE u.id = :id")
     UserShortDto findByIdDto(@Param("id") UUID id);

@@ -4,6 +4,7 @@ import com.threadjava.auth.model.AuthUser;
 import com.threadjava.users.dto.UserDetailsDto;
 import com.threadjava.users.dto.UserImageUpdateDto;
 import com.threadjava.users.dto.UserShortDto;
+import com.threadjava.users.dto.UserStatusUpdateDto;
 import com.threadjava.users.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -33,7 +34,7 @@ public class UsersService implements UserDetailsService {
         return usersRepository
                 .findById(id)
                 .map(UserMapper.MAPPER::userToUserDetailsDto)
-                .orElseThrow(() -> new UsernameNotFoundException("No user found with username"));
+                .orElseThrow(() -> new UsernameNotFoundException("No user found with this id"));
     }
 
     public void save(User user) {
@@ -50,5 +51,9 @@ public class UsersService implements UserDetailsService {
 
     public void setUserAvatar(UserImageUpdateDto dto) {
         usersRepository.setUserAvatar(dto.getUserId(), dto.getImageId());
+    }
+
+    public void setUserStatus(UserStatusUpdateDto dto) {
+        usersRepository.setUserStatus(dto.getUserId(), dto.getStatus());
     }
 }

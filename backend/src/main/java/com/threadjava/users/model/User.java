@@ -19,6 +19,9 @@ public class User extends BaseEntity {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "status")
+    private String status;
+
     @ManyToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "avatar_id")
     private Image avatar;

@@ -46,3 +46,11 @@ export const setUserImgById = async (userId, imageId) => {
     request: { userId, imageId }
   });
 };
+
+export const setUserStatusById = async (userId, status) => {
+  await callWebApi({
+    endpoint: '/api/user/setStatus',
+    type: 'POST',
+    request: { userId, status }
+  });
+};

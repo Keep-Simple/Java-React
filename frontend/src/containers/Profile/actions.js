@@ -1,5 +1,5 @@
 import * as authService from 'src/services/authService';
-import { SET_USER, SET_USER_IMG, SET_USERNAME } from './actionTypes';
+import { SET_USER, SET_USER_IMG, SET_USER_STATUS, SET_USERNAME } from './actionTypes';
 
 const setToken = token => localStorage.setItem('token', token);
 
@@ -40,4 +40,9 @@ export const setUserName = (id, name) => async dispatch => {
 export const setUserImg = (id, image) => async dispatch => {
   await authService.setUserImgById(id, image.id);
   dispatch({ type: SET_USER_IMG, image });
+};
+
+export const setUserStatus = (id, status) => async dispatch => {
+  await authService.setUserStatusById(id, status);
+  dispatch({ type: SET_USER_STATUS, status });
 };

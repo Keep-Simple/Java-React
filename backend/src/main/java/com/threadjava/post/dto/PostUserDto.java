@@ -8,5 +8,6 @@ import java.util.UUID;
 public class PostUserDto {
     private UUID id;
     private String username;
+    private String status;
     private ImageDto image;
 }

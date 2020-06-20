@@ -15,6 +15,7 @@ public abstract class PostMapper {
     public static final PostMapper MAPPER = Mappers.getMapper(PostMapper.class);
 
     @Mapping(target = "comments", ignore = true)
+    @Mapping(source = "user.avatar", target = "user.image")
     public abstract PostDetailsDto postToPostDetailsDto(PostDetailsQueryResult post);
 
     public abstract PostCommentDto fetchedCommentToPostCommentDto(FetchCommentDto post);

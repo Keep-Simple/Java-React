@@ -12,6 +12,7 @@ public interface CommentMapper {
     CommentMapper MAPPER = Mappers.getMapper(CommentMapper.class);
 
     @Mapping(source = "post.id", target = "postId")
+    @Mapping(source = "user.avatar", target = "user.image")
     @Mapping(target = "likeCount", ignore = true)
     @Mapping(target = "dislikeCount", ignore = true)
     CommentDetailsDto commentToCommentDetailsDto(Comment comment);

@@ -1,4 +1,4 @@
-import { SET_USER, SET_USER_IMG, SET_USERNAME } from './actionTypes';
+import { SET_USER, SET_USER_IMG, SET_USER_STATUS, SET_USERNAME } from './actionTypes';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -18,6 +18,11 @@ export default (state = {}, action) => {
       return {
         ...state,
         user: { ...state.user, username: action.name }
+      };
+    case SET_USER_STATUS:
+      return {
+        ...state,
+        user: { ...state.user, status: action.status }
       };
     default:
       return state;
