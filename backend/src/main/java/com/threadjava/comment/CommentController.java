@@ -32,7 +32,6 @@ public class CommentController {
 
     @PutMapping("/update")
     public void update(@RequestBody CommentUpdateDto commentDto) {
-        System.out.println(commentDto);
         if(getUserId().equals(commentDto.getUser().getId()))
             commentService.update(commentDto);
     }

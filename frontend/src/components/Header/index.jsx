@@ -1,40 +1,113 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { getUserImgLink } from 'src/helpers/imageHelper';
-import { Header as HeaderUI, Image, Grid, Icon, Button } from 'semantic-ui-react';
+import { Header as HeaderUI, Image, Grid, Icon, Button, Input, Popup } from 'semantic-ui-react';
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import styles from './styles.module.scss';
+import { setUserStatus } from '../../containers/Profile/actions';
+import { loadPosts } from '../../containers/Thread/actions';
 
-const Header = ({ user, logout }) => (
-  <div className={styles.headerWrp}>
-    <Grid centered container columns="2">
-      <Grid.Column>
-        {user && (
+const Header = ({
+  user,
+  logout,
+  loadPosts: reloadPosts,
+  setUserStatus: applyStatusToUser
+}) => {
+  const [status, setStatus] = useState(user.status);
+
+  useEffect(() => {
+    setStatus(user.status);
+  }, [user.status]);
+
+  const handleStatusChange = async () => {
+    if (user.status !== status) {
+      await applyStatusToUser(user.id, status);
+      reloadPosts();
+    }
+  };
+
+  return (
+    <div className={styles.headerWrp}>
+      <Grid columns="equal">
+        <NavLink exact to="/">
+          <Grid.Column>
+            {user && (
+              <Image size="tiny" circular src={getUserImgLink(user.image)} />
+            )}
+          </Grid.Column>
+        </NavLink>
+        <Grid.Column>
           <NavLink exact to="/">
             <HeaderUI>
-              <Image circular src={getUserImgLink(user.image)} />
-              {' '}
               {user.username}
             </HeaderUI>
           </NavLink>
-        )}
-      </Grid.Column>
-      <Grid.Column textAlign="right">
-        <NavLink exact activeClassName="active" to="/profile" className={styles.menuBtn}>
-          <Icon name="user circle" size="large" />
-        </NavLink>
-        <Button basic icon type="button" className={`${styles.menuBtn} ${styles.logoutBtn}`} onClick={logout}>
-          <Icon name="log out" size="large" />
-        </Button>
-      </Grid.Column>
-    </Grid>
-  </div>
-);
+          {user
+          && (
+            <Input
+              transparent
+              value={status}
+              onChange={ev => setStatus(ev.target.value)}
+              placeholder="Add status..."
+            >
+              <input />
+              <Button
+                disabled={status === user.status}
+                basic
+                circular
+                style={{ border: 'none', boxShadow: 'none' }}
+                icon="pencil"
+                onClick={handleStatusChange}
+              />
+            </Input>
+          ) }
+        </Grid.Column>
+        <Grid.Column textAlign="right">
+          <NavLink exact activeClassName="active" to="/profile" className={styles.menuBtn}>
+            <Popup
+              position="bottom center"
+              inverted
+              style={{ padding: '8px', borderRadius: '20px' }}
+              content="Profile"
+              trigger={(
+                <Icon name="user" size="large" />
+              )}
+            />
+          </NavLink>
+          <Popup
+            position="right center"
+            inverted
+            style={{ padding: '8px', borderRadius: '20px' }}
+            content="Log out"
+            trigger={(
+              <Button basic icon className={`${styles.menuBtn} ${styles.logoutBtn}`} onClick={logout}>
+                <Icon name="log out" size="large" />
+              </Button>
+            )}
+          />
+
+        </Grid.Column>
+      </Grid>
+    </div>
+  );
+};
 
 Header.propTypes = {
   logout: PropTypes.func.isRequired,
+  loadPosts: PropTypes.func.isRequired,
+  setUserStatus: PropTypes.func.isRequired,
   user: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
-export default Header;
+const mapDispatchToProps = dispatch => bindActionCreators(
+  { loadPosts, setUserStatus }, dispatch
+);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Header);
+

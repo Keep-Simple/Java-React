@@ -33,12 +33,13 @@ const AddPost = ({
   };
 
   return (
-    <Segment>
+    <Segment style={{ borderRadius: '15px' }}>
       <Form onSubmit={handleAddPost}>
         <Form.TextArea
+          style={{ border: 'none' }}
           name="body"
           value={body}
-          placeholder="What is the news?"
+          placeholder="What's happening?"
           onChange={ev => setBody(ev.target.value)}
         />
         {image?.imageLink && (
@@ -46,12 +47,37 @@ const AddPost = ({
             <Image className={styles.image} src={image?.imageLink} alt="post" />
           </div>
         )}
-        <Button color="teal" icon labelPosition="left" as="label" loading={isUploading} disabled={isUploading}>
-          <Icon name="image" />
-          Attach image
-          <input name="image" type="file" onChange={handleUploadFile} hidden />
+        <Button
+          inverted
+          color="blue"
+          style={{ borderRadius: '15px' }}
+          animated="vertical"
+          as="label"
+          loading={isUploading}
+          disabled={isUploading}
+        >
+          <Button.Content visible>
+            <Icon name="image" />
+            Attach
+            <input name="image" type="file" onChange={handleUploadFile} hidden />
+          </Button.Content>
+          <Button.Content hidden>
+            <Icon name="arrow up" />
+          </Button.Content>
         </Button>
-        <Button floated="right" color="blue" type="submit">Post</Button>
+        <Button
+          disabled={!body.length}
+          inverted
+          primary
+          style={{ borderRadius: '30px' }}
+          floated="right"
+          type="submit"
+          size="large"
+          animated
+        >
+          <Button.Content visible>Tweet</Button.Content>
+          <Button.Content hidden><Icon name="arrow right" /></Button.Content>
+        </Button>
       </Form>
     </Segment>
   );

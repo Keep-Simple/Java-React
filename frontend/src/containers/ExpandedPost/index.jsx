@@ -12,7 +12,6 @@ import {
 import Post from 'src/components/Post';
 import Comment from 'src/components/Comment';
 import AddComment from 'src/components/AddComment';
-import Spinner from 'src/components/Spinner';
 
 const ExpandedPost = ({
   userId,
@@ -29,42 +28,43 @@ const ExpandedPost = ({
   likeComment: likeCom,
   dislikeComment: dislikeCom
 }) => (
-  <Modal centered={false} open onClose={() => toggle()}>
-    {post
-      ? (
-        <Modal.Content>
-          <Post
-            post={post}
-            likePost={like}
-            dislikePost={dislike}
-            deletePost={del}
-            toggleExpandedPost={toggle}
-            toggleEditPost={toggleEdit}
-            sharePost={sharePost}
-            currentUserId={userId}
-          />
-          <CommentUI.Group style={{ maxWidth: '100%' }}>
-            <Header as="h3" dividing>
-              Comments
-            </Header>
-            {post.comments && post.comments
-              .sort((c1, c2) => moment(c1.createdAt).diff(c2.createdAt))
-              .map(comment => (
-                <Comment
-                  key={comment.id}
-                  comment={comment}
-                  currentUserId={userId}
-                  toggleEdit={toggleEditCom}
-                  softDeleteComment={delComment}
-                  like={likeCom}
-                  dislike={dislikeCom}
-                />
-              ))}
-            <AddComment postId={post.id} addComment={add} />
-          </CommentUI.Group>
-        </Modal.Content>
-      )
-      : <Spinner />}
+  <Modal
+    style={{ padding: '8px', borderRadius: '15px', fontSize: 'medium' }}
+    centered={false}
+    open
+    onClose={() => toggle()}
+  >
+    <Modal.Content>
+      <Post
+        post={post}
+        likePost={like}
+        dislikePost={dislike}
+        deletePost={del}
+        toggleExpandedPost={toggle}
+        toggleEditPost={toggleEdit}
+        sharePost={sharePost}
+        currentUserId={userId}
+      />
+      <CommentUI.Group style={{ maxWidth: '100%' }}>
+        <Header as="h3" dividing>
+          Comments
+        </Header>
+        {post.comments && post.comments
+          .sort((c1, c2) => moment(c1.createdAt).diff(c2.createdAt))
+          .map(comment => (
+            <Comment
+              key={comment.id}
+              comment={comment}
+              currentUserId={userId}
+              toggleEdit={toggleEditCom}
+              softDeleteComment={delComment}
+              like={likeCom}
+              dislike={dislikeCom}
+            />
+          ))}
+        <AddComment postId={post.id} addComment={add} />
+      </CommentUI.Group>
+    </Modal.Content>
   </Modal>
 );
 

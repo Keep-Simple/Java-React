@@ -16,7 +16,11 @@ const SharedPostLink = ({ postId, close }) => {
   };
 
   return (
-    <Modal open onClose={close}>
+    <Modal
+      style={{ padding: '8px', borderRadius: '15px', fontSize: 'medium' }}
+      open
+      onClose={close}
+    >
       <Modal.Header className={styles.header}>
         <span>Share Post</span>
         {copied && (

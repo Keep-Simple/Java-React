@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Comment as CommentUI } from 'semantic-ui-react';
 import moment from 'moment';
-import { getUserImgLink } from 'src/helpers/imageHelper';
 
 import styles from './styles.module.scss';
 import PopupReactionInfo from '../PopupReactionInfo';
+import { getUserImgLink } from '../../helpers/imageHelper';
 
 const Comment = ({ comment, currentUserId, toggleEdit, softDeleteComment, like, dislike }) => (
   <CommentUI className={styles.comment}>
@@ -14,10 +14,8 @@ const Comment = ({ comment, currentUserId, toggleEdit, softDeleteComment, like, 
       <CommentUI.Author as="a">
         {comment.user.username}
       </CommentUI.Author>
-      <CommentUI.Metadata>
-        {moment(comment.createdAt)
-          .fromNow()}
-      </CommentUI.Metadata>
+      {comment.user.status && <CommentUI.Metadata content={`${comment.user.status} — `} />}
+      <CommentUI.Metadata content={moment(comment.createdAt).fromNow()} />
       <CommentUI.Text>
         {comment.body}
       </CommentUI.Text>

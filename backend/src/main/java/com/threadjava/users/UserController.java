@@ -1,10 +1,13 @@
 package com.threadjava.users;
 
 import com.threadjava.users.dto.UserDetailsDto;
+import com.threadjava.users.dto.UserImageUpdateDto;
+import com.threadjava.users.dto.UserShortDto;
+import com.threadjava.users.dto.UserStatusUpdateDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 import static com.threadjava.auth.TokenService.getUserId;
 
@@ -20,5 +23,20 @@ public class UserController {
     @GetMapping
     public UserDetailsDto getUser() {
         return userDetailsService.getUserById(getUserId());
+    }
+
+    @PostMapping("/setName")
+    public UserShortDto setUserName(@RequestBody UserShortDto user) {
+        return userDetailsService.setUserNameById(user.getId(), user.getUsername());
+    }
+
+    @PostMapping("/setAvatar")
+    public void setUserAvatar(@RequestBody UserImageUpdateDto dto) {
+         userDetailsService.setUserAvatar(dto);
+    }
+
+    @PostMapping("/setStatus")
+    public void setUserStatus(@RequestBody UserStatusUpdateDto dto) {
+         userDetailsService.setUserStatus(dto);
     }
 }

@@ -2,12 +2,16 @@ package com.threadjava.users;
 
 import com.threadjava.auth.model.AuthUser;
 import com.threadjava.users.dto.UserDetailsDto;
+import com.threadjava.users.dto.UserImageUpdateDto;
 import com.threadjava.users.dto.UserShortDto;
+import com.threadjava.users.dto.UserStatusUpdateDto;
 import com.threadjava.users.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -30,10 +34,26 @@ public class UsersService implements UserDetailsService {
         return usersRepository
                 .findById(id)
                 .map(UserMapper.MAPPER::userToUserDetailsDto)
-                .orElseThrow(() -> new UsernameNotFoundException("No user found with username"));
+                .orElseThrow(() -> new UsernameNotFoundException("No user found with this id"));
     }
 
     public void save(User user) {
         usersRepository.save(user);
+    }
+
+    public UserShortDto setUserNameById(UUID id, String name) {
+        if (usersRepository.findByUsername(name.trim()).isPresent()) {
+            return usersRepository.findByIdDto(id);
+        }
+            usersRepository.setUserNameById(id, name);
+            return usersRepository.findByIdDto(id);
+    }
+
+    public void setUserAvatar(UserImageUpdateDto dto) {
+        usersRepository.setUserAvatar(dto.getUserId(), dto.getImageId());
+    }
+
+    public void setUserStatus(UserStatusUpdateDto dto) {
+        usersRepository.setUserStatus(dto.getUserId(), dto.getStatus());
     }
 }

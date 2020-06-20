@@ -25,7 +25,7 @@ public class Comment extends BaseEntity {
     @Column(name = "deleted_at")
     private Date deletedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "user_id")
     private User user;
 

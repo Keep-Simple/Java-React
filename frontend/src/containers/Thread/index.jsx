@@ -96,7 +96,7 @@ const Thread = ({
 
   return (
     <div className={styles.threadContent}>
-      <div className={styles.addPostForm}>
+      <div className={styles.addPostForm} style={{}}>
         <AddPost addPost={createPost} uploadImage={uploadImage} />
       </div>
       <div className={styles.toolbar} style={{ float: 'left', width: '33%', textAlign: 'center' }}>
