@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { getUserImgLink } from 'src/helpers/imageHelper';
-import { Header as HeaderUI, Image, Grid, Icon, Button, Input } from 'semantic-ui-react';
+import { Header as HeaderUI, Image, Grid, Icon, Button, Input, Popup } from 'semantic-ui-react';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -17,6 +17,10 @@ const Header = ({
   setUserStatus: applyStatusToUser
 }) => {
   const [status, setStatus] = useState(user.status);
+
+  useEffect(() => {
+    setStatus(user.status);
+  }, [user.status]);
 
   const handleStatusChange = async () => {
     if (user.status !== status) {
@@ -63,11 +67,28 @@ const Header = ({
         </Grid.Column>
         <Grid.Column textAlign="right">
           <NavLink exact activeClassName="active" to="/profile" className={styles.menuBtn}>
-            <Icon name="user circle" size="large" />
+            <Popup
+              position="bottom center"
+              inverted
+              style={{ padding: '8px', borderRadius: '20px' }}
+              content="Profile"
+              trigger={(
+                <Icon name="user" size="large" />
+              )}
+            />
           </NavLink>
-          <Button basic icon className={`${styles.menuBtn} ${styles.logoutBtn}`} onClick={logout}>
-            <Icon name="log out" size="large" />
-          </Button>
+          <Popup
+            position="right center"
+            inverted
+            style={{ padding: '8px', borderRadius: '20px' }}
+            content="Log out"
+            trigger={(
+              <Button basic icon className={`${styles.menuBtn} ${styles.logoutBtn}`} onClick={logout}>
+                <Icon name="log out" size="large" />
+              </Button>
+            )}
+          />
+
         </Grid.Column>
       </Grid>
     </div>

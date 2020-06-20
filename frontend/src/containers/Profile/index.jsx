@@ -35,6 +35,10 @@ const Profile = ({
   const [crop, setCrop] = useState({ unit: 'percent', aspect: 1 });
   // == end == //
 
+  useEffect(() => {
+    setInputStatus(user.status);
+  }, [user.status]);
+
   // == functions == //
   const onSelectFile = e => {
     if (e.target.files && e.target.files.length > 0) {

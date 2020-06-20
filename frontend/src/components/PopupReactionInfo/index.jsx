@@ -35,6 +35,9 @@ const PopupReactionInfo = ({
           : forLikes ? await getCommentLikeInfo(postOrComment.id) : await getCommentDislikeInfo(postOrComment.id));
         setLoaded(true);
       }}
+      mouseEnterDelay={50}
+      mouseLeaveDelay={100}
+      on="hover"
       flowing
       inverted
       style={{ padding: '8px', borderRadius: '20px' }}
