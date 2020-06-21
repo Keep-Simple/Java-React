@@ -26,7 +26,7 @@ const Profile = ({
   // == state == //
   const [name, setInputName] = useState(user.username);
   const [nameUpdateFailed, setNameUpdateFailed] = useState(undefined);
-  const [status, setInputStatus] = useState(user.status);
+  const [status, setInputStatus] = useState('');
 
   const [src64, setSrc64] = useState(undefined);
   const [imgBlob, setImgBlob] = useState(undefined);
@@ -36,8 +36,9 @@ const Profile = ({
   // == end == //
 
   useEffect(() => {
-    setInputStatus(user.status);
-  }, [user.status]);
+    setInputStatus(user.status || '');
+    setCrop({ unit: 'percent', aspect: 1, width: '0' });
+  }, [user.status, src64]);
 
   // == functions == //
   const onSelectFile = e => {
@@ -63,6 +64,7 @@ const Profile = ({
       .finally(() => setIsSaving(false));
 
     setImgBlob(undefined);
+    setSrc64(undefined);
     applyAvatarToUser(user.id, image);
     reloadPosts();
   };
@@ -145,7 +147,7 @@ const Profile = ({
           <br />
           <br />
           <Input
-            icon="user"
+            icon="thumbtack"
             iconPosition="left"
             value={status}
             onChange={ev => setInputStatus(ev.target.value)}
@@ -153,6 +155,7 @@ const Profile = ({
           <br />
           <br />
           <Input
+            transparent
             icon="at"
             iconPosition="left"
             value={user.email}

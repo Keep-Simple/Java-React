@@ -13,6 +13,7 @@ public interface PostReactionMapper {
 
     @Mapping(source = "post.id", target = "postId")
     @Mapping(source = "user.id", target = "userId")
+    @Mapping(source = "post.user.id", target = "postUserId")
     ResponsePostReactionDto reactionToPostReactionDto(PostReaction postReaction);
 
     @Mapping(source = "userId", target = "user.id")
@@ -21,4 +22,5 @@ public interface PostReactionMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     PostReaction dtoToPostReaction(ReceivedPostReactionDto postReactionDto);
+
 }

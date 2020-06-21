@@ -14,5 +14,6 @@ public interface AuthUserMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "avatar", ignore = true)
+    @Mapping(target = "status", ignore = true)
     User userRegisterDtoToUser(UserRegisterDto userDto);
 }

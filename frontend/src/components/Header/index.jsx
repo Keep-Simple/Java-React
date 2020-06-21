@@ -16,10 +16,10 @@ const Header = ({
   loadPosts: reloadPosts,
   setUserStatus: applyStatusToUser
 }) => {
-  const [status, setStatus] = useState(user.status);
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
-    setStatus(user.status);
+    setStatus(user.status || '');
   }, [user.status]);
 
   const handleStatusChange = async () => {
@@ -49,11 +49,14 @@ const Header = ({
           && (
             <Input
               transparent
-              value={status}
-              onChange={ev => setStatus(ev.target.value)}
               placeholder="Add status..."
+              onChange={ev => setStatus(ev.target.value)}
+              value={status}
             >
-              <input />
+              <input
+                onChange={ev => setStatus(ev.target.value)}
+                value={status}
+              />
               <Button
                 disabled={status === user.status}
                 basic
@@ -65,7 +68,7 @@ const Header = ({
             </Input>
           ) }
         </Grid.Column>
-        <Grid.Column textAlign="right">
+        <Grid.Column verticalAlign="middle" textAlign="right">
           <NavLink exact activeClassName="active" to="/profile" className={styles.menuBtn}>
             <Popup
               position="bottom center"

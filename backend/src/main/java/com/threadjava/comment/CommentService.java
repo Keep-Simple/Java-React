@@ -33,7 +33,11 @@ public class CommentService {
     public CommentDetailsDto create(CommentSaveDto commentDto) {
         var comment = CommentMapper.MAPPER.commentSaveDtoToModel(commentDto);
         var postCreated = commentRepository.save(comment);
-        return CommentMapper.MAPPER.commentToCommentDetailsDto(postCreated);
+
+        var post = postsRepository.findPostById(postCreated.getPost().getId());
+        var result = CommentMapper.MAPPER.commentToCommentDetailsDto(postCreated);
+        result.setPostUserId(post.get().getUser().getId());
+        return result;
     }
 
     public void update(CommentUpdateDto commentDto) {

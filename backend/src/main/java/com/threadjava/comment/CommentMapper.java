@@ -2,6 +2,7 @@ package com.threadjava.comment;
 
 import com.threadjava.comment.dto.CommentDetailsDto;
 import com.threadjava.comment.dto.CommentSaveDto;
+import com.threadjava.comment.dto.NotificationCommentDto;
 import com.threadjava.comment.model.Comment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -13,6 +14,7 @@ public interface CommentMapper {
 
     @Mapping(source = "post.id", target = "postId")
     @Mapping(source = "user.avatar", target = "user.image")
+    @Mapping(source = "post.user.id", target = "postUserId")
     @Mapping(target = "likeCount", ignore = true)
     @Mapping(target = "dislikeCount", ignore = true)
     CommentDetailsDto commentToCommentDetailsDto(Comment comment);
@@ -25,4 +27,9 @@ public interface CommentMapper {
     @Mapping(target = "deletedAt", ignore = true)
     @Mapping(target = "reactions", ignore = true)
     Comment commentSaveDtoToModel(CommentSaveDto commentDto);
+
+
+    @Mapping(source = "id", target = "commentId")
+    @Mapping(source = "user.id", target = "userId")
+    NotificationCommentDto detailsToNotificationDto(CommentDetailsDto comment);
 }

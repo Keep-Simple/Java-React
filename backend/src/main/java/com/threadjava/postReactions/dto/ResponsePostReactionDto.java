@@ -7,6 +7,7 @@ import java.util.UUID;
 public class ResponsePostReactionDto {
     private UUID id;
     private UUID postId;
+    private UUID postUserId;
     private Boolean isLike;
     private UUID userId;
 }

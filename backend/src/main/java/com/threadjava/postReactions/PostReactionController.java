@@ -3,8 +3,6 @@ package com.threadjava.postReactions;
 import com.threadjava.postReactions.dto.ExtendedResponsePostReactionDto;
 import com.threadjava.postReactions.dto.ReceivedPostReactionDto;
 import com.threadjava.postReactions.dto.ResponsePostReactionDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,18 +26,25 @@ public class PostReactionController {
 
     @PutMapping
     public Optional<ResponsePostReactionDto> setReaction(@RequestBody ReceivedPostReactionDto postReaction){
-        var userPostId = postReaction.getUserId();
+        UUID userPostId = postReaction.getUserId();
         postReaction.setUserId(getUserId());
 
         var reaction = postsService.setReaction(postReaction);
 
-        if (reaction.isPresent() && !userPostId.equals(getUserId()) && reaction.get().getIsLike() == postReaction.getIsLike()) {
-            if(reaction.get().getIsLike()) {
-                template.convertAndSend("/topic/like/post", userPostId);
-            } else {
-                template.convertAndSend("/topic/dislike/post", userPostId);
-            }
+        // When reaction was applied
+        if (reaction.isPresent() && reaction.get().getIsLike() == postReaction.getIsLike()) {
+            reaction.get().setPostUserId(userPostId);
+                template.convertAndSend("/topic/new_post_reaction", reaction);
         }
+
+        // When reaction was deleted
+        if (reaction.isEmpty()) {
+            var response = new ResponsePostReactionDto();
+            response.setPostId(postReaction.getPostId());
+            // live-update change for all users
+            template.convertAndSend("/topic/new_post_reaction", response);
+        }
+
         return reaction;
     }
 
