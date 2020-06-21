@@ -41,6 +41,7 @@ public class PostReactionController {
         if (reaction.isEmpty()) {
             var response = new ResponsePostReactionDto();
             response.setPostId(postReaction.getPostId());
+            // live-update change for all users
             template.convertAndSend("/topic/new_post_reaction", response);
         }
 
