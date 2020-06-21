@@ -28,6 +28,8 @@ const PopupReactionInfo = ({
   return (
     <Popup
       position="bottom left"
+      hoverable
+      inverted
       onOpen={async () => {
         // eslint-disable-next-line no-nested-ternary
         setReactionState(isPostReaction
@@ -35,12 +37,11 @@ const PopupReactionInfo = ({
           : forLikes ? await getCommentLikeInfo(postOrComment.id) : await getCommentDislikeInfo(postOrComment.id));
         setLoaded(true);
       }}
-      mouseEnterDelay={50}
+      mouseEnterDelay={500}
       mouseLeaveDelay={100}
       on="hover"
       flowing
-      inverted
-      style={{ padding: '8px', borderRadius: '20px' }}
+      style={{ padding: '6px', borderRadius: '15px' }}
       trigger={(isPostReaction
         ? (
           <Label
@@ -61,7 +62,7 @@ const PopupReactionInfo = ({
               {forLikes
                 ? <Icon name="thumbs up outline" />
                 : <Icon name="thumbs down outline" />}
-              {reactionsCount}
+              {reactionsCount }
             </span>
           </CommentAction>
         )
@@ -82,7 +83,7 @@ const PopupReactionInfo = ({
           </PopupContent>
         )
         : <PopupContent content={forLikes ? 'No likes😞' : 'No dislikes😃'} />
-        : <Loader size="tiny" active inline="centered" />}
+        : <Loader size="small" active inline="centered" />}
     </Popup>
   );
 };

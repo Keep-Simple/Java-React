@@ -18,9 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -73,23 +71,25 @@ public class DatabaseSeeder {
         user1.setAvatar(userImages.get(0));
         var user2 = new User();
         user2.setEmail("gbottoms1@arizona.edu");
-        user2.setUsername("thartwright1");
+        user2.setUsername("TweetyGirl");
         user2.setPassword(bCryptPasswordEncoder.encode("pxlxvUyyUjE"));
         user2.setAvatar(userImages.get(1));
         var user3 = new User();
         user3.setEmail("cclears2@state.gov");
-        user3.setUsername("bkopps2");
+        user3.setUsername("RosterBacon");
         user3.setPassword(bCryptPasswordEncoder.encode("ioyLdS9Mdgj"));
         user3.setAvatar(userImages.get(2));
         var user4 = new User();
         user4.setEmail("htie3@chronoengine.com");
-        user4.setUsername("kmitchinson3");
+        user4.setUsername("ClippingCheese");
         user4.setPassword(bCryptPasswordEncoder.encode("twn50kl"));
         user4.setAvatar(userImages.get(3));
         var user5 = new User();
         user5.setEmail("bbirmingham4@guardian.co.uk");
-        user5.setUsername("fbrabon4");
+        user5.setUsername("ReboiledMan");
         user5.setPassword(bCryptPasswordEncoder.encode("0naQBpP9"));
+        user5.setAvatar(userImages.get(4));
+
 
         usersRepository.saveAll(List.of(user1, user2, user3, user4, user5));
     }
@@ -99,16 +99,23 @@ public class DatabaseSeeder {
         List<Image> postImages = jdbcTemplate.query("SELECT * FROM images WHERE link IN ("+ imagesToString(getPostImages()) +")", DatabaseSeeder::mapRowImage);
         var users = usersRepository.findAll();
 
-        String[] postBodies = { "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
-                "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
-                "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut",
-                "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
-                "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque",
-                "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae",
-                "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas",
-                "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae",
-                "consectetur animi nesciunt iure dolore\nenim quia ad\nveniam autem ut quam aut nobis\net est aut quod aut provident voluptas autem voluptas",
-                "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error" };
+        String[] postBodies = { "Surrounded to me occasional pianoforte alteration unaffected impossible ye. For saw half than cold. Pretceived an. So narrow formal length my highly longer afford oh. Tall neat he make or at dull ye. \n" +
+                "\n",
+                "\n" +
+                "Dispatched entreaties boisterous say why stimulated. Certain forbade picture now prevent carried she get see sitting. Up. \n" +
+                "\n",
+                "Brother set had private his letters observe outward resolve. Shutters ye marriage to throwing we as. Effect in if agreed. Am offended as wandered thoughts greatest an friendly. Evening covered in he exposed fertile to. Horses seeing at played plenty nature to expect we. Young say led stood hills own thing get. \n" +
+                "\n",
+                "Ye on properly handsome returned throwing am no whatever. In without wishing he of picture no exposed talking minutes. Ct john. About or given on witty event. Or sociable up material bachelor bringing landlord confined. Busy so many in hung easy find well up. So of exquisite my an explained remainder. Dashwood denoting securing be on perceive my laughing so. \n" +
+                "\n",
+                "Dispatched entreaties boisterous say why stimulated. Certain forbade picture now prevent carried she get see sitting. Up. \n" +
+                "\n",
+                "Building mr concerns servants in he outlived am breeding. He so lain good miss when sell some at if. Told hand so an ric promise no. Past add size game cold girl off how old. \n" +
+                "\n" +
+                "Attended no do thoughts me on dissuade scarcely. Own are pretty spring suffer old denote his. By proposal speedily mr st known. Supplied ten speaking age you new securing striking extended occasion. Sang put paid away joy into six her. \n" +
+                "\n",
+                "Contented get distrusts certainty nay are frankness concealed ham. On unaffected resolution on considered of. No thought was. He families believed if no elegance interest surprise an. It abode wrong miles an so delay plate. She relation own put outlived may disposed. \n" +
+                "\n" };
 
         var posts = IntStream.range(0, postBodies.length)
                 .mapToObj(i -> {
@@ -120,48 +127,57 @@ public class DatabaseSeeder {
                 })
                 .collect(Collectors.toList());
 
+        Collections.reverse(posts);
         postsRepository.saveAll(posts);
     }
 
     private void seedCommentsTable() {
         var randomize = new Random();
-        var users = StreamSupport
-                .stream(usersRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
-        var posts = StreamSupport
-                .stream(postsRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        var users = new ArrayList<>(usersRepository.findAll());
+        var posts = new ArrayList<>(postsRepository.findAll());
 
         String[] commentsText = {
-                "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
-                "est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et",
-                "quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione",
-                "non et atque\noccaecati deserunt quas accusantium unde odit nobis qui voluptatem\nquia voluptas consequuntur itaque dolor\net qui rerum deleniti ut occaecati",
-                "harum non quasi et ratione\ntempore iure ex voluptates in ratione\nharum architecto fugit inventore cupiditate\nvoluptates magni quo et",
-                "doloribus at sed quis culpa deserunt consectetur qui praesentium\naccusamus fugiat dicta\nvoluptatem rerum ut voluptate autem\nvoluptatem repellendus aspernatur dolorem in",
-                "maiores sed dolores similique labore et inventore et\nquasi temporibus esse sunt id et\neos voluptatem aliquam\naliquid ratione corporis molestiae mollitia quia et magnam dolor",
-                "ut voluptatem corrupti velit\nad voluptatem maiores\net nisi velit vero accusamus maiores\nvoluptates quia aliquid ullam eaque",
-                "sapiente assumenda molestiae atque\nadipisci laborum distinctio aperiam et ab ut omnis\net occaecati aspernatur odit sit rem expedita\nquas enim ipsam minus",
-                "voluptate iusto quis nobis reprehenderit ipsum amet nulla\nquia quas dolores velit et non\naut quia necessitatibus\nnostrum quaerat nulla et accusamus nisi facilis",
-                "ut dolorum nostrum id quia aut est\nfuga est inventore vel eligendi explicabo quis consectetur\naut occaecati repellat id natus quo est\nut blanditiis quia ut vel ut maiores ea",
-                "expedita maiores dignissimos facilis\nipsum est rem est fugit velit sequi\neum odio dolores dolor totam\noccaecati ratione eius rem velit",
-                "fuga eos qui dolor rerum\ninventore corporis exercitationem\ncorporis cupiditate et deserunt recusandae est sed quis culpa\neum maiores corporis et",
-                "vel quae voluptas qui exercitationem\nvoluptatibus unde sed\nminima et qui ipsam aspernatur\nexpedita magnam laudantium et et quaerat ut qui dolorum",
-                "nihil ut voluptates blanditiis autem odio dicta rerum\nquisquam saepe et est\nsunt quasi nemo laudantium deserunt\nmolestias tempora quo quia",
-                "iste ut laborum aliquid velit facere itaque\nquo ut soluta dicta voluptate\nerror tempore aut et\nsequi reiciendis dignissimos expedita consequuntur libero sed fugiat facilis",
-                "consequatur necessitatibus totam sed sit dolorum\nrecusandae quae odio excepturi voluptatum harum voluptas\nquisquam sit ad eveniet delectus\ndoloribus odio qui non labore",
-                "veritatis voluptates necessitatibus maiores corrupti\nneque et exercitationem amet sit et\nullam velit sit magnam laborum\nmagni ut molestias",
-                "doloribus est illo sed minima aperiam\nut dignissimos accusantium tempore atque et aut molestiae\nmagni ut accusamus voluptatem quos ut voluptates\nquisquam porro sed architecto ut",
-                "qui harum consequatur fugiat\net eligendi perferendis at molestiae commodi ducimus\ndoloremque asperiores numquam qui\nut sit dignissimos reprehenderit tempore",
-                "deleniti aut sed molestias explicabo\ncommodi odio ratione nesciunt\nvoluptate doloremque est\nnam autem error delectus",
-                "qui ipsa animi nostrum praesentium voluptatibus odit\nqui non impedit cum qui nostrum aliquid fuga explicabo\nvoluptatem fugit earum voluptas exercitationem temporibus dignissimos distinctio\nesse inventore reprehenderit quidem ut incidunt nihil necessitatibus rerum",
-                "voluptates provident repellendus iusto perspiciatis ex fugiat ut\nut dolor nam aliquid et expedita voluptate\nsunt vitae illo rerum in quos\nvel eligendi enim quae fugiat est",
-                "repudiandae repellat quia\nsequi est dolore explicabo nihil et\net sit et\net praesentium iste atque asperiores tenetur",
-                "sunt aut quae laboriosam sit ut impedit\nadipisci harum laborum totam deleniti voluptas odit rem ea\nnon iure distinctio ut velit doloribus\net non ex",
-                "incidunt sapiente eaque dolor eos\nad est molestias\nquas sit et nihil exercitationem at cumque ullam\nnihil magnam et",
-                "nisi vel quas ut laborum ratione\nrerum magni eum\nunde et voluptatem saepe\nvoluptas corporis modi amet ipsam eos saepe porro",
-                "voluptatem repellendus quo alias at laudantium\nmollitia quidem esse\ntemporibus consequuntur vitae rerum illum\nid corporis sit id"
+
+                "Consulted he eagerness unfeeling deficient existence of. Calling nothing end fertile for venture ",
+                        "way boy. Esteem spirit temper too say s frequently or motionless on reasonable projecting expression. Way mrs end gave tall walk fact bed. \n" +
+                        "\n",
+
+                        "Passage its ten led hearted removal cordial. Preference any astonished unreserved mrs. Pr",
+                                "osperous understood middletons in conv hill from mr. Valley by oh twenty direct me so. Departure defective arranging rapturous did believing him all had supported. Family months lasted simple set nature vulgar him. Picture for attempt joy excited ten carried manners talking how. Suspicion neglected he resolving agreement perceived at an. \n" +
+                        "\n",
+
+                        "That know ask case sex ham dear her spot. Weddings followed the all marianne nor whatever",
+                                " settling. Perhaps six prudent severaluring see consulted depending. Adieus hunted end plenty are his she afraid. Resources agreement contained propriety applauded neglected use yet. \n" +
+                        "\n",
+
+                        "Not far stuff she think the jokes. Going as by do known noise he wrote round leave. Warml",
+                                "y put branch people narrow see. Windinher at it unknown warrant herself winding if. Him same none name sake had post love. An busy feel form hand am up help. Parties it brother amongst an fortune of. Twenty behind wicket why age now itself ten. \n" +
+                        "\n",
+
+                        "Breakfast procuring nay end happiness allowance assurance frankness. Met simplicity nor d",
+                                "ifficulty unreserved who. Entreaties my additions. Pronounce add boy estimable nay suspected. You sudden nay elinor thirty esteem temper. Quiet leave shy you gay off asked large style. \n" +
+                        "\n",
+
+                        "Now seven world think timed while her. Spoil large oh he rooms on since an. Am up unwilli",
+                                "ng eagerness perceived incommode. Are f reasonably. Horrible so kindness at thoughts exercise no weddings subjects. The mrs gay removed towards journey chapter females offered not. Led distrusts otherwise who may newspaper but. Last he dull am none he mile hold as. \n" +
+                        "\n",
+
+                        "Why painful the sixteen how minuter looking nor. Subject but why ten earnest husband imag",
+                                "ine sixteen brandon. Are unpleasing ocff at avoid of sense small fully it whose an. Ten scarcely distance moreover handsome age although. As when have find fine or said no mile. He in dispatched in imprudence dissimilar be possession unreserved insensible. She evil face fine calm have now. Separate screened he outweigh of distance landlord. \n" +
+                        "\n",
+
+                        "Started several mistake joy say painful removed reached end. State burst think end are it",
+                                "s. Arrived off she elderly beloved himfind dear shy. Talent men wicket add garden. \n" +
+                        "\n",
+
+                        "View fine me gone this name an rank. Compact greater and demands mrs the parlors. Park be",
+                                " fine easy am size away. Him and fine ntiments nor everything off out uncommonly partiality bed. \n" +
+                        "\n",
+
+                        "Effect if in up no depend seemed. Ecstatic elegance gay but disposed. We me rent been par",
+                                "t what. An concluded sportsman offendihe minutes my hastily. Up hung mr we give rest half. Painful so he an comfort is manners. \n"
         };
+
 
         var comments = IntStream.range(0, commentsText.length)
                 .mapToObj(i -> {
@@ -197,19 +213,22 @@ public class DatabaseSeeder {
 
     private List<Image> getUserImages(){
         var image1 = new Image();
-        image1.setLink("https://i.imgur.com/hIjmHms.jpg");
-        image1.setDeleteHash("lajdyJs0Tev0joE");
+        image1.setLink("https://i.imgur.com/oWhSJLi.png");
+        image1.setDeleteHash("cOobHoSilkzRbqt");
         var image2 = new Image();
-        image2.setLink("https://i.imgur.com/Y8DGAuj.jpg");
-        image2.setDeleteHash("1ifCzLIPTjCXurr");
+        image2.setLink("https://i.imgur.com/ZlNnFYn.png");
+        image2.setDeleteHash("wAL72yKJOqlLAQy");
         var image3 = new Image();
-        image3.setLink("https://i.imgur.com/hG4Th4U.jpg");
-        image3.setDeleteHash("Incmabo8F8nnDG7");
+        image3.setLink("https://i.imgur.com/rDD6SFB.png");
+        image3.setDeleteHash("4qzHNJmxsdpb3oO");
         var image4 = new Image();
-        image4.setLink("https://i.imgur.com/dKDpaU5.jpg");
-        image4.setDeleteHash("6ZZpdY8vVRarUx8");
+        image4.setLink("https://i.imgur.com/sGBaypt.png");
+        image4.setDeleteHash("9JLQsPjY8tkiQfC");
+        var image5 = new Image();
+        image5.setLink("https://i.imgur.com/DEfDtBz.png");
+        image5.setDeleteHash("7TA7AeSOFddK0Zh");
 
-        return  List.of(image1, image2, image3, image4 );
+        return  List.of(image1, image2, image3, image4, image5);
     }
 
     private List<Image> getPostImages(){
@@ -219,11 +238,21 @@ public class DatabaseSeeder {
         var image2 = new Image();
         image2.setLink("https://i.imgur.com/jJ8OG5D.jpg");
         image2.setDeleteHash("hKCqBdz2pqcLBk3");
-        return  List.of(image1, image2);
+        var image3 = new Image();
+        image3.setLink("https://i.imgur.com/GWcR43Y.jpg");
+        image3.setDeleteHash("brRKXu2sroWuRJx");
+        var image4 = new Image();
+        image4.setLink("https://i.imgur.com/tlOE9HP.jpg");
+        image4.setDeleteHash("gVkfuQuSF7qlAjP");
+        var image5 = new Image();
+        image5.setLink("https://i.imgur.com/22xAlAG.jpg");
+        image5.setDeleteHash("864FLioNUiAN6bh");
+
+        return  List.of(image1, image2, image3, image4, image5);
     }
 
     private String imagesToString(List<Image>  images){
-        return String.join(",", images.stream().map(x -> "'" + x.getLink() + "'").collect(Collectors.toList()));
+        return images.stream().map(x -> "'" + x.getLink() + "'").collect(Collectors.joining(","));
     }
 
 
