@@ -16,13 +16,14 @@ import Notifications from 'src/components/Notifications';
 import { loadCurrentUser, logout } from 'src/containers/Profile/actions';
 import { applyPost } from 'src/containers/Thread/actions';
 import PropTypes from 'prop-types';
-import { applyPostReaction } from '../Thread/actions';
+import { applyComment, applyPostReaction } from '../Thread/actions';
 
 const Routing = ({
   user,
   isAuthorized,
   applyPost: newPost,
   applyPostReaction: postReactionApply,
+  applyComment: commentApply,
   logout: signOut,
   loadCurrentUser: loadUser,
   isLoading
@@ -54,6 +55,7 @@ const Routing = ({
             </Switch>
           </main>
           <Notifications
+            applyComment={commentApply}
             applyPost={newPost}
             applyPostReaction={postReactionApply}
             user={user}
@@ -68,6 +70,7 @@ Routing.propTypes = {
   logout: PropTypes.func.isRequired,
   applyPost: PropTypes.func.isRequired,
   applyPostReaction: PropTypes.func.isRequired,
+  applyComment: PropTypes.func.isRequired,
   user: PropTypes.objectOf(PropTypes.any),
   isLoading: PropTypes.bool,
   loadCurrentUser: PropTypes.func.isRequired
@@ -83,7 +86,8 @@ const actions = {
   loadCurrentUser,
   logout,
   applyPost,
-  applyPostReaction
+  applyPostReaction,
+  applyComment
 };
 
 const mapStateToProps = ({ profile }) => ({

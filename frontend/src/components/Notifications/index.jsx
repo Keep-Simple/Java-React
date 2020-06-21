@@ -5,10 +5,17 @@ import SockJS from 'sockjs-client';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
+/**
+ * Realisation lacks solid websocket impl
+ * Currently validation happens here
+ * Ideally backend should send data to concrete user
+ */
+
 const Notifications = ({
   user,
   applyPost,
-  applyPostReaction
+  applyPostReaction,
+  applyComment
 }) => {
   const [stompClient] = useState(Stomp.over(new SockJS('/ws')));
 
@@ -21,11 +28,12 @@ const Notifications = ({
     stompClient.connect({}, () => {
       const { id } = user;
 
-      stompClient.subscribe('/topic/postReactions', message => {
+      stompClient.subscribe('/topic/new_post_reaction', message => {
         const reaction = JSON.parse(message.body);
 
-        if (reaction.userId !== user.id) {
+        if (reaction.userId !== id) {
           applyPostReaction(reaction.postId);
+          // Notify user if somebody added reaction
           if (reaction.rollbackLike === undefined) {
             // eslint-disable-next-line no-unused-expressions
             reaction.isLike !== undefined && reaction.isLike
@@ -36,14 +44,24 @@ const Notifications = ({
       });
 
       stompClient.subscribe('/topic/like/comment', userCommentId => {
-        if (userCommentId.body.slice(1, -1) === user.id) {
-          NotificationManager.info('Your comment was liked 😃');
+        if (userCommentId.body.slice(1, -1) === id) {
+          NotificationManager.info('Your comment was liked😃');
         }
       });
 
       stompClient.subscribe('/topic/dislike/comment', userCommentId => {
-        if (userCommentId.body.slice(1, -1) === user.id) {
-          NotificationManager.info('Your comment was disliked 😞');
+        if (userCommentId.body.slice(1, -1) === id) {
+          NotificationManager.info('Your comment was disliked😞');
+        }
+      });
+
+      stompClient.subscribe('/topic/new_comment', message => {
+        const comment = JSON.parse(message.body);
+        if (id !== comment.userId) {
+          applyComment(comment.commentId);
+          if (comment.postUserId === id) {
+            NotificationManager.info('New comment for you😃');
+          }
         }
       });
 
@@ -51,7 +69,7 @@ const Notifications = ({
         const post = JSON.parse(message.body);
         if (post.userId !== id) {
           applyPost(post.id);
-          NotificationManager.info('New Post');
+          NotificationManager.info('New Post😃');
         }
       });
     });
@@ -71,7 +89,8 @@ Notifications.defaultProps = {
 Notifications.propTypes = {
   user: PropTypes.objectOf(PropTypes.any),
   applyPost: PropTypes.func.isRequired,
-  applyPostReaction: PropTypes.func.isRequired
+  applyPostReaction: PropTypes.func.isRequired,
+  applyComment: PropTypes.func.isRequired
 };
 
 export default Notifications;

@@ -66,7 +66,7 @@ const AddPost = ({
           </Button.Content>
         </Button>
         <Button
-          disabled={!body.length}
+          disabled={!body.length || isUploading}
           inverted
           primary
           style={{ borderRadius: '30px' }}

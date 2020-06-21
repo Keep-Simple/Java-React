@@ -3,7 +3,7 @@ package com.threadjava.comment;
 import com.threadjava.comment.dto.CommentDetailsDto;
 import com.threadjava.comment.dto.CommentSaveDto;
 import com.threadjava.comment.dto.CommentUpdateDto;
-import com.threadjava.comment.model.Comment;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -14,9 +14,11 @@ import static com.threadjava.auth.TokenService.getUserId;
 @RequestMapping("/api/comments")
 public class CommentController {
     private final CommentService commentService;
+    private final SimpMessagingTemplate template;
 
-    public CommentController(CommentService commentService) {
+    public CommentController(CommentService commentService, SimpMessagingTemplate template) {
         this.commentService = commentService;
+        this.template = template;
     }
 
     @GetMapping("/{id}")
@@ -27,7 +29,9 @@ public class CommentController {
     @PostMapping
     public CommentDetailsDto post(@RequestBody CommentSaveDto commentDto) {
         commentDto.setUserId(getUserId());
-        return commentService.create(commentDto);
+        var item = commentService.create(commentDto);
+        template.convertAndSend("/topic/new_comment", CommentMapper.MAPPER.detailsToNotificationDto(item));
+        return item;
     }
 
     @PutMapping("/update")

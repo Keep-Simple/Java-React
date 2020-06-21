@@ -1,5 +1,6 @@
 import * as postService from 'src/services/postService';
 import * as commentService from 'src/services/commentService';
+import moment from 'moment';
 import {
   ADD_POST,
   LOAD_MORE_POSTS,
@@ -184,22 +185,34 @@ export const togglePushEditedComment = comment => async (dispatch, getRootState)
   dispatch(setPostsAction(updated));
 };
 
-export const addComment = request => async (dispatch, getRootState) => {
-  const { id } = await commentService.addComment(request);
-  const comment = await commentService.getComment(id);
+export const addComment = (request, orCommentId) => async (dispatch, getRootState) => {
+  let comment;
+
+  if (orCommentId) {
+    comment = await commentService.getComment(orCommentId);
+  } else {
+    const { id } = await commentService.addComment(request);
+    comment = await commentService.getComment(id);
+  }
 
   const mapComments = post => ({
     ...post,
     commentCount: Number(post.commentCount) + 1,
     comments: [...(post.comments || []), comment]
+      .sort((c1, c2) => moment(c1.createdAt).diff(c2.createdAt))
   });
 
   const { posts: { posts, expandedPost } } = getRootState();
   const updated = posts.map(post => (post.id !== comment.postId ? post : mapComments(post)));
 
-  dispatch(setExpandedPostAction(mapComments(expandedPost)));
+  if (expandedPost && expandedPost.id === comment.postId) {
+    dispatch(setExpandedPostAction(mapComments(expandedPost)));
+  }
+
   dispatch(setPostsAction(updated));
 };
+
+export const applyComment = commentId => addComment(null, commentId);
 
 export const toggleEditComment = comment => async dispatch => {
   dispatch(setEditWindowAction(comment));

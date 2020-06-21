@@ -35,9 +35,9 @@ public class PostReactionController {
         var reaction = postsService.setReaction(postReaction);
 
         if (reaction.isPresent() && !userPostId.equals(getUserId()) && reaction.get().getIsLike() == postReaction.getIsLike()) {
-                template.convertAndSend("/topic/postReactions", reaction);
+                template.convertAndSend("/topic/new_post_reaction", reaction);
         } else {
-            template.convertAndSend("/topic/postReactions",
+            template.convertAndSend("/topic/new_post_reaction",
                     PostReactionMapper.MAPPER.receivedToRollbackDto(postReaction));
         }
         return reaction;
