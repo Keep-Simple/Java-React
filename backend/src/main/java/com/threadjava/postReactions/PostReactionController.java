@@ -1,5 +1,6 @@
 package com.threadjava.postReactions;
 
+import com.threadjava.post.PostMapper;
 import com.threadjava.postReactions.dto.ExtendedResponsePostReactionDto;
 import com.threadjava.postReactions.dto.ReceivedPostReactionDto;
 import com.threadjava.postReactions.dto.ResponsePostReactionDto;
@@ -34,11 +35,10 @@ public class PostReactionController {
         var reaction = postsService.setReaction(postReaction);
 
         if (reaction.isPresent() && !userPostId.equals(getUserId()) && reaction.get().getIsLike() == postReaction.getIsLike()) {
-            if(reaction.get().getIsLike()) {
-                template.convertAndSend("/topic/like/post", userPostId);
-            } else {
-                template.convertAndSend("/topic/dislike/post", userPostId);
-            }
+                template.convertAndSend("/topic/postReactions", reaction);
+        } else {
+            template.convertAndSend("/topic/postReactions",
+                    PostReactionMapper.MAPPER.receivedToRollbackDto(postReaction));
         }
         return reaction;
     }

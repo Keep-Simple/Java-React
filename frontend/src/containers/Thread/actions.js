@@ -93,7 +93,7 @@ export const toggleExpandedPost = postId => async dispatch => {
   dispatch(setExpandedPostAction(post));
 };
 
-// == Reactions == //
+// == Post Reactions == //
 
 const likeHelper = async (isLike, post, dispatch, getRootState) => {
   let likeDiff;
@@ -135,6 +135,20 @@ export const likePost = post => (
 
 export const dislikePost = post => (
   async (dispatch, getRootState) => likeHelper(false, post, dispatch, getRootState));
+
+export const applyPostReaction = postId => async (dispatch, getRootState) => {
+  const post = await postService.getPost(postId);
+  const { posts: { posts, expandedPost } } = getRootState();
+  const updated = posts.map(pst => (pst.id !== post.id ? pst : post));
+
+  dispatch(setPostsAction(updated));
+
+  if (expandedPost && expandedPost.id === post.id) {
+    dispatch(setExpandedPostAction(post));
+  }
+
+  return post;
+};
 
 // == Comments == //
 

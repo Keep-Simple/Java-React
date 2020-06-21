@@ -2,6 +2,7 @@ package com.threadjava.postReactions;
 
 import com.threadjava.postReactions.dto.ReceivedPostReactionDto;
 import com.threadjava.postReactions.dto.ResponsePostReactionDto;
+import com.threadjava.postReactions.dto.ResponseRollbackPostReactionDto;
 import com.threadjava.postReactions.model.PostReaction;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -21,4 +22,7 @@ public interface PostReactionMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     PostReaction dtoToPostReaction(ReceivedPostReactionDto postReactionDto);
+
+    @Mapping(source = "isLike", target = "rollbackLike")
+    ResponseRollbackPostReactionDto receivedToRollbackDto(ReceivedPostReactionDto rollbackDto);
 }

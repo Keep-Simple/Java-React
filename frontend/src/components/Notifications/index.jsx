@@ -5,7 +5,11 @@ import SockJS from 'sockjs-client';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
-const Notifications = ({ user, applyPost }) => {
+const Notifications = ({
+  user,
+  applyPost,
+  applyPostReaction
+}) => {
   const [stompClient] = useState(Stomp.over(new SockJS('/ws')));
 
   useEffect(() => {
@@ -17,15 +21,17 @@ const Notifications = ({ user, applyPost }) => {
     stompClient.connect({}, () => {
       const { id } = user;
 
-      stompClient.subscribe('/topic/like/post', userPostId => {
-        if (userPostId.body.slice(1, -1) === user.id) {
-          NotificationManager.info('Your post was liked 😃');
-        }
-      });
+      stompClient.subscribe('/topic/postReactions', message => {
+        const reaction = JSON.parse(message.body);
 
-      stompClient.subscribe('/topic/dislike/post', userPostId => {
-        if (userPostId.body.slice(1, -1) === user.id) {
-          NotificationManager.info('Your post was disliked 😞');
+        if (reaction.userId !== user.id) {
+          applyPostReaction(reaction.postId);
+          if (reaction.rollbackLike === undefined) {
+            // eslint-disable-next-line no-unused-expressions
+            reaction.isLike !== undefined && reaction.isLike
+              ? NotificationManager.info('Your post was liked😃')
+              : NotificationManager.info('Your post was disliked😞');
+          }
         }
       });
 
@@ -64,7 +70,8 @@ Notifications.defaultProps = {
 
 Notifications.propTypes = {
   user: PropTypes.objectOf(PropTypes.any),
-  applyPost: PropTypes.func.isRequired
+  applyPost: PropTypes.func.isRequired,
+  applyPostReaction: PropTypes.func.isRequired
 };
 
 export default Notifications;

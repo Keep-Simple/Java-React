@@ -16,11 +16,13 @@ import Notifications from 'src/components/Notifications';
 import { loadCurrentUser, logout } from 'src/containers/Profile/actions';
 import { applyPost } from 'src/containers/Thread/actions';
 import PropTypes from 'prop-types';
+import { applyPostReaction } from '../Thread/actions';
 
 const Routing = ({
   user,
   isAuthorized,
   applyPost: newPost,
+  applyPostReaction: postReactionApply,
   logout: signOut,
   loadCurrentUser: loadUser,
   isLoading
@@ -51,7 +53,11 @@ const Routing = ({
               <Route path="*" exact component={NotFound} />
             </Switch>
           </main>
-          <Notifications applyPost={newPost} user={user} />
+          <Notifications
+            applyPost={newPost}
+            applyPostReaction={postReactionApply}
+            user={user}
+          />
         </div>
       )
   );
@@ -61,6 +67,7 @@ Routing.propTypes = {
   isAuthorized: PropTypes.bool,
   logout: PropTypes.func.isRequired,
   applyPost: PropTypes.func.isRequired,
+  applyPostReaction: PropTypes.func.isRequired,
   user: PropTypes.objectOf(PropTypes.any),
   isLoading: PropTypes.bool,
   loadCurrentUser: PropTypes.func.isRequired
@@ -72,7 +79,12 @@ Routing.defaultProps = {
   isLoading: true
 };
 
-const actions = { loadCurrentUser, logout, applyPost };
+const actions = {
+  loadCurrentUser,
+  logout,
+  applyPost,
+  applyPostReaction
+};
 
 const mapStateToProps = ({ profile }) => ({
   isAuthorized: profile.isAuthorized,
