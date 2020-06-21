@@ -6,9 +6,10 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 import 'react-notifications/lib/notifications.css';
 
 /**
- * Realisation lacks solid websocket impl
- * Currently validation happens here
- * Ideally backend should send data to concrete user
+ * Realtime updates for likes/dislikes, new Posts and comments
+ * everyone will have up-to-date state without reloading page
+ *
+ * Comment reactions don't have Realtime feature :(
  */
 
 const Notifications = ({
@@ -31,12 +32,14 @@ const Notifications = ({
       stompClient.subscribe('/topic/new_post_reaction', message => {
         const reaction = JSON.parse(message.body);
 
-        if (reaction.userId !== id) {
+        // liveUpdate for all users, except sender
+        if (reaction?.userId !== id) {
           applyPostReaction(reaction.postId);
-          // Notify user if somebody added reaction
-          if (reaction.rollbackLike === undefined) {
+
+          // display notification if this is your post
+          if (reaction.postUserId === id) {
             // eslint-disable-next-line no-unused-expressions
-            reaction.isLike !== undefined && reaction.isLike
+            reaction.isLike
               ? NotificationManager.info('Your post was liked😃')
               : NotificationManager.info('Your post was disliked😞');
           }
@@ -57,8 +60,12 @@ const Notifications = ({
 
       stompClient.subscribe('/topic/new_comment', message => {
         const comment = JSON.parse(message.body);
-        if (id !== comment.userId) {
+
+        // liveUpdate for all users, except sender
+        if (comment.userId !== id) {
           applyComment(comment.commentId);
+
+          // display notification if this is your post
           if (comment.postUserId === id) {
             NotificationManager.info('New comment for you😃');
           }
