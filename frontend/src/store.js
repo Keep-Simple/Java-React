@@ -9,8 +9,8 @@ import { createBrowserHistory } from 'history';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import threadReducer from './containers/Thread/reducer';
-import profileReducer from './containers/Profile/reducer';
+import threadReducer from './containers/Thread/redux/reducer';
+import profileReducer from './containers/Profile/redux/reducer';
 
 export const history = createBrowserHistory();
 

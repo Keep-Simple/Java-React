@@ -19,7 +19,7 @@ import {
   addPost,
   toggleEditPost,
   deletePost
-} from './actions';
+} from './redux/actionCreators';
 
 import styles from './styles.module.scss';
 import EditPost from '../EditPost';

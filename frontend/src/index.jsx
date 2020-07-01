@@ -6,5 +6,4 @@ import './styles/reset.scss';
 import 'semantic-ui-css/semantic.min.css';
 import './styles/common.scss';
 
-const target = document.getElementById('root');
-render(<Home />, target);
+render(<Home />, document.getElementById('root'));

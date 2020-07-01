@@ -10,11 +10,11 @@ import {
   Message
 } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
-import { setUserImg, setUserName, setUserStatus } from './actions';
+import { setUserImg, setUserName, setUserStatus } from './redux/actions';
 import CropPhoto from '../../components/CropPhoto';
 import * as imageService from '../../services/imageService';
 import { getUserImgLink } from '../../helpers/imageHelper';
-import { loadPosts } from '../Thread/actions';
+import { loadPosts } from '../Thread/redux/actionCreators';
 
 const Profile = ({
   user,

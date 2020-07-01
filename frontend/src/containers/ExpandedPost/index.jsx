@@ -8,7 +8,7 @@ import {
   likePost, dislikePost, toggleExpandedPost,
   addComment, toggleEditPost, deletePost, toggleEditComment,
   deleteComment, dislikeComment, likeComment
-} from 'src/containers/Thread/actions';
+} from 'src/containers/Thread/redux/actionCreators';
 import Post from 'src/components/Post';
 import Comment from 'src/components/Comment';
 import AddComment from 'src/components/AddComment';

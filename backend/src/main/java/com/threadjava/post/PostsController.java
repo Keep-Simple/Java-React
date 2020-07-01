@@ -23,7 +23,7 @@ public class PostsController {
     }
 
     @GetMapping
-    public List<PostListDto> get(@RequestParam(defaultValue="0") Integer from,
+    public List<PostListDto> getListOfPosts(@RequestParam(defaultValue="0") Integer from,
                                  @RequestParam(defaultValue="10") Integer count,
                                  @RequestParam(required = false) UUID userId,
                                  @RequestParam(required = false) boolean inverted,
@@ -32,12 +32,12 @@ public class PostsController {
     }
 
     @GetMapping("/{id}")
-    public PostDetailsDto get(@PathVariable UUID id) {
+    public PostDetailsDto getPostById(@PathVariable UUID id) {
         return postsService.getPostById(id);
     }
 
     @PostMapping
-    public PostCreationResponseDto post(@RequestBody PostCreationDto postDto) {
+    public PostCreationResponseDto addNewPost(@RequestBody PostCreationDto postDto) {
         postDto.setUserId(getUserId());
         var item = postsService.create(postDto);
         template.convertAndSend("/topic/new_post", item);
@@ -45,13 +45,13 @@ public class PostsController {
     }
 
     @PutMapping("/update")
-    public void update(@RequestBody PostUpdateDto postDto) {
+    public void updatePost(@RequestBody PostUpdateDto postDto) {
         if(getUserId().equals(postDto.getUserId()))
         postsService.updateBody(postDto);
     }
 
     @PutMapping("/softDelete/{id}")
-    public void delete(@PathVariable UUID id) {
+    public void softDeletePost(@PathVariable UUID id) {
         postsService.softDelete(id, new Date());
     }
 }

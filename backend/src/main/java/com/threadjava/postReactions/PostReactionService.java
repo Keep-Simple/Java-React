@@ -31,19 +31,18 @@ public class PostReactionService {
                 postReactionsRepository.deleteById(react.getId());
                 return Optional.empty();
             } else {
-                // == return unchanged in case of trying set both reactions ==
+                // == Return unchanged in case of trying set both reactions ==
                 return Optional.of(PostReactionMapper.MAPPER.reactionToPostReactionDto(react));
             }
-        } else {
-            var postReaction = PostReactionMapper.MAPPER.dtoToPostReaction(postReactionDto);
-            var result = postReactionsRepository.save(postReaction);
-            return Optional.of(PostReactionMapper.MAPPER.reactionToPostReactionDto(result));
         }
+
+        // == Save new reaction ==
+        var postReaction = PostReactionMapper.MAPPER.dtoToPostReaction(postReactionDto);
+        var result = postReactionsRepository.save(postReaction);
+        return Optional.of(PostReactionMapper.MAPPER.reactionToPostReactionDto(result));
     }
 
     public List<ExtendedResponsePostReactionDto> getPostLikes(UUID postId, boolean isLikes) {
-        if (isLikes)
-            return postReactionsRepository.getPostLikes(postId);
-        return postReactionsRepository.getPostDislikes(postId);
+        return isLikes ? postReactionsRepository.getPostLikes(postId) : postReactionsRepository.getPostDislikes(postId);
     }
 }

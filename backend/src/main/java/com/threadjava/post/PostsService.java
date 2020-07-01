@@ -6,10 +6,7 @@ import com.threadjava.post.model.Post;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,27 +21,25 @@ public class PostsService {
 
     public List<PostListDto> getPosts(Integer from, Integer count, UUID userId, boolean inverted, boolean isLikeFilter) {
         var pageable = PageRequest.of(from / count, count);
+
+        List<PostListQueryResult> resultList = null;
+
         if (inverted) {
-            return postsCrudRepository
-                    .findAllExceptOne(userId, pageable)
-                    .stream()
-                    .map(PostMapper.MAPPER::postListToPostListDto)
-                    .collect(Collectors.toList());
+            resultList = postsCrudRepository.findAllExceptOne(userId, pageable);
         }
 
         if (isLikeFilter) {
-            return postsCrudRepository
-                    .findPostsWithUserReaction(userId, pageable)
-                    .stream()
-                    .map(PostMapper.MAPPER::postListToPostListDto)
-                    .collect(Collectors.toList());
+            resultList = postsCrudRepository.findPostsWithUserReaction(userId, pageable);
         }
 
-        return postsCrudRepository
-                .findAllPosts(userId, pageable)
-                .stream()
-                .map(PostMapper.MAPPER::postListToPostListDto)
-                .collect(Collectors.toList());
+        if (resultList == null) {
+            resultList = postsCrudRepository.findAllPosts(userId, pageable);
+        }
+
+         return resultList
+                 .stream()
+                 .map(PostMapper.MAPPER::postListToPostListDto)
+                 .collect(Collectors.toList());
     }
 
     public PostDetailsDto getPostById(UUID id) {

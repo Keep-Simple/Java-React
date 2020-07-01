@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { toggleEditPost, togglePushEditedPost } from '../Thread/actions';
+import { toggleEditPost, togglePushEditedPost } from '../Thread/redux/actionCreators';
 import EditWindow from '../../components/EditWindow';
 
 const EditPost = ({ post: modal, toggleEditPost: toggleEdit, togglePushEditedPost: togglePush }) => (

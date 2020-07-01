@@ -7,8 +7,8 @@ import { Header as HeaderUI, Image, Grid, Icon, Button, Input, Popup } from 'sem
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styles from './styles.module.scss';
-import { setUserStatus } from '../../containers/Profile/actions';
-import { loadPosts } from '../../containers/Thread/actions';
+import { setUserStatus } from '../../containers/Profile/redux/actions';
+import { loadPosts } from '../../containers/Thread/redux/actionCreators';
 
 const Header = ({
   user,

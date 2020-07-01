@@ -13,10 +13,10 @@ import NotFound from 'src/scenes/NotFound';
 import PrivateRoute from 'src/containers/PrivateRoute';
 import PublicRoute from 'src/containers/PublicRoute';
 import Notifications from 'src/components/Notifications';
-import { loadCurrentUser, logout } from 'src/containers/Profile/actions';
-import { applyPost } from 'src/containers/Thread/actions';
+import { loadCurrentUser, logout } from 'src/containers/Profile/redux/actions';
+import { applyPost } from 'src/containers/Thread/redux/actionCreators';
 import PropTypes from 'prop-types';
-import { applyComment, applyPostReaction } from '../Thread/actions';
+import { applyComment, applyPostReaction } from '../Thread/redux/actionCreators';
 
 const Routing = ({
   user,

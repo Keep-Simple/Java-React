@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import { login } from 'src/containers/Profile/actions';
+import { login } from 'src/containers/Profile/redux/actions';
 import Logo from 'src/components/Logo';
 import { Grid, Header, Message } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
