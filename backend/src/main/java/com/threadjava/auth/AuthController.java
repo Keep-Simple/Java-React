@@ -1,19 +1,15 @@
 package com.threadjava.auth;
 
 import com.threadjava.auth.dto.*;
-import com.threadjava.users.UsersService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
     private final AuthService authService;
-    private final UsersService userDetailsService;
 
-    public AuthController(AuthService authService, UsersService userDetailsService) {
+    public AuthController(AuthService authService) {
         this.authService = authService;
-        this.userDetailsService = userDetailsService;
     }
 
     @PostMapping("/register")
