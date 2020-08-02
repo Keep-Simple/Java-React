@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  frontend:
+    image: 1248421/mini-java_frontend
+    ports:
+      - "3000:3000"
+    container_name: front-container
+    stdin_open: true
+    restart: always
+    links:
+      - backend
+
+  backend:
+    image: 1248421/mini-java_backend
+    ports:
+      - "8080:8080"
+    container_name: back-container
+    restart: always
+    links:
+      - db
+
+  db:
+    image: 1248421/mini-java_db
+    container_name: database-container
+    restart: always
+
