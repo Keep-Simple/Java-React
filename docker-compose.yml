@@ -6,6 +6,7 @@ services:
     ports:
       - "3000:3000"
     container_name: front-container
+    stdin_open: true
     restart: always
     links:
       - backend
